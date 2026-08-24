@@ -1,0 +1,368 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5U000000000000000000001A /* SolarCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5U0000000000000000000019 /* SolarCore */; };
+		5U000000000000000000001E /* SolarCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5U000000000000000000001D /* SolarCore */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5U000000000000000000001C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5U0000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5U0000000000000000000004;
+			remoteInfo = Sunspot;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5U0000000000000000000006 /* Sunspot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunspot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5U0000000000000000000007 /* SunspotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SunspotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5U000000000000000000000D /* Sunspot */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Sunspot; sourceTree = "<group>"; };
+		5U000000000000000000000E /* SunspotTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SunspotTests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5U0000000000000000000009 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5U000000000000000000001A /* SolarCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5U000000000000000000000C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5U000000000000000000001E /* SolarCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5U0000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				5U000000000000000000000D /* Sunspot */,
+				5U000000000000000000000E /* SunspotTests */,
+				5U0000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5U0000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5U0000000000000000000006 /* Sunspot.app */,
+				5U0000000000000000000007 /* SunspotTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5U0000000000000000000004 /* Sunspot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5U0000000000000000000010 /* Build configuration list for PBXNativeTarget "Sunspot" */;
+			buildPhases = (
+				5U0000000000000000000008 /* Sources */,
+				5U0000000000000000000009 /* Frameworks */,
+				5U000000000000000000000A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5U000000000000000000000D /* Sunspot */,
+			);
+			name = Sunspot;
+			packageProductDependencies = (
+				5U0000000000000000000019 /* SolarCore */,
+			);
+			productName = Sunspot;
+			productReference = 5U0000000000000000000006 /* Sunspot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5U0000000000000000000005 /* SunspotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5U0000000000000000000011 /* Build configuration list for PBXNativeTarget "SunspotTests" */;
+			buildPhases = (
+				5U000000000000000000000B /* Sources */,
+				5U000000000000000000000C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5U000000000000000000001B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5U000000000000000000000E /* SunspotTests */,
+			);
+			name = SunspotTests;
+			packageProductDependencies = (
+				5U000000000000000000001D /* SolarCore */,
+			);
+			productName = SunspotTests;
+			productReference = 5U0000000000000000000007 /* SunspotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5U0000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2660;
+				LastUpgradeCheck = 2660;
+				TargetAttributes = {
+					5U0000000000000000000004 = {
+						CreatedOnToolsVersion = 26.6;
+					};
+					5U0000000000000000000005 = {
+						CreatedOnToolsVersion = 26.6;
+						TestTargetID = 5U0000000000000000000004;
+					};
+				};
+			};
+			buildConfigurationList = 5U000000000000000000000F /* Build configuration list for PBXProject "Sunspot" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5U0000000000000000000002;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5U0000000000000000000018 /* XCLocalSwiftPackageReference "Packages/SolarCore" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5U0000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5U0000000000000000000004 /* Sunspot */,
+				5U0000000000000000000005 /* SunspotTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5U000000000000000000000A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5U0000000000000000000008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5U000000000000000000000B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5U000000000000000000001B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5U0000000000000000000004 /* Sunspot */;
+			targetProxy = 5U000000000000000000001C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5U0000000000000000000012 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5U0000000000000000000013 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5U0000000000000000000014 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CURRENT_PROJECT_VERSION = 1;
+				MARKETING_VERSION = 0.1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Sunspot needs your location to work out where the sun travels over this spot.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Sunspot uses the camera so you can trace the roofs and trees around a spot.";
+				PRODUCT_BUNDLE_IDENTIFIER = app.sunspot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				CODE_SIGN_STYLE = Automatic;
+			};
+			name = Debug;
+		};
+		5U0000000000000000000015 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CURRENT_PROJECT_VERSION = 1;
+				MARKETING_VERSION = 0.1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Sunspot needs your location to work out where the sun travels over this spot.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Sunspot uses the camera so you can trace the roofs and trees around a spot.";
+				PRODUCT_BUNDLE_IDENTIFIER = app.sunspot;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				CODE_SIGN_STYLE = Automatic;
+			};
+			name = Release;
+		};
+		5U0000000000000000000016 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = app.sunspot.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sunspot.app/Sunspot";
+				CODE_SIGN_STYLE = Automatic;
+			};
+			name = Debug;
+		};
+		5U0000000000000000000017 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = app.sunspot.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sunspot.app/Sunspot";
+				CODE_SIGN_STYLE = Automatic;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5U000000000000000000000F /* Build configuration list for PBXProject "Sunspot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5U0000000000000000000012 /* Debug */,
+				5U0000000000000000000013 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5U0000000000000000000010 /* Build configuration list for PBXNativeTarget "Sunspot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5U0000000000000000000014 /* Debug */,
+				5U0000000000000000000015 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5U0000000000000000000011 /* Build configuration list for PBXNativeTarget "SunspotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5U0000000000000000000016 /* Debug */,
+				5U0000000000000000000017 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		5U0000000000000000000018 /* XCLocalSwiftPackageReference "Packages/SolarCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/SolarCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5U0000000000000000000019 /* SolarCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SolarCore;
+		};
+		5U000000000000000000001D /* SolarCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SolarCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 5U0000000000000000000001 /* Project object */;
+}
