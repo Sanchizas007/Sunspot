@@ -50,7 +50,16 @@ struct SkyView: View {
     private var background: some View {
         switch camera.state {
         case .running:
+            #if targetEnvironment(simulator)
+            // Something to draw the arc against when there is no lens.
+            LinearGradient(
+                colors: [Color(red: 0.19, green: 0.32, blue: 0.52),
+                         Color(red: 0.55, green: 0.62, blue: 0.70)],
+                startPoint: .top, endPoint: .bottom
+            )
+            #else
             CameraPreview(session: camera.session)
+            #endif
         case .denied:
             Message(
                 title: "Camera is off",

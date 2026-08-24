@@ -56,8 +56,14 @@ final class CameraFeed: NSObject {
         guard let device = AVCaptureDevice.default(
             .builtInWideAngleCamera, for: .video, position: .back
         ) else {
-            // A simulator has no camera. Say so plainly rather than showing a black screen.
+            #if targetEnvironment(simulator)
+            // No camera here, but the overlay still needs a field of view to draw against.
+            // Leaving it dark meant the Sky screen was never exercised until it reached a
+            // real phone, which is how a crash got that far. A typical wide lens stands in.
+            state = .running(fieldOfView: 68)
+            #else
             state = .unavailable("No camera on this device, so the live view is not available.")
+            #endif
             return
         }
 

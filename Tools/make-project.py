@@ -66,6 +66,9 @@ APP_COMMON = {
     "INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone": '"UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"',
     "INFOPLIST_KEY_NSLocationWhenInUseUsageDescription": '"Sunspot needs your location to work out where the sun travels over this spot."',
     "INFOPLIST_KEY_NSCameraUsageDescription": '"Sunspot uses the camera so you can trace the roofs and trees around a spot."',
+    # Required because the Sky screen reads the device's attitude. Without the key iOS ends
+    # the process the moment the screen asks, with no dialog and no warning.
+    "INFOPLIST_KEY_NSMotionUsageDescription": '"Sunspot reads which way the phone is pointing so the sun\'s path lines up with what the camera sees."',
     "PRODUCT_BUNDLE_IDENTIFIER": BUNDLE_ID,
     "PRODUCT_NAME": '"$(TARGET_NAME)"',
     "SWIFT_EMIT_LOC_STRINGS": "YES",

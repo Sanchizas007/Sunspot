@@ -50,14 +50,31 @@ final class MotionTracker {
     func start() {
         guard motion.isDeviceMotionAvailable else {
             trust = .unavailable
+            startStandIn()
             return
         }
         guard !motion.isDeviceMotionActive else { return }
 
-        motion.deviceMotionUpdateInterval = 1.0 / 30
         // True north rather than magnetic: everything else in the app is worked out against
-        // true north, and mixing the two would be a silent error of several degrees.
-        motion.startDeviceMotionUpdates(using: .xTrueNorthZVertical, to: queue) {
+        // true north, and mixing the two would be a silent error of several degrees. It is
+        // not always on offer, though — it needs a magnetometer and a location fix — so ask
+        // what the device actually supports rather than assuming.
+        let available = CMMotionManager.availableAttitudeReferenceFrames()
+        let frame: CMAttitudeReferenceFrame
+        if available.contains(.xTrueNorthZVertical) {
+            frame = .xTrueNorthZVertical
+        } else if available.contains(.xMagneticNorthZVertical) {
+            frame = .xMagneticNorthZVertical
+        } else {
+            // Without a north reference the arc would point somewhere arbitrary, which is
+            // worse than admitting the screen cannot work here.
+            trust = .unavailable
+            startStandIn()
+            return
+        }
+
+        motion.deviceMotionUpdateInterval = 1.0 / 30
+        motion.startDeviceMotionUpdates(using: frame, to: queue) {
             [weak self] deviceMotion, _ in
             guard let deviceMotion else { return }
             let matrix = deviceMotion.attitude.rotationMatrix
@@ -76,6 +93,58 @@ final class MotionTracker {
 
     func stop() {
         motion.stopDeviceMotionUpdates()
+        standIn?.invalidate()
+        standIn = nil
+    }
+
+    // MARK: - Standing in for hardware that is not there
+
+    private var standIn: Timer?
+
+    /// Feeds a slowly panning attitude when the device has no motion hardware.
+    ///
+    /// This exists because of a crash. The Sky screen draws nothing at all without a compass,
+    /// so in a simulator its overlay had never once run — and the first machine to execute
+    /// that code was a customer's phone, where it went straight down. A stand-in costs a few
+    /// lines and puts the screen under the same tests as everything else.
+    ///
+    /// `trust` deliberately stays at `.unavailable`, so the screen still says out loud that
+    /// it does not know which way it is pointing.
+    private func startStandIn() {
+        #if targetEnvironment(simulator)
+        guard standIn == nil else { return }
+        let started = Date()
+        standIn = Timer.scheduledTimer(withTimeInterval: 1.0 / 20, repeats: true) { [weak self] _ in
+            Task { @MainActor [weak self] in
+                let elapsed = Date().timeIntervalSince(started)
+                // Sweep right round the horizon in a minute, tipping up and down as it goes,
+                // so every part of the sky passes through the frame.
+                self?.rotation = Self.standInRotation(
+                    azimuth: elapsed * 6,
+                    elevation: 40 * sin(elapsed * 0.35)
+                )
+            }
+        }
+        #endif
+    }
+
+    /// An upright phone aimed at a given bearing and height.
+    static func standInRotation(azimuth: Double, elevation: Double) -> Rotation3 {
+        let a = azimuth * .pi / 180
+        let e = elevation * .pi / 180
+        let forward = (x: cos(e) * cos(a), y: -cos(e) * sin(a), z: sin(e))
+        let outOfScreen = (x: -forward.x, y: -forward.y, z: -forward.z)
+        let right = (x: -sin(a), y: -cos(a), z: 0.0)
+        let top = (
+            x: outOfScreen.y * right.z - outOfScreen.z * right.y,
+            y: outOfScreen.z * right.x - outOfScreen.x * right.z,
+            z: outOfScreen.x * right.y - outOfScreen.y * right.x
+        )
+        return Rotation3(
+            m11: right.x, m12: right.y, m13: right.z,
+            m21: top.x, m22: top.y, m23: top.z,
+            m31: outOfScreen.x, m32: outOfScreen.y, m33: outOfScreen.z
+        )
     }
 }
 
