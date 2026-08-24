@@ -98,19 +98,24 @@ struct CameraPreview: UIViewRepresentable {
 
     func makeUIView(context: Context) -> PreviewView {
         let view = PreviewView()
-        view.layer.session = session
-        view.layer.videoGravity = .resizeAspectFill
+        view.previewLayer.session = session
+        view.previewLayer.videoGravity = .resizeAspectFill
         return view
     }
 
     func updateUIView(_ view: PreviewView, context: Context) {
-        view.layer.session = session
+        view.previewLayer.session = session
     }
 
     final class PreviewView: UIView {
         override class var layerClass: AnyClass { AVCaptureVideoPreviewLayer.self }
-        override var layer: AVCaptureVideoPreviewLayer {
-            super.layer as! AVCaptureVideoPreviewLayer
+
+        /// Reached through its own name rather than by overriding `layer`. UIKit asks for
+        /// `layer` at moments of its own choosing, including partway through initialisation,
+        /// and a covariant override with a forced cast is a poor thing to have sitting in
+        /// that path.
+        var previewLayer: AVCaptureVideoPreviewLayer {
+            layer as! AVCaptureVideoPreviewLayer
         }
     }
 }

@@ -15,6 +15,8 @@ BUNDLE_ID = "app.sunspot"
 DEPLOYMENT_TARGET = "17.0"
 SWIFT_VERSION = "6.0"
 MARKETING_VERSION = "0.1"
+# Apple developer team, needed to sign for a real device. Same account as Sunfold.
+DEVELOPMENT_TEAM = "3M856J997X"
 
 # Stable object ids. The prefix keeps them recognisably ours in diffs.
 def oid(n: int) -> str:
@@ -69,6 +71,7 @@ APP_COMMON = {
     "SWIFT_EMIT_LOC_STRINGS": "YES",
     "TARGETED_DEVICE_FAMILY": '"1,2"',
     "CODE_SIGN_STYLE": "Automatic",
+    "DEVELOPMENT_TEAM": DEVELOPMENT_TEAM,
 }
 
 TEST_COMMON = {
@@ -80,6 +83,7 @@ TEST_COMMON = {
     "TARGETED_DEVICE_FAMILY": '"1,2"',
     "TEST_HOST": f'"$(BUILT_PRODUCTS_DIR)/{APP}.app/{APP}"',
     "CODE_SIGN_STYLE": "Automatic",
+    "DEVELOPMENT_TEAM": DEVELOPMENT_TEAM,
 }
 
 pbxproj = f"""// !$*UTF8*$!

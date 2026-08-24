@@ -9,6 +9,7 @@ struct SkyView: View {
     @State private var camera = CameraFeed()
     @State private var draft: [HorizonProfile.Sample] = []
     @State private var isTracing = false
+    @State private var arc: SunArc?
 
     var body: some View {
         GeometryReader { geometry in
@@ -16,10 +17,12 @@ struct SkyView: View {
                 // Only the live view bleeds to the edges. The controls must not, or they
                 // end up underneath the tab bar where nobody can reach them.
                 background.ignoresSafeArea()
-                if let spot = store.spot, let projection = projection(in: geometry.size) {
+                if let spot = store.spot, let projection = projection(in: geometry.size),
+                   let arc = currentArc(for: spot) {
                     Overlay(
                         spot: spot,
                         moment: store.viewedDate,
+                        arc: arc,
                         projection: projection,
                         size: geometry.size,
                         draft: draft,
@@ -86,6 +89,14 @@ struct SkyView: View {
 
     // MARK: - Wiring
 
+    /// Rebuilds the arc only when the day it describes is no longer the day being viewed.
+    private func currentArc(for spot: Spot) -> SunArc? {
+        if let arc, arc.covers(store.viewedDate, in: spot.timeZone) { return arc }
+        let fresh = SunArc(spot: spot, containing: store.viewedDate)
+        Task { @MainActor in arc = fresh }
+        return fresh
+    }
+
     private func projection(in size: CGSize) -> SkyProjection? {
         guard let rotation = motion.rotation,
               case let .running(fieldOfView) = camera.state,
@@ -126,6 +137,7 @@ struct SkyView: View {
 private struct Overlay: View {
     let spot: Spot
     let moment: Date
+    let arc: SunArc
     let projection: SkyProjection
     let size: CGSize
     let draft: [HorizonProfile.Sample]
@@ -145,24 +157,23 @@ private struct Overlay: View {
         guard let point = projection.project(azimuth: azimuth, elevation: elevation) else {
             return nil
         }
-        return CGPoint(
+        let screenPoint = CGPoint(
             x: (point.x + 1) / 2 * size.width,
             y: (point.y + 1) / 2 * size.height
         )
+        // The projection already refuses anything wild, but nothing that reaches a drawing
+        // surface should be taken on trust.
+        guard screenPoint.x.isFinite, screenPoint.y.isFinite else { return nil }
+        return screenPoint
     }
 
-    /// The whole day's path, sampled often enough to read as a curve.
+    /// The whole day's path. The positions were worked out once; only the projection of
+    /// them changes as the phone moves.
     private func drawArc(in context: inout GraphicsContext) {
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = spot.timeZone
-        let startOfDay = calendar.startOfDay(for: moment)
-
         var path = Path()
         var started = false
-        for minute in stride(from: 0, through: 1440, by: 10) {
-            let instant = startOfDay.addingTimeInterval(Double(minute) * 60)
-            let sun = spot.sunPosition(at: instant)
-            guard sun.elevation > -2, let point = screen(sun.azimuth, sun.elevation) else {
+        for step in arc.steps {
+            guard let point = screen(step.azimuth, step.elevation) else {
                 started = false
                 continue
             }

@@ -124,10 +124,20 @@ public struct SkyProjection: Sendable {
 
     // MARK: - Sky to screen
 
+    /// How far outside the frame a point may land before it is refused.
+    ///
+    /// Twenty frame-widths is far past anything a person could see, and well inside what a
+    /// drawing surface will accept. Without a ceiling the numbers here get genuinely wild:
+    /// a phone held upright facing north puts a patch of sky near the zenith at 4,867 —
+    /// close to a million points once scaled to a screen — and handing a path like that to
+    /// Core Graphics takes the app down with it.
+    public static let maximumOffscreenExtent: Double = 20
+
     /// Where a direction in the sky lands on the camera image.
     ///
     /// Returns `nil` when the direction is behind the camera, which is the case for most of
-    /// the sun's arc most of the time.
+    /// the sun's arc most of the time, and when it is so far outside the frame that drawing
+    /// it would be both pointless and dangerous.
     public func project(azimuth: Double, elevation: Double) -> ScreenPoint? {
         let device = rotation.apply(Self.unitVector(azimuth: azimuth, elevation: elevation))
 
@@ -143,6 +153,12 @@ public struct SkyProjection: Sendable {
         let x = (device.x / depth) / tan(radians(horizontalFieldOfView / 2))
         // Screen y runs downwards; the device's y axis runs up the screen.
         let y = (-device.y / depth) / tan(radians(verticalFieldOfView / 2))
+
+        guard x.isFinite, y.isFinite,
+              abs(x) <= Self.maximumOffscreenExtent,
+              abs(y) <= Self.maximumOffscreenExtent
+        else { return nil }
+
         return ScreenPoint(x: x, y: y)
     }
 

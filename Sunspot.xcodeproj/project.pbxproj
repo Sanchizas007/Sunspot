@@ -262,6 +262,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3M856J997X;
 			};
 			name = Debug;
 		};
@@ -283,6 +284,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3M856J997X;
 			};
 			name = Release;
 		};
@@ -297,6 +299,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sunspot.app/Sunspot";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3M856J997X;
 			};
 			name = Debug;
 		};
@@ -311,6 +314,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sunspot.app/Sunspot";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3M856J997X;
 			};
 			name = Release;
 		};

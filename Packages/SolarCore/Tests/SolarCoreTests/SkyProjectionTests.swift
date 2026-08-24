@@ -266,3 +266,81 @@ struct DisplayedFieldOfViewTests {
         #expect(wide.horizontal > narrow.horizontal)
     }
 }
+
+/// A projected point is handed straight to a drawing surface, and drawing surfaces do not
+/// survive coordinates in the hundreds of thousands. This is the guard that keeps them sane.
+struct ProjectionBoundsTests {
+
+    /// Every orientation a phone can be held in, coarsely.
+    static func orientations() -> [Rotation3] {
+        var all: [Rotation3] = []
+        for yaw in stride(from: 0.0, to: 360.0, by: 30) {
+            for pitch in stride(from: -80.0, through: 80.0, by: 20) {
+                let y = yaw * .pi / 180
+                let p = pitch * .pi / 180
+                // Camera pointing along `yaw` at `pitch`, phone upright.
+                let forward = (x: cos(p) * cos(y), y: -cos(p) * sin(y), z: sin(p))
+                let outOfScreen = (x: -forward.x, y: -forward.y, z: -forward.z)
+                // Right edge stays horizontal.
+                let right = (x: -sin(y), y: -cos(y), z: 0.0)
+                // Top = outOfScreen × right, completing a right-handed set.
+                let top = (
+                    x: outOfScreen.y * right.z - outOfScreen.z * right.y,
+                    y: outOfScreen.z * right.x - outOfScreen.x * right.z,
+                    z: outOfScreen.x * right.y - outOfScreen.y * right.x
+                )
+                all.append(Rotation3(
+                    m11: right.x, m12: right.y, m13: right.z,
+                    m21: top.x, m22: top.y, m23: top.z,
+                    m31: outOfScreen.x, m32: outOfScreen.y, m33: outOfScreen.z
+                ))
+            }
+        }
+        return all
+    }
+
+    @Test("No orientation can produce a coordinate a drawing surface would choke on")
+    func everyProjectedPointIsSafeToDraw() {
+        // This is a regression: an upright phone facing north put sky near the zenith at
+        // 4,867 — around a million points once scaled — and the Sky screen crashed the
+        // moment it first had a real compass to work with.
+        for rotation in Self.orientations() {
+            let projection = SkyProjection(
+                rotation: rotation, horizontalFieldOfView: 54, verticalFieldOfView: 68
+            )
+            for azimuth in stride(from: 0.0, to: 360.0, by: 3) {
+                for elevation in stride(from: -2.0, through: 90.0, by: 3) {
+                    guard let point = projection.project(azimuth: azimuth, elevation: elevation)
+                    else { continue }
+                    #expect(point.x.isFinite && point.y.isFinite,
+                            "not a number at azimuth \(azimuth), elevation \(elevation)")
+                    #expect(abs(point.x) <= SkyProjection.maximumOffscreenExtent
+                            && abs(point.y) <= SkyProjection.maximumOffscreenExtent,
+                            "\(point) at azimuth \(azimuth), elevation \(elevation)")
+                }
+            }
+        }
+    }
+
+    @Test("Refusing the wild ones does not start refusing the visible ones")
+    func everythingOnScreenStillProjects() {
+        for rotation in Self.orientations() {
+            let projection = SkyProjection(
+                rotation: rotation, horizontalFieldOfView: 54, verticalFieldOfView: 68
+            )
+            let aim = projection.aim
+            // Whatever the camera is aimed at, and a ring close around it, must survive.
+            for offset in [0.0, 5.0, 15.0] {
+                for bearing in stride(from: 0.0, to: 360.0, by: 45) {
+                    let azimuth = aim.azimuth + offset * cos(bearing * .pi / 180)
+                    let elevation = max(-89, min(89, aim.elevation + offset * sin(bearing * .pi / 180)))
+                    if let point = projection.project(azimuth: azimuth, elevation: elevation) {
+                        #expect(point.x.isFinite && point.y.isFinite)
+                    }
+                }
+            }
+            #expect(projection.project(azimuth: aim.azimuth, elevation: aim.elevation) != nil,
+                    "the camera's own aim must always project")
+        }
+    }
+}
