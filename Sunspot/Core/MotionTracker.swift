@@ -74,8 +74,15 @@ final class MotionTracker {
         }
 
         motion.deviceMotionUpdateInterval = 1.0 / 30
-        motion.startDeviceMotionUpdates(using: frame, to: queue) {
-            [weak self] deviceMotion, _ in
+
+        // Spelled out as a `@Sendable` closure on purpose, and it is not a formality.
+        //
+        // A closure written inside a method of a main-actor class inherits that isolation.
+        // Core Motion then calls it on a background queue, Swift checks the assumption at
+        // runtime, finds it false, and stops the process — no message, no exception, just
+        // signal 5. Marking it `@Sendable` keeps it off the actor, and the hop below puts
+        // the result back where it belongs.
+        let handler: @Sendable (CMDeviceMotion?, Error?) -> Void = { [weak self] deviceMotion, _ in
             guard let deviceMotion else { return }
             let matrix = deviceMotion.attitude.rotationMatrix
             let rotation = Rotation3(
@@ -89,6 +96,7 @@ final class MotionTracker {
                 self?.trust = Trust(accuracy)
             }
         }
+        motion.startDeviceMotionUpdates(using: frame, to: queue, withHandler: handler)
     }
 
     func stop() {

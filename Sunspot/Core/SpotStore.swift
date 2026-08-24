@@ -10,7 +10,11 @@ import SolarCore
 @Observable
 final class SpotStore {
 
-    private(set) var spot: Spot?
+    private(set) var spot: Spot? {
+        didSet { persist() }
+    }
+
+    private let archive: SpotArchive?
 
     /// The moment under examination. Starts at now and follows the clock until the person
     /// scrubs, after which it stays where they put it.
@@ -19,9 +23,30 @@ final class SpotStore {
     /// True while the app is still following the clock rather than a chosen time.
     private(set) var followsClock = true
 
+    init(archive: SpotArchive? = try? SpotArchive()) {
+        self.archive = archive
+        // Assigning through the backing store on purpose: loading is not a change worth
+        // writing straight back to disk.
+        if let restored = archive?.loadIgnoringDamage().first {
+            _spot = restored
+        }
+    }
+
+    private func persist() {
+        guard let archive, let spot else { return }
+        do {
+            try archive.save([spot])
+        } catch {
+            // Losing a save is bad but not worth taking the app down for; the person can
+            // trace again. Silence here is deliberate rather than forgotten.
+        }
+    }
+
     /// Adopts a position from the device, unless the person has already placed a spot by
     /// hand — a location update should not yank the pin out from under them.
     func adoptDeviceLocation(latitude: Double, longitude: Double) {
+        // A restored spot counts as already placed, so a location fix on launch must not
+        // discard the skyline someone traced last week.
         guard spot == nil else { return }
         spot = Spot(name: "Here", coordinate: GeoCoordinate(latitude: latitude, longitude: longitude))
     }

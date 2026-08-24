@@ -1,7 +1,7 @@
 import Foundation
 
 /// A point on the Earth's surface.
-public struct GeoCoordinate: Sendable, Equatable {
+public struct GeoCoordinate: Sendable, Equatable, Codable {
     /// Degrees north of the equator. Negative south.
     public var latitude: Double
     /// Degrees east of Greenwich. Negative west.

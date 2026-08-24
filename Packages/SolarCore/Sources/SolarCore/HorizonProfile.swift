@@ -8,10 +8,10 @@ import Foundation
 ///
 /// A profile is a ring of samples. Between samples the height is interpolated, and the ring
 /// wraps around north, so a profile with samples at 350° and 10° interpolates across 0°.
-public struct HorizonProfile: Sendable, Equatable {
+public struct HorizonProfile: Sendable, Equatable, Codable {
 
     /// One measured point on the skyline.
-    public struct Sample: Sendable, Equatable {
+    public struct Sample: Sendable, Equatable, Codable {
         /// Degrees clockwise from true north.
         public var azimuth: Double
         /// Degrees above the horizontal.
@@ -76,6 +76,25 @@ public struct HorizonProfile: Sendable, Equatable {
     /// True when the sun at this position is blocked by the skyline.
     public func blocks(_ position: SolarPosition) -> Bool {
         position.elevation <= obstructionElevation(atAzimuth: position.azimuth)
+    }
+
+    // MARK: - Storing and reading back
+
+    private enum CodingKeys: String, CodingKey { case samples }
+
+    /// Decoding goes back through the ordinary initialiser rather than filling the stored
+    /// array directly. A profile promises its samples are sorted and hold one entry per
+    /// direction, and a file edited by hand — or written by an older version — should not be
+    /// able to hand back a profile that quietly breaks that promise.
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let stored = try container.decode([Sample].self, forKey: .samples)
+        self.init(samples: stored)
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(samples, forKey: .samples)
     }
 }
 

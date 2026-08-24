@@ -33,11 +33,16 @@ final class CameraFeed: NSObject {
         case .authorized:
             configureAndRun()
         case .notDetermined:
-            AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
-                Task { @MainActor in
-                    granted ? self?.configureAndRun() : (self?.state = .denied)
+            // `@Sendable` for the same reason as in MotionTracker: AVFoundation calls this
+            // back on a queue of its own choosing, and a closure that quietly inherited main
+            // actor isolation would take the process down when it did.
+            let answered: @Sendable (Bool) -> Void = { [weak self] granted in
+                Task { @MainActor [weak self] in
+                    guard let self else { return }
+                    if granted { self.configureAndRun() } else { self.state = .denied }
                 }
             }
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: answered)
         case .denied, .restricted:
             state = .denied
         @unknown default:
