@@ -4,40 +4,28 @@ import SolarCore
 /// The first screen: what this spot gets today, answered before it is explained.
 struct TodayView: View {
     @Environment(LocationProvider.self) private var location
-
-    @State private var now = Date()
-    private let tick = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
-
-    private var spot: Spot? {
-        guard case let .located(latitude, longitude) = location.state else { return nil }
-        return Spot(
-            name: "Here",
-            coordinate: GeoCoordinate(latitude: latitude, longitude: longitude)
-        )
-    }
+    @Environment(SpotStore.self) private var store
 
     var body: some View {
         NavigationStack {
             Group {
-                if let spot {
-                    SunSummary(spot: spot, now: now)
+                if let spot = store.spot {
+                    SunSummary(spot: spot, moment: store.viewedDate)
                 } else {
                     LocationPrompt(state: location.state) { location.start() }
                 }
             }
             .navigationTitle("Today")
         }
-        .onAppear { location.start() }
-        .onReceive(tick) { now = $0 }
     }
 }
 
 private struct SunSummary: View {
     let spot: Spot
-    let now: Date
+    let moment: Date
 
-    private var day: SunDay { spot.sunDay(on: now) }
-    private var sun: SolarPosition { spot.sunPosition(at: now) }
+    private var day: SunDay { spot.sunDay(on: moment) }
+    private var sun: SolarPosition { spot.sunPosition(at: moment) }
 
     /// Under open sky the longest stretch is always the whole day, so showing it twice is
     /// noise. It earns its place only once a traced skyline breaks the day up.
