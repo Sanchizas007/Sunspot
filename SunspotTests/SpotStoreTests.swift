@@ -42,7 +42,11 @@ struct SpotStoreTests {
     func movingKeepsTheHorizon() {
         let (store, _) = Self.isolatedStore()
         store.move(to: Self.kyiv)
-        store.setHorizon(HorizonProfile(samples: [.init(azimuth: 180, elevation: 30)]))
+        store.setHorizon(HorizonProfile(samples: [
+            .init(azimuth: 150, elevation: 25),
+            .init(azimuth: 180, elevation: 30),
+            .init(azimuth: 210, elevation: 22)
+        ]))
         store.move(to: Self.lviv)
 
         #expect(store.spot?.coordinate == Self.lviv)
@@ -136,7 +140,11 @@ struct SpotPersistenceTests {
         // The failure this guards against: open the app in a different town, and the skyline
         // traced at home is quietly replaced by open sky.
         let archive = Self.archive()
-        let traced = HorizonProfile(samples: [.init(azimuth: 180, elevation: 40)])
+        let traced = HorizonProfile(samples: [
+            .init(azimuth: 140, elevation: 35),
+            .init(azimuth: 180, elevation: 40),
+            .init(azimuth: 220, elevation: 30)
+        ])
 
         do {
             let store = SpotStore(archive: archive)

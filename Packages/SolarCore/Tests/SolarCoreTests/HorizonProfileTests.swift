@@ -132,3 +132,110 @@ struct HorizonProfileCodingTests {
         #expect(try JSONDecoder().decode(GeoCoordinate.self, from: data) == original)
     }
 }
+
+/// A profile has to be able to say how much of it is measurement and how much is guesswork.
+/// It could not, and a single tap on the Sky screen became a wall in every direction that
+/// silently removed nearly three hours of sun from the answer.
+struct HorizonCoverageTests {
+
+    @Test("Nothing measured is a whole circle of guesswork")
+    func openSkyIsAllGap() {
+        #expect(HorizonProfile.open.largestGap == 360)
+        #expect(HorizonProfile.open.measuredArc == 0)
+    }
+
+    @Test("One sample is a whole circle of guesswork, however precise it looks")
+    func oneSampleIsNotASkyline() {
+        // This is the case that shipped: one point at 272°, and the profile happily
+        // reported that height for north, east and south as well.
+        let single = HorizonProfile(samples: [.init(azimuth: 272, elevation: 13.9)])
+        #expect(single.largestGap == 360)
+        #expect(single.measuredArc == 0)
+        #expect(!single.hasMeasurement(near: 90), "east was never looked at")
+        #expect(single.hasMeasurement(near: 272), "west was")
+    }
+
+    @Test("The measured arc is the circle minus the biggest hole in it")
+    func measuredArcIsWhatWasWalked() {
+        // Ninety degrees of south-facing sky, sampled every thirty degrees.
+        let southern = HorizonProfile(samples: [
+            .init(azimuth: 135, elevation: 10),
+            .init(azimuth: 165, elevation: 20),
+            .init(azimuth: 195, elevation: 20),
+            .init(azimuth: 225, elevation: 10)
+        ])
+        #expect(abs(southern.largestGap - 270) < 0.001, "gap was \(southern.largestGap)")
+        #expect(abs(southern.measuredArc - 90) < 0.001, "arc was \(southern.measuredArc)")
+    }
+
+    @Test("A gap that straddles north is measured as one gap, not two")
+    func gapWrapsThroughNorth() {
+        let profile = HorizonProfile(samples: [
+            .init(azimuth: 10, elevation: 5),
+            .init(azimuth: 180, elevation: 5),
+            .init(azimuth: 350, elevation: 5)
+        ])
+        // The holes are 170°, 170° and 20°; the widest is 170.
+        #expect(abs(profile.largestGap - 170) < 0.001, "gap was \(profile.largestGap)")
+    }
+
+    @Test("A direction is only called measured when something was measured near it")
+    func measurementIsLocal() {
+        let profile = HorizonProfile(samples: [
+            .init(azimuth: 90, elevation: 20),
+            .init(azimuth: 180, elevation: 30)
+        ])
+        #expect(profile.hasMeasurement(near: 90))
+        #expect(profile.hasMeasurement(near: 100))
+        #expect(!profile.hasMeasurement(near: 135), "the middle of a gap is not measured")
+        #expect(!profile.hasMeasurement(near: 300))
+    }
+
+    @Test("Nearness is judged the short way round the circle")
+    func nearnessWrapsThroughNorth() {
+        let profile = HorizonProfile(samples: [
+            .init(azimuth: 355, elevation: 10),
+            .init(azimuth: 180, elevation: 10)
+        ])
+        #expect(profile.hasMeasurement(near: 5), "five degrees from 355° is ten degrees away")
+        #expect(profile.hasMeasurement(near: 350))
+        #expect(!profile.hasMeasurement(near: 60))
+    }
+}
+
+/// Only the part of the horizon the sun actually crosses is worth anyone's time.
+struct SunAzimuthRangeTests {
+
+    @Test("At temperate latitudes the sun never crosses the far north")
+    func temperateRangeExcludesTheNorth() throws {
+        let kyiv = GeoCoordinate(latitude: 50.4501, longitude: 30.5234)
+        let range = try #require(Solar.sunAzimuthRange(
+            coordinate: kyiv, year: 2026, timeZone: TimeZone(identifier: "UTC")!
+        ))
+
+        // Roughly north-east round through south to north-west: wide, but not the whole circle.
+        #expect(range.width > 200 && range.width < 300, "width was \(range.width)")
+        #expect(range.start > 20 && range.start < 70, "started at \(range.start)")
+    }
+
+    @Test("Inside the Arctic Circle the sun goes all the way round")
+    func polarRangeIsTheWholeCircle() throws {
+        let tromso = GeoCoordinate(latitude: 69.65, longitude: 18.96)
+        let range = try #require(Solar.sunAzimuthRange(
+            coordinate: tromso, year: 2026, timeZone: TimeZone(identifier: "UTC")!
+        ))
+        #expect(range.width > 340, "midnight sun should sweep the lot, got \(range.width)")
+    }
+
+    @Test("At the equator the sun crosses nearly the whole circle over a year")
+    func equatorialRange() throws {
+        // Overhead at the equator the sun passes north of the zenith for half the year and
+        // south of it for the other half, so between June and December its bearings take in
+        // almost every direction. Somebody there really does have to look all the way round.
+        let equator = GeoCoordinate(latitude: 0, longitude: 0)
+        let range = try #require(Solar.sunAzimuthRange(
+            coordinate: equator, year: 2026, timeZone: TimeZone(identifier: "UTC")!
+        ))
+        #expect(range.width > 300, "width was \(range.width)")
+    }
+}

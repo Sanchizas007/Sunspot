@@ -78,6 +78,43 @@ public struct HorizonProfile: Sendable, Equatable, Codable {
         position.elevation <= obstructionElevation(atAzimuth: position.azimuth)
     }
 
+    // MARK: - How much has actually been measured
+
+    /// The widest gap between neighbouring samples, in degrees.
+    ///
+    /// A ring of samples is really a ring of gaps, and the biggest gap is the honest measure
+    /// of how much is guesswork. With one sample the gap is the whole circle: that lone
+    /// height is applied in every direction, which is how a single tap can turn into a wall
+    /// all the way round.
+    public var largestGap: Double {
+        switch samples.count {
+        case 0: return 360
+        case 1: return 360
+        default:
+            var widest = 0.0
+            for index in samples.indices {
+                let next = samples[(index + 1) % samples.count]
+                widest = max(widest, wrap360(next.azimuth - samples[index].azimuth))
+            }
+            return widest
+        }
+    }
+
+    /// The arc actually walked over, in degrees: a full turn minus the biggest gap.
+    public var measuredArc: Double {
+        samples.count < 2 ? 0 : 360 - largestGap
+    }
+
+    /// True when the profile says something about a direction rather than guessing.
+    ///
+    /// The test is local, because that is how the question is really asked: a skyline traced
+    /// carefully across the south says nothing trustworthy about the north, and should not
+    /// pretend to.
+    public func hasMeasurement(near azimuth: Double, within tolerance: Double = 20) -> Bool {
+        guard !samples.isEmpty else { return false }
+        return samples.contains { abs(signedDifference(from: $0.azimuth, to: azimuth)) <= tolerance }
+    }
+
     // MARK: - Storing and reading back
 
     private enum CodingKeys: String, CodingKey { case samples }

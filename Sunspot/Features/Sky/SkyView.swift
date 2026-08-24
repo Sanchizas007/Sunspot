@@ -84,7 +84,8 @@ struct SkyView: View {
             if canTrace {
                 TraceControls(
                     isTracing: $isTracing,
-                    hasDraft: !draft.isEmpty,
+                    draftArc: HorizonProfile(samples: draft).measuredArc,
+                    targetArc: store.spot?.sunArcWidth(in: Calendar.current.component(.year, from: .now)),
                     onSave: {
                         store.setHorizon(HorizonProfile(samples: draft))
                         isTracing = false
@@ -207,7 +208,7 @@ private struct Overlay: View {
 
     /// What the person has traced so far, plus whatever was already saved.
     private func drawSkyline(in context: inout GraphicsContext) {
-        let samples = draft.isEmpty ? spot.horizon.samples : draft
+        let samples = draft.isEmpty ? spot.effectiveHorizon.samples : draft
         guard samples.count > 1 else { return }
 
         var path = Path()
@@ -245,19 +246,31 @@ private struct CompassWarning: View {
 
 private struct TraceControls: View {
     @Binding var isTracing: Bool
-    let hasDraft: Bool
+    /// How much of the horizon the current drawing covers, in degrees.
+    let draftArc: Double
+    /// How much of it the sun actually crosses here, if that is known.
+    let targetArc: Double?
     let onSave: () -> Void
     let onClear: () -> Void
+
+    private var isEnough: Bool { draftArc >= Spot.minimumUsefulArc }
 
     var body: some View {
         VStack(spacing: 12) {
             if isTracing {
-                Text("Drag along the tops of the roofs and trees")
-                    .font(.subheadline.weight(.medium))
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, 14)
-                    .padding(.vertical, 8)
-                    .background(.black.opacity(0.6), in: Capsule())
+                VStack(spacing: 6) {
+                    Text("Sweep along the tops of the roofs and trees")
+                        .font(.subheadline.weight(.medium))
+                    // Without this the screen accepted a single tap as a finished skyline.
+                    Text(progress)
+                        .font(.footnote)
+                        .foregroundStyle(isEnough ? .green : .orange)
+                }
+                .foregroundStyle(.white)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
+                .background(.black.opacity(0.65), in: RoundedRectangle(cornerRadius: 14))
             }
 
             HStack(spacing: 12) {
@@ -266,7 +279,7 @@ private struct TraceControls: View {
                         .buttonStyle(.bordered)
                     Button("Save skyline", action: onSave)
                         .buttonStyle(.borderedProminent)
-                        .disabled(!hasDraft)
+                        .disabled(!isEnough)
                 } else {
                     Button("Trace the skyline") { isTracing = true; onClear() }
                         .buttonStyle(.borderedProminent)
@@ -274,6 +287,20 @@ private struct TraceControls: View {
             }
             .tint(.cyan)
         }
+        .padding(.horizontal, 20)
+    }
+
+    private var progress: String {
+        let done = Int(draftArc.rounded())
+        guard isEnough else {
+            return done == 0
+                ? "Keep your finger down and turn on the spot"
+                : "\(done)° so far — keep going"
+        }
+        if let targetArc {
+            return "\(done)° of the \(Int(targetArc.rounded()))° the sun crosses here"
+        }
+        return "\(done)° traced"
     }
 }
 

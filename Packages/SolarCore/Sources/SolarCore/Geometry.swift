@@ -29,6 +29,12 @@ public struct SolarPosition: Sendable, Equatable {
 @inlinable func radians(_ degrees: Double) -> Double { degrees * .pi / 180 }
 @inlinable func degrees(_ radians: Double) -> Double { radians * 180 / .pi }
 
+/// The shortest way round from one bearing to another, in −180…180.
+@inlinable func signedDifference(from: Double, to: Double) -> Double {
+    let raw = wrap360(to - from)
+    return raw > 180 ? raw - 360 : raw
+}
+
 /// Wraps an angle into 0..<360.
 @inlinable func wrap360(_ degrees: Double) -> Double {
     let r = degrees.truncatingRemainder(dividingBy: 360)

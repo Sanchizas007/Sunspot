@@ -157,6 +157,50 @@ extension Solar {
         return Date(timeIntervalSince1970: boundary.rounded())
     }
 
+    /// The stretch of horizon the sun actually crosses at a place over a year.
+    ///
+    /// Only this part is worth tracing. North of the tropics the sun never appears in the
+    /// northern sky in winter and barely does in summer, so asking someone to walk the whole
+    /// circle would be asking for work that changes nothing.
+    ///
+    /// Returned as a starting bearing and a width, both in degrees, walking clockwise.
+    public static func sunAzimuthRange(
+        coordinate: GeoCoordinate,
+        year: Int,
+        timeZone: TimeZone = .current
+    ) -> (start: Double, width: Double)? {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = timeZone
+        guard let january = calendar.date(from: DateComponents(year: year, month: 1, day: 1)),
+              let june = calendar.date(from: DateComponents(year: year, month: 6, day: 21))
+        else { return nil }
+
+        // The two solstices bound the year: every other day's arc lies between them.
+        var bearings: [Double] = []
+        for day in [january, june, calendar.date(byAdding: .month, value: 11, to: january) ?? january] {
+            let start = calendar.startOfDay(for: day)
+            for minute in stride(from: 0, to: 1440, by: 5) {
+                let instant = start.addingTimeInterval(Double(minute) * 60)
+                let sun = position(at: instant, coordinate: coordinate)
+                if sun.elevation > 0 { bearings.append(sun.azimuth) }
+            }
+        }
+        guard !bearings.isEmpty else { return nil }
+
+        // Find the widest empty wedge; what is left is the arc the sun uses.
+        let sorted = bearings.sorted()
+        var gapStart = sorted[sorted.count - 1]
+        var widestGap = wrap360(sorted[0] - sorted[sorted.count - 1])
+        for index in 0..<(sorted.count - 1) {
+            let gap = sorted[index + 1] - sorted[index]
+            if gap > widestGap {
+                widestGap = gap
+                gapStart = sorted[index]
+            }
+        }
+        return (start: wrap360(gapStart + widestGap), width: 360 - widestGap)
+    }
+
     /// Direct sun for every day of a year, for drawing the shape of the season.
     ///
     /// This is the figure that settles arguments: the bed that bakes in July sitting in

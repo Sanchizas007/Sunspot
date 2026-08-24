@@ -27,12 +27,34 @@ struct Spot: Identifiable, Equatable, Codable {
         self.timeZone = timeZone
     }
 
-    /// True once the skyline has been traced. Until then the figures describe open sky,
-    /// which is an upper bound rather than an answer.
-    var hasMeasuredSkyline: Bool { !horizon.samples.isEmpty }
+    /// The narrowest arc worth calling a skyline.
+    ///
+    /// Below this the samples say nothing about most of the sky, and a profile that thin is
+    /// worse than none: one point at 272° was read as a wall in every direction and took a
+    /// hundred and sixty-nine minutes off a real answer without saying a word.
+    static let minimumUsefulArc: Double = 30
+
+    /// True once enough of the skyline has been traced to mean something.
+    var hasMeasuredSkyline: Bool { horizon.measuredArc >= Self.minimumUsefulArc }
+
+    /// The skyline actually used in the sums.
+    ///
+    /// A trace too thin to trust is set aside rather than applied. Open sky is an honest
+    /// upper bound and the screen says as much; a confident wrong number is neither.
+    var effectiveHorizon: HorizonProfile { hasMeasuredSkyline ? horizon : .open }
+
+    /// How much of the horizon has been walked over, in degrees.
+    var measuredArc: Double { horizon.measuredArc }
+
+    /// The stretch of horizon the sun crosses here across a year — the only part worth
+    /// tracing.
+    func sunArcWidth(in year: Int) -> Double? {
+        Solar.sunAzimuthRange(coordinate: coordinate, year: year, timeZone: timeZone)?.width
+    }
 
     func sunDay(on date: Date) -> SunDay {
-        Solar.sunDay(containing: date, coordinate: coordinate, timeZone: timeZone, horizon: horizon)
+        Solar.sunDay(containing: date, coordinate: coordinate, timeZone: timeZone,
+                     horizon: effectiveHorizon)
     }
 
     func sunPosition(at date: Date) -> SolarPosition {
