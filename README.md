@@ -18,13 +18,23 @@ only the light that actually reaches the spot.
 
 ## Status
 
-Early. The calculation engine is built and tested; the app around it is not yet written.
+The engine and three screens are built and have been through a real phone. 113 tests pass.
 
 | Piece | State |
 | --- | --- |
-| `SolarCore` — sun position, skyline, sun-hours | ✅ built, 31 tests passing |
-| iOS app — map, AR, skyline capture, paywall | ⬜ not started |
-| Widget | ⬜ not started |
+| `SolarCore` — sun position, skyline, sun-hours, sky projection | ✅ 72 tests |
+| Today — the answer in hours, graded the way plant labels are | ✅ |
+| Map — where the sun arrives from, leaves towards, and is now | ✅ |
+| Sky — the arc over the live camera, skyline traced by finger | ✅ tried on an iPhone 14 |
+| Saving a spot and its skyline | ✅ |
+| Year chart, month by month | ⬜ engine ready, no screen |
+| Widget | ⬜ |
+| Paywall | ⬜ |
+
+On a first real tracing session the app captured 860 directions covering 217° of horizon —
+94% of the 251° the sun crosses at that latitude — with no compass jitter: the line deviated
+0.57° on average from its own local mean. That spot gets nine hours of sun in late August and
+none at all in December, which is exactly the sort of answer the app exists to give.
 
 ## The engine
 
