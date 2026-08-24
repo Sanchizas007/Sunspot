@@ -1,0 +1,275 @@
+import SwiftUI
+import SolarCore
+
+/// Point the phone at the sky and see where the sun goes — then trace what stands in its way.
+struct SkyView: View {
+    @Environment(SpotStore.self) private var store
+
+    @State private var motion = MotionTracker()
+    @State private var camera = CameraFeed()
+    @State private var draft: [HorizonProfile.Sample] = []
+    @State private var isTracing = false
+
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                // Only the live view bleeds to the edges. The controls must not, or they
+                // end up underneath the tab bar where nobody can reach them.
+                background.ignoresSafeArea()
+                if let spot = store.spot, let projection = projection(in: geometry.size) {
+                    Overlay(
+                        spot: spot,
+                        moment: store.viewedDate,
+                        projection: projection,
+                        size: geometry.size,
+                        draft: draft,
+                        trusted: motion.trust.isUsable
+                    )
+                    .gesture(traceGesture(projection: projection, size: geometry.size))
+                    .ignoresSafeArea()
+                }
+                controls(canTrace: projection(in: geometry.size) != nil)
+            }
+        }
+        .onAppear {
+            camera.start()
+            motion.start()
+        }
+        .onDisappear {
+            camera.stop()
+            motion.stop()
+        }
+    }
+
+    // MARK: - Pieces
+
+    @ViewBuilder
+    private var background: some View {
+        switch camera.state {
+        case .running:
+            CameraPreview(session: camera.session)
+        case .denied:
+            Message(
+                title: "Camera is off",
+                detail: "Sunspot uses the camera so you can trace the roofs and trees around a spot. Turn it on in Settings."
+            )
+        case .unavailable(let reason):
+            Message(title: "No live view", detail: reason)
+        case .idle:
+            Color.black
+        }
+    }
+
+    @ViewBuilder
+    private func controls(canTrace: Bool) -> some View {
+        VStack {
+            if let advice = motion.trust.advice {
+                CompassWarning(advice: advice, severe: !motion.trust.isUsable)
+            }
+            Spacer()
+            // Offering to trace a skyline with no live view and no compass would be a button
+            // that cannot work, which is worse than no button.
+            if canTrace {
+                TraceControls(
+                    isTracing: $isTracing,
+                    hasDraft: !draft.isEmpty,
+                    onSave: {
+                        store.setHorizon(HorizonProfile(samples: draft))
+                        isTracing = false
+                    },
+                    onClear: { draft = [] }
+                )
+            }
+        }
+        .padding(.vertical, 12)
+    }
+
+    // MARK: - Wiring
+
+    private func projection(in size: CGSize) -> SkyProjection? {
+        guard let rotation = motion.rotation,
+              case let .running(fieldOfView) = camera.state,
+              size.width > 0, size.height > 0
+        else { return nil }
+
+        let shown = SkyProjection.displayedFieldOfView(
+            cameraFieldOfView: fieldOfView,
+            viewAspectRatio: size.width / size.height,
+            isPortrait: size.height >= size.width
+        )
+        return SkyProjection(
+            rotation: rotation,
+            horizontalFieldOfView: shown.horizontal,
+            verticalFieldOfView: shown.vertical
+        )
+    }
+
+    private func traceGesture(projection: SkyProjection, size: CGSize) -> some Gesture {
+        DragGesture(minimumDistance: 0)
+            .onChanged { value in
+                guard isTracing else { return }
+                let normalised = ScreenPoint(
+                    x: (value.location.x / size.width) * 2 - 1,
+                    y: (value.location.y / size.height) * 2 - 1
+                )
+                let sky = projection.direction(at: normalised)
+                // Below the horizon is not a roofline; it is the ground.
+                guard sky.elevation >= 0 else { return }
+                draft.append(.init(azimuth: sky.azimuth, elevation: sky.elevation))
+            }
+    }
+}
+
+// MARK: - Overlay
+
+/// The sun's arc, the skyline being drawn, and nothing else.
+private struct Overlay: View {
+    let spot: Spot
+    let moment: Date
+    let projection: SkyProjection
+    let size: CGSize
+    let draft: [HorizonProfile.Sample]
+    let trusted: Bool
+
+    var body: some View {
+        Canvas { context, _ in
+            drawArc(in: &context)
+            drawSkyline(in: &context)
+            drawSun(in: &context)
+        }
+        .allowsHitTesting(true)
+        .opacity(trusted ? 1 : 0.45)
+    }
+
+    private func screen(_ azimuth: Double, _ elevation: Double) -> CGPoint? {
+        guard let point = projection.project(azimuth: azimuth, elevation: elevation) else {
+            return nil
+        }
+        return CGPoint(
+            x: (point.x + 1) / 2 * size.width,
+            y: (point.y + 1) / 2 * size.height
+        )
+    }
+
+    /// The whole day's path, sampled often enough to read as a curve.
+    private func drawArc(in context: inout GraphicsContext) {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = spot.timeZone
+        let startOfDay = calendar.startOfDay(for: moment)
+
+        var path = Path()
+        var started = false
+        for minute in stride(from: 0, through: 1440, by: 10) {
+            let instant = startOfDay.addingTimeInterval(Double(minute) * 60)
+            let sun = spot.sunPosition(at: instant)
+            guard sun.elevation > -2, let point = screen(sun.azimuth, sun.elevation) else {
+                started = false
+                continue
+            }
+            if started {
+                path.addLine(to: point)
+            } else {
+                path.move(to: point)
+                started = true
+            }
+        }
+        context.stroke(path, with: .color(.yellow.opacity(0.9)), lineWidth: 4)
+    }
+
+    private func drawSun(in context: inout GraphicsContext) {
+        let sun = spot.sunPosition(at: moment)
+        guard let point = screen(sun.azimuth, sun.elevation) else { return }
+        let disc = CGRect(x: point.x - 16, y: point.y - 16, width: 32, height: 32)
+        context.fill(Circle().path(in: disc), with: .color(.yellow))
+        context.stroke(Circle().path(in: disc.insetBy(dx: -6, dy: -6)),
+                       with: .color(.white.opacity(0.8)), lineWidth: 3)
+    }
+
+    /// What the person has traced so far, plus whatever was already saved.
+    private func drawSkyline(in context: inout GraphicsContext) {
+        let samples = draft.isEmpty ? spot.horizon.samples : draft
+        guard samples.count > 1 else { return }
+
+        var path = Path()
+        var started = false
+        for sample in samples.sorted(by: { $0.azimuth < $1.azimuth }) {
+            guard let point = screen(sample.azimuth, sample.elevation) else {
+                started = false
+                continue
+            }
+            if started { path.addLine(to: point) } else { path.move(to: point); started = true }
+        }
+        context.stroke(path, with: .color(.cyan), style: StrokeStyle(lineWidth: 5, lineCap: .round))
+    }
+}
+
+// MARK: - Controls
+
+/// Says plainly when the compass cannot be trusted, instead of drawing a confident lie.
+private struct CompassWarning: View {
+    let advice: String
+    let severe: Bool
+
+    var body: some View {
+        Label(advice, systemImage: severe ? "exclamationmark.triangle.fill" : "location.circle")
+            .font(.footnote)
+            .foregroundStyle(.white)
+            .padding(12)
+            .background(
+                (severe ? Color.red : Color.orange).opacity(0.85),
+                in: RoundedRectangle(cornerRadius: 12)
+            )
+            .padding(.horizontal, 16)
+    }
+}
+
+private struct TraceControls: View {
+    @Binding var isTracing: Bool
+    let hasDraft: Bool
+    let onSave: () -> Void
+    let onClear: () -> Void
+
+    var body: some View {
+        VStack(spacing: 12) {
+            if isTracing {
+                Text("Drag along the tops of the roofs and trees")
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 8)
+                    .background(.black.opacity(0.6), in: Capsule())
+            }
+
+            HStack(spacing: 12) {
+                if isTracing {
+                    Button("Cancel") { isTracing = false; onClear() }
+                        .buttonStyle(.bordered)
+                    Button("Save skyline", action: onSave)
+                        .buttonStyle(.borderedProminent)
+                        .disabled(!hasDraft)
+                } else {
+                    Button("Trace the skyline") { isTracing = true; onClear() }
+                        .buttonStyle(.borderedProminent)
+                }
+            }
+            .tint(.cyan)
+        }
+    }
+}
+
+private struct Message: View {
+    let title: String
+    let detail: String
+
+    var body: some View {
+        ZStack {
+            Color.black
+            ContentUnavailableView {
+                Label(title, systemImage: "camera.metering.unknown")
+            } description: {
+                Text(detail)
+            }
+            .foregroundStyle(.white)
+        }
+    }
+}

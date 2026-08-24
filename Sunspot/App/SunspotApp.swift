@@ -28,6 +28,8 @@ private struct RootView: View {
                 .tabItem { Label("Today", systemImage: "sun.max") }
             SpotMapView()
                 .tabItem { Label("Map", systemImage: "map") }
+            SkyView()
+                .tabItem { Label("Sky", systemImage: "camera.viewfinder") }
         }
         .task { location.start() }
         .onReceive(tick) { store.clockTicked(to: $0) }

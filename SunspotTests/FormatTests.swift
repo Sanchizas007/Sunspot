@@ -47,3 +47,41 @@ struct FormatTests {
         #expect(Format.time(nil, in: TimeZone(identifier: "UTC")!) == "—")
     }
 }
+
+/// The compass warning is the app's answer to the loudest complaint about the market leader,
+/// so its thresholds are worth pinning.
+struct CompassTrustTests {
+
+    @Test("Only a well-calibrated compass is treated as usable")
+    func usableThreshold() {
+        #expect(!MotionTracker.Trust.unavailable.isUsable)
+        #expect(!MotionTracker.Trust.uncalibrated.isUsable)
+        #expect(!MotionTracker.Trust.low.isUsable)
+        #expect(MotionTracker.Trust.medium.isUsable)
+        #expect(MotionTracker.Trust.high.isUsable)
+    }
+
+    @Test("Every state below the best one explains itself")
+    func adviceIsGivenUntilItIsGood() {
+        #expect(MotionTracker.Trust.unavailable.advice != nil)
+        #expect(MotionTracker.Trust.uncalibrated.advice != nil)
+        #expect(MotionTracker.Trust.low.advice != nil)
+        #expect(MotionTracker.Trust.medium.advice != nil)
+        #expect(MotionTracker.Trust.high.advice == nil, "a good compass should stay quiet")
+    }
+
+    @Test("A poor compass is told how to fix itself, not just that it is poor")
+    func adviceIsActionable() {
+        let advice = MotionTracker.Trust.uncalibrated.advice ?? ""
+        #expect(advice.lowercased().contains("figure of eight"),
+                "the advice should say what to do: \(advice)")
+    }
+
+    @Test("Trust states are ordered from worst to best")
+    func trustIsOrdered() {
+        #expect(MotionTracker.Trust.unavailable < .uncalibrated)
+        #expect(MotionTracker.Trust.uncalibrated < .low)
+        #expect(MotionTracker.Trust.low < .medium)
+        #expect(MotionTracker.Trust.medium < .high)
+    }
+}
