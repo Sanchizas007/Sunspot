@@ -1,0 +1,35 @@
+Copyright © 2026 Sanchizas007. All rights reserved.
+
+This software and its source code (the "Software") are made publicly readable for the
+purposes of inspection, reference and discussion. Publication does not place the Software
+in the public domain and does not grant an open-source licence.
+
+PERMITTED WITHOUT PERMISSION
+
+  1. Viewing and reading the Software.
+  2. Quoting short excerpts for commentary, teaching, review or discussion, with
+     attribution to the copyright holder and a link to this repository.
+  3. Forking on the hosting platform solely to propose changes back to this repository.
+
+NOT PERMITTED WITHOUT PRIOR WRITTEN PERMISSION
+
+  1. Using the Software, in whole or in part, in any product, service or application,
+     whether commercial or not.
+  2. Copying, modifying, merging, publishing, distributing, sublicensing or selling copies
+     of the Software.
+  3. Publishing or distributing any application derived from, or substantially similar to,
+     the Software on any application store or distribution channel.
+  4. Training machine-learning models on the Software.
+
+To request permission, open an issue on this repository.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+Astronomical calculations in this Software implement published algorithms from Jean Meeus,
+"Astronomical Algorithms". Those algorithms are not claimed as original work; this
+implementation of them is.

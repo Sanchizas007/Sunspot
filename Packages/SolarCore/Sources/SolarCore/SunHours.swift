@@ -1,0 +1,185 @@
+import Foundation
+
+/// How a spot rates against the wording on a seed packet or a plant label.
+///
+/// The thresholds are the ones growers use: six hours of direct sun and up is full sun,
+/// under two is full shade.
+public enum SunExposure: String, Sendable, CaseIterable {
+    case fullSun
+    case partSun
+    case partShade
+    case fullShade
+
+    public init(directMinutes: Int) {
+        switch directMinutes {
+        case 360...: self = .fullSun
+        case 240..<360: self = .partSun
+        case 120..<240: self = .partShade
+        default: self = .fullShade
+        }
+    }
+}
+
+/// What one spot gets on one day.
+public struct SunDay: Sendable, Equatable {
+    /// Stretches of direct sun, in order through the day.
+    public var intervals: [DateInterval]
+    /// Total direct sun, in whole minutes.
+    public var directMinutes: Int
+    /// When the sun first reaches the spot, if it ever does.
+    public var firstSun: Date?
+    /// When it leaves for the last time.
+    public var lastSun: Date?
+    /// The longest unbroken stretch, in whole minutes. What matters for ripening.
+    public var longestStretchMinutes: Int
+
+    public var exposure: SunExposure { SunExposure(directMinutes: directMinutes) }
+}
+
+extension Solar {
+
+    /// Walks one local day a minute at a time and counts only the light that actually
+    /// reaches the spot.
+    ///
+    /// - Parameters:
+    ///   - day: any instant inside the day of interest.
+    ///   - coordinate: where the spot is.
+    ///   - timeZone: which day. Defaults to the device's.
+    ///   - horizon: the skyline around the spot. Defaults to open sky.
+    public static func sunDay(
+        containing day: Date,
+        coordinate: GeoCoordinate,
+        timeZone: TimeZone = .current,
+        horizon: HorizonProfile = .open
+    ) -> SunDay {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = timeZone
+        let start = calendar.startOfDay(for: day)
+        let end = calendar.date(byAdding: .day, value: 1, to: start) ?? start.addingTimeInterval(86400)
+
+        // A minute of resolution is finer than the answer needs and keeps a whole year of
+        // days cheap enough to compute on demand.
+        let step: TimeInterval = 60
+
+        var intervals: [DateInterval] = []
+        var runStart: Date?
+        var previousLit = false
+
+        var cursor = start
+        while cursor < end {
+            let lit = isSunDirect(at: cursor, coordinate: coordinate, horizon: horizon)
+            if lit && !previousLit {
+                let previous = cursor.addingTimeInterval(-step)
+                runStart = cursor > start
+                    ? refineTransition(between: cursor, and: previous,
+                                       coordinate: coordinate, horizon: horizon)
+                    : cursor
+            } else if !lit, previousLit, let began = runStart {
+                let previous = cursor.addingTimeInterval(-step)
+                let ends = refineTransition(between: previous, and: cursor,
+                                            coordinate: coordinate, horizon: horizon)
+                intervals.append(DateInterval(start: began, end: ends))
+                runStart = nil
+            }
+            previousLit = lit
+            cursor.addTimeInterval(step)
+        }
+        if let began = runStart {
+            intervals.append(DateInterval(start: began, end: end))
+        }
+
+        let totalSeconds = intervals.reduce(0) { $0 + $1.duration }
+        let longestSeconds = intervals.map(\.duration).max() ?? 0
+
+        return SunDay(
+            intervals: intervals,
+            directMinutes: Int((totalSeconds / 60).rounded()),
+            firstSun: intervals.first?.start,
+            lastSun: intervals.last?.end,
+            longestStretchMinutes: Int((longestSeconds / 60).rounded())
+        )
+    }
+
+    /// Half the width of the sun's disc: 16 arcminutes.
+    public static let solarSemidiameter = 16.0 / 60
+
+    /// Standard atmospheric refraction at the horizon: 34 arcminutes.
+    public static let horizonRefraction = 34.0 / 60
+
+    /// How high the sun's visible upper edge sits, given the centre's geometric elevation.
+    ///
+    /// The two corrections are the ones every almanac folds into the definition of sunrise:
+    /// the atmosphere lifts the whole disc by about 34 arcminutes, and the disc's own radius
+    /// adds another 16. Together they put sunrise at a geometric elevation of −0.833°, which
+    /// is the figure weather services and almanacs publish.
+    public static func upperLimbElevation(forGeometricCentre elevation: Double) -> Double {
+        elevation + horizonRefraction + solarSemidiameter
+    }
+
+    /// True when any part of the sun's disc clears the skyline at this moment.
+    ///
+    /// Getting this right matters more than it looks. Comparing the bare geometric centre
+    /// against a flat horizon costs a spot five to twelve minutes at each end of the day,
+    /// depending on latitude — a quarter hour of sun that a gardener would notice.
+    public static func isSunDirect(
+        at date: Date,
+        coordinate: GeoCoordinate,
+        horizon: HorizonProfile = .open
+    ) -> Bool {
+        let sun = position(at: date, coordinate: coordinate)
+        return upperLimbElevation(forGeometricCentre: sun.elevation)
+            > horizon.obstructionElevation(atAzimuth: sun.azimuth)
+    }
+
+    /// Narrows a known transition down to the second by bisection.
+    ///
+    /// Sampling every minute would leave first and last sun up to a minute out, and the
+    /// error would always fall the same way — shortening the day. Ten halvings of a
+    /// one-minute window settle it to well under a second.
+    static func refineTransition(
+        between litSide: Date,
+        and darkSide: Date,
+        coordinate: GeoCoordinate,
+        horizon: HorizonProfile
+    ) -> Date {
+        var lit = litSide
+        var dark = darkSide
+        for _ in 0..<10 {
+            let middle = Date(timeIntervalSince1970: (lit.timeIntervalSince1970 + dark.timeIntervalSince1970) / 2)
+            if isSunDirect(at: middle, coordinate: coordinate, horizon: horizon) {
+                lit = middle
+            } else {
+                dark = middle
+            }
+        }
+        // Report the moment the sun is there, rounded to the second the user would read.
+        let boundary = min(lit.timeIntervalSince1970, dark.timeIntervalSince1970)
+        return Date(timeIntervalSince1970: boundary.rounded())
+    }
+
+    /// Direct sun for every day of a year, for drawing the shape of the season.
+    ///
+    /// This is the figure that settles arguments: the bed that bakes in July sitting in
+    /// shadow from October.
+    public static func sunYear(
+        year: Int,
+        coordinate: GeoCoordinate,
+        timeZone: TimeZone = .current,
+        horizon: HorizonProfile = .open
+    ) -> [(date: Date, directMinutes: Int)] {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = timeZone
+        guard let start = calendar.date(from: DateComponents(year: year, month: 1, day: 1)) else {
+            return []
+        }
+        let dayCount = calendar.range(of: .day, in: .year, for: start)?.count ?? 365
+
+        return (0..<dayCount).compactMap { offset in
+            guard let day = calendar.date(byAdding: .day, value: offset, to: start) else { return nil }
+            let result = sunDay(
+                containing: day, coordinate: coordinate, timeZone: timeZone, horizon: horizon
+            )
+            return (day, result.directMinutes)
+        }
+    }
+}
