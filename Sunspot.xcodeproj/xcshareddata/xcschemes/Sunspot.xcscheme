@@ -36,6 +36,13 @@
             ReferencedContainer = "container:Sunspot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <!-- Path form copied from a project where purchases are known to work. An extra "../"
+           here once cost a whole build cycle: the app runs, the paywall appears, and the
+           store simply reports no products, with nothing to say why. Tools/check.sh asserts
+           that whatever this names is actually on disk. -->
+      <StoreKitConfigurationFileReference
+         identifier = "../../Config/Sunspot.storekit">
+      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction buildConfiguration = "Release" shouldUseLaunchSchemeArgsEnv = "YES" savedToolIdentifier = "" useCustomWorkingDirectory = "NO" debugDocumentVersioning = "YES">
       <BuildableProductRunnable runnableDebuggingMode = "0">

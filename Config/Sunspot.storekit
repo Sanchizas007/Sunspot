@@ -1,0 +1,35 @@
+{
+  "identifier": "A1B2C3D4",
+  "nonRenewingSubscriptions": [],
+  "products": [
+    {
+      "displayPrice": "5.99",
+      "familyShareable": false,
+      "internalID": "7001000001",
+      "localizations": [
+        {
+          "description": "The whole year at your spot, as many spots as you like, and the widget. One payment, no subscription, yours for good.",
+          "displayName": "Sunspot \u2014 the full picture",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "app.sunspot.full",
+      "referenceName": "Sunspot Full",
+      "type": "NonConsumable"
+    }
+  ],
+  "settings": {
+    "_applicationInternalID": "7000000001",
+    "_developerTeamID": "3M856J997X",
+    "_failTransactionsEnabled": false,
+    "_lastSynchronizedDate": 776000000,
+    "_locale": "en_US",
+    "_storeKitErrors": [],
+    "_storefront": "USA"
+  },
+  "subscriptionGroups": [],
+  "version": {
+    "major": 4,
+    "minor": 0
+  }
+}

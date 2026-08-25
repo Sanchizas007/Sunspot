@@ -4,12 +4,14 @@ import SwiftUI
 struct SunspotApp: App {
     @State private var location = LocationProvider()
     @State private var store = SpotStore()
+    @State private var purchases = Purchases()
 
     var body: some Scene {
         WindowGroup {
             RootView()
                 .environment(location)
                 .environment(store)
+                .environment(purchases)
         }
     }
 }
@@ -17,6 +19,7 @@ struct SunspotApp: App {
 private struct RootView: View {
     @Environment(LocationProvider.self) private var location
     @Environment(SpotStore.self) private var store
+    @Environment(Purchases.self) private var purchases
 
     private let tick = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
 
@@ -33,7 +36,11 @@ private struct RootView: View {
             YearView()
                 .tabItem { Label("Year", systemImage: "calendar") }
         }
-        .task { location.start() }
+        .task {
+            location.start()
+            purchases.startListening()
+            await purchases.load()
+        }
         .onReceive(tick) { store.clockTicked(to: $0) }
         .onChange(of: location.state) { _, state in
             if case let .located(latitude, longitude) = state {

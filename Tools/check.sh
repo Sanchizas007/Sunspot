@@ -28,6 +28,56 @@ else
   bad "сборка"; grep -E "error:" "$LOG" | sort -u | head -10
 fi
 
+step "конфигурация покупок  "
+python3 - <<'PYEOF' > "$LOG" 2>&1
+import json, re, sys, pathlib
+root = pathlib.Path(".")
+problems = []
+
+# Ссылка из схемы должна называть файл, который существует.
+scheme = (root / "Sunspot.xcodeproj/xcshareddata/xcschemes/Sunspot.xcscheme").read_text()
+refs = re.findall(r'StoreKitConfigurationFileReference\s*\n?\s*identifier\s*=\s*"([^"]+)"', scheme)
+if not refs:
+    problems.append("схема не называет ни одного StoreKit-конфига")
+for ref in refs:
+    name = ref.rsplit("/", 1)[-1]
+    if not (root / "Config" / name).exists():
+        problems.append(f"схема ссылается на {name}, а Config/{name} нет")
+
+# Сам конфиг должен продавать ровно то, что ждёт код.
+cfg = json.loads((root / "Config/Sunspot.storekit").read_text())
+products = cfg.get("products", [])
+if len(products) != 1:
+    problems.append(f"товаров в конфиге {len(products)}, ожидается один")
+else:
+    p = products[0]
+    if p.get("productID") != "app.sunspot.full":
+        problems.append(f"productID в конфиге {p.get('productID')}, код ждёт app.sunspot.full")
+    if p.get("type") != "NonConsumable":
+        problems.append(f"тип {p.get('type')}, ожидается NonConsumable")
+    if p.get("displayPrice") != "5.99":
+        problems.append(f"цена {p.get('displayPrice')}, ожидается 5.99")
+if cfg.get("subscriptionGroups"):
+    problems.append("в конфиге есть подписки, а весь смысл в том, что их нет")
+
+# Без витрины и локали сессия поднимается пустой и товаров не отдаёт — молча.
+settings = cfg.get("settings", {})
+for key in ("_storefront", "_locale"):
+    if not settings.get(key):
+        problems.append(f"в settings нет {key} — тестовый магазин поднимется пустым")
+
+# Код и конфиг не должны разъехаться по идентификатору.
+code = (root / "Sunspot/Core/Purchases.swift").read_text()
+m = re.search(r'productID\s*=\s*"([^"]+)"', code)
+if m and products and m.group(1) != products[0].get("productID"):
+    problems.append("идентификатор в коде и в конфиге разъехались")
+
+if problems:
+    print("\n".join(problems)); sys.exit(1)
+print("ссылка, товар и цена совпадают")
+PYEOF
+if [[ $? -eq 0 ]]; then print -n "$(tail -1 "$LOG")  "; ok; else bad "конфигурация покупок"; cat "$LOG"; fi
+
 step "тесты приложения      "
 UDID=$(xcrun simctl list devices available -j | python3 -c "
 import json,sys

@@ -5,6 +5,7 @@ import SolarCore
 /// The whole year at this spot, answered in words before it is drawn.
 struct YearView: View {
     @Environment(SpotStore.self) private var store
+    @Environment(Purchases.self) private var purchases
 
     @State private var year: SunYear?
     @State private var computedFor: Spot?
@@ -14,7 +15,9 @@ struct YearView: View {
     var body: some View {
         NavigationStack {
             Group {
-                if let spot = store.spot {
+                if !purchases.isUnlocked {
+                    Paywall()
+                } else if let spot = store.spot {
                     if let year, computedFor == spot {
                         Content(spot: spot, year: year)
                     } else {

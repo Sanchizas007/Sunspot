@@ -29,7 +29,7 @@ IDS = {name: oid(i) for i, name in enumerate([
     "appSyncGroup", "testSyncGroup", "projectConfigList", "appConfigList",
     "testConfigList", "projectDebug", "projectRelease", "appDebug", "appRelease",
     "testDebug", "testRelease", "localPackage", "solarProduct", "solarBuildFile",
-    "testDependency", "testProxy", "solarProductTest", "solarBuildFileTest",
+    "testDependency", "testProxy", "solarProductTest", "solarBuildFileTest", "storekitFile", "storekitBuildFile", "testResourcesPhase", "storekitAppBuildFile",
 ], start=1)}
 
 I = IDS
@@ -87,6 +87,9 @@ TEST_COMMON = {
     "TEST_HOST": f'"$(BUILT_PRODUCTS_DIR)/{APP}.app/{APP}"',
     "CODE_SIGN_STYLE": "Automatic",
     "DEVELOPMENT_TEAM": DEVELOPMENT_TEAM,
+    # StoreKitTest is not part of the ordinary SDK link; without it SKTestSession is simply
+    # not in scope and a purchase can only ever be exercised by hand.
+    "OTHER_LDFLAGS": '"-framework StoreKitTest"',
 }
 
 pbxproj = f"""// !$*UTF8*$!
@@ -100,6 +103,7 @@ pbxproj = f"""// !$*UTF8*$!
 /* Begin PBXBuildFile section */
 		{I['solarBuildFile']} /* SolarCore in Frameworks */ = {{isa = PBXBuildFile; productRef = {I['solarProduct']} /* SolarCore */; }};
 		{I['solarBuildFileTest']} /* SolarCore in Frameworks */ = {{isa = PBXBuildFile; productRef = {I['solarProductTest']} /* SolarCore */; }};
+		{I['storekitBuildFile']} /* {APP}.storekit in Resources */ = {{isa = PBXBuildFile; fileRef = {I['storekitFile']} /* {APP}.storekit */; }};
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +119,7 @@ pbxproj = f"""// !$*UTF8*$!
 /* Begin PBXFileReference section */
 		{I['appProduct']} /* {APP}.app */ = {{isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = {APP}.app; sourceTree = BUILT_PRODUCTS_DIR; }};
 		{I['testProduct']} /* {APP}Tests.xctest */ = {{isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = {APP}Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; }};
+		{I['storekitFile']} /* {APP}.storekit */ = {{isa = PBXFileReference; lastKnownFileType = text; name = {APP}.storekit; path = Config/{APP}.storekit; sourceTree = "<group>"; }};
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -147,6 +152,7 @@ pbxproj = f"""// !$*UTF8*$!
 			children = (
 				{I['appSyncGroup']} /* {APP} */,
 				{I['testSyncGroup']} /* {APP}Tests */,
+				{I['storekitFile']} /* {APP}.storekit */,
 				{I['productsGroup']} /* Products */,
 			);
 			sourceTree = "<group>";
@@ -192,6 +198,7 @@ pbxproj = f"""// !$*UTF8*$!
 			buildPhases = (
 				{I['testSourcesPhase']} /* Sources */,
 				{I['testFrameworksPhase']} /* Frameworks */,
+				{I['testResourcesPhase']} /* Resources */,
 			);
 			buildRules = (
 			);
@@ -256,6 +263,14 @@ pbxproj = f"""// !$*UTF8*$!
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		}};
+		{I['testResourcesPhase']} /* Resources */ = {{
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				{I['storekitBuildFile']} /* {APP}.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		}};
@@ -421,6 +436,13 @@ SCHEME = f"""<?xml version="1.0" encoding="UTF-8"?>
             ReferencedContainer = "container:{APP}.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <!-- Path form copied from a project where purchases are known to work. An extra "../"
+           here once cost a whole build cycle: the app runs, the paywall appears, and the
+           store simply reports no products, with nothing to say why. Tools/check.sh asserts
+           that whatever this names is actually on disk. -->
+      <StoreKitConfigurationFileReference
+         identifier = "../../Config/{APP}.storekit">
+      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction buildConfiguration = "Release" shouldUseLaunchSchemeArgsEnv = "YES" savedToolIdentifier = "" useCustomWorkingDirectory = "NO" debugDocumentVersioning = "YES">
       <BuildableProductRunnable runnableDebuggingMode = "0">

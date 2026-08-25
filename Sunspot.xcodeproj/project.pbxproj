@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5U000000000000000000001A /* SolarCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5U0000000000000000000019 /* SolarCore */; };
 		5U000000000000000000001E /* SolarCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5U000000000000000000001D /* SolarCore */; };
+		5U0000000000000000000020 /* Sunspot.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 5U000000000000000000001F /* Sunspot.storekit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		5U0000000000000000000006 /* Sunspot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunspot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5U0000000000000000000007 /* SunspotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SunspotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5U000000000000000000001F /* Sunspot.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Sunspot.storekit; path = Config/Sunspot.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -56,6 +58,7 @@
 			children = (
 				5U000000000000000000000D /* Sunspot */,
 				5U000000000000000000000E /* SunspotTests */,
+				5U000000000000000000001F /* Sunspot.storekit */,
 				5U0000000000000000000003 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,6 +104,7 @@
 			buildPhases = (
 				5U000000000000000000000B /* Sources */,
 				5U000000000000000000000C /* Frameworks */,
+				5U0000000000000000000021 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -165,6 +169,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5U0000000000000000000021 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5U0000000000000000000020 /* Sunspot.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +314,7 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sunspot.app/Sunspot";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3M856J997X;
+				OTHER_LDFLAGS = "-framework StoreKitTest";
 			};
 			name = Debug;
 		};
@@ -317,6 +330,7 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sunspot.app/Sunspot";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3M856J997X;
+				OTHER_LDFLAGS = "-framework StoreKitTest";
 			};
 			name = Release;
 		};
