@@ -1,4 +1,5 @@
 import Foundation
+import SpotKit
 import SolarCore
 
 /// The lines drawn from a spot to show where the sun comes from and goes.

@@ -29,7 +29,7 @@ IDS = {name: oid(i) for i, name in enumerate([
     "appSyncGroup", "testSyncGroup", "projectConfigList", "appConfigList",
     "testConfigList", "projectDebug", "projectRelease", "appDebug", "appRelease",
     "testDebug", "testRelease", "localPackage", "solarProduct", "solarBuildFile",
-    "testDependency", "testProxy", "solarProductTest", "solarBuildFileTest", "storekitFile", "storekitBuildFile", "testResourcesPhase", "storekitAppBuildFile",
+    "testDependency", "testProxy", "solarProductTest", "solarBuildFileTest", "storekitFile", "storekitBuildFile", "testResourcesPhase", "widgetTarget", "widgetProduct", "widgetSyncGroup", "widgetSourcesPhase", "widgetFrameworksPhase", "widgetResourcesPhase", "widgetConfigList", "widgetDebug", "widgetRelease", "widgetDependency", "widgetProxy", "embedPhase", "widgetEmbedFile", "solarProductWidget", "solarBuildFileWidget", "widgetInfoFile", "appEntitlements", "widgetEntitlements", "spotProductApp", "spotBuildFileApp", "spotProductWidget", "spotBuildFileWidget", "spotProductTest", "spotBuildFileTest", "storekitAppBuildFile",
 ], start=1)}
 
 I = IDS
@@ -75,6 +75,25 @@ APP_COMMON = {
     "TARGETED_DEVICE_FAMILY": '"1,2"',
     "CODE_SIGN_STYLE": "Automatic",
     "DEVELOPMENT_TEAM": DEVELOPMENT_TEAM,
+    "CODE_SIGN_ENTITLEMENTS": f"Config/{APP}.entitlements",
+}
+
+WIDGET_COMMON = {
+    "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "AccentColor",
+    "CURRENT_PROJECT_VERSION": "1",
+    "MARKETING_VERSION": MARKETING_VERSION,
+    # A widget extension needs a real Info.plist: its NSExtension entry is a nested
+    # dictionary, and the generated-plist build settings cannot express one.
+    "GENERATE_INFOPLIST_FILE": "NO",
+    "INFOPLIST_FILE": f"Config/{APP}Widgets-Info.plist",
+    "PRODUCT_BUNDLE_IDENTIFIER": f"{BUNDLE_ID}.widgets",
+    "PRODUCT_NAME": '"$(TARGET_NAME)"',
+    "SKIP_INSTALL": "YES",
+    "SWIFT_EMIT_LOC_STRINGS": "YES",
+    "TARGETED_DEVICE_FAMILY": '"1,2"',
+    "CODE_SIGN_STYLE": "Automatic",
+    "DEVELOPMENT_TEAM": DEVELOPMENT_TEAM,
+    "CODE_SIGN_ENTITLEMENTS": f"Config/{APP}Widgets.entitlements",
 }
 
 TEST_COMMON = {
@@ -104,9 +123,21 @@ pbxproj = f"""// !$*UTF8*$!
 		{I['solarBuildFile']} /* SolarCore in Frameworks */ = {{isa = PBXBuildFile; productRef = {I['solarProduct']} /* SolarCore */; }};
 		{I['solarBuildFileTest']} /* SolarCore in Frameworks */ = {{isa = PBXBuildFile; productRef = {I['solarProductTest']} /* SolarCore */; }};
 		{I['storekitBuildFile']} /* {APP}.storekit in Resources */ = {{isa = PBXBuildFile; fileRef = {I['storekitFile']} /* {APP}.storekit */; }};
+		{I['solarBuildFileWidget']} /* SolarCore in Frameworks */ = {{isa = PBXBuildFile; productRef = {I['solarProductWidget']} /* SolarCore */; }};
+		{I['spotBuildFileApp']} /* SpotKit in Frameworks */ = {{isa = PBXBuildFile; productRef = {I['spotProductApp']} /* SpotKit */; }};
+		{I['spotBuildFileWidget']} /* SpotKit in Frameworks */ = {{isa = PBXBuildFile; productRef = {I['spotProductWidget']} /* SpotKit */; }};
+		{I['spotBuildFileTest']} /* SpotKit in Frameworks */ = {{isa = PBXBuildFile; productRef = {I['spotProductTest']} /* SpotKit */; }};
+		{I['widgetEmbedFile']} /* {APP}Widgets.appex in Embed Foundation Extensions */ = {{isa = PBXBuildFile; fileRef = {I['widgetProduct']} /* {APP}Widgets.appex */; settings = {{ATTRIBUTES = (RemoveHeadersOnCopy, ); }}; }};
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		{I['widgetProxy']} /* PBXContainerItemProxy */ = {{
+			isa = PBXContainerItemProxy;
+			containerPortal = {I['project']} /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = {I['widgetTarget']};
+			remoteInfo = {APP}Widgets;
+		}};
 		{I['testProxy']} /* PBXContainerItemProxy */ = {{
 			isa = PBXContainerItemProxy;
 			containerPortal = {I['project']} /* Project object */;
@@ -120,10 +151,15 @@ pbxproj = f"""// !$*UTF8*$!
 		{I['appProduct']} /* {APP}.app */ = {{isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = {APP}.app; sourceTree = BUILT_PRODUCTS_DIR; }};
 		{I['testProduct']} /* {APP}Tests.xctest */ = {{isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = {APP}Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; }};
 		{I['storekitFile']} /* {APP}.storekit */ = {{isa = PBXFileReference; lastKnownFileType = text; name = {APP}.storekit; path = Config/{APP}.storekit; sourceTree = "<group>"; }};
+		{I['widgetProduct']} /* {APP}Widgets.appex */ = {{isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = {APP}Widgets.appex; sourceTree = BUILT_PRODUCTS_DIR; }};
+		{I['widgetInfoFile']} /* {APP}Widgets-Info.plist */ = {{isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "{APP}Widgets-Info.plist"; path = "Config/{APP}Widgets-Info.plist"; sourceTree = "<group>"; }};
+		{I['appEntitlements']} /* {APP}.entitlements */ = {{isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = {APP}.entitlements; path = Config/{APP}.entitlements; sourceTree = "<group>"; }};
+		{I['widgetEntitlements']} /* {APP}Widgets.entitlements */ = {{isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = {APP}Widgets.entitlements; path = Config/{APP}Widgets.entitlements; sourceTree = "<group>"; }};
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		{I['appSyncGroup']} /* {APP} */ = {{isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {{}}; explicitFolders = (); path = {APP}; sourceTree = "<group>"; }};
+		{I['widgetSyncGroup']} /* {APP}Widgets */ = {{isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {{}}; explicitFolders = (); path = {APP}Widgets; sourceTree = "<group>"; }};
 		{I['testSyncGroup']} /* {APP}Tests */ = {{isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {{}}; explicitFolders = (); path = {APP}Tests; sourceTree = "<group>"; }};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -133,6 +169,16 @@ pbxproj = f"""// !$*UTF8*$!
 			buildActionMask = 2147483647;
 			files = (
 				{I['solarBuildFile']} /* SolarCore in Frameworks */,
+				{I['spotBuildFileApp']} /* SpotKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		}};
+		{I['widgetFrameworksPhase']} /* Frameworks */ = {{
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				{I['solarBuildFileWidget']} /* SolarCore in Frameworks */,
+				{I['spotBuildFileWidget']} /* SpotKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		}};
@@ -141,6 +187,7 @@ pbxproj = f"""// !$*UTF8*$!
 			buildActionMask = 2147483647;
 			files = (
 				{I['solarBuildFileTest']} /* SolarCore in Frameworks */,
+				{I['spotBuildFileTest']} /* SpotKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		}};
@@ -151,8 +198,12 @@ pbxproj = f"""// !$*UTF8*$!
 			isa = PBXGroup;
 			children = (
 				{I['appSyncGroup']} /* {APP} */,
+				{I['widgetSyncGroup']} /* {APP}Widgets */,
 				{I['testSyncGroup']} /* {APP}Tests */,
 				{I['storekitFile']} /* {APP}.storekit */,
+				{I['widgetInfoFile']} /* {APP}Widgets-Info.plist */,
+				{I['appEntitlements']} /* {APP}.entitlements */,
+				{I['widgetEntitlements']} /* {APP}Widgets.entitlements */,
 				{I['productsGroup']} /* Products */,
 			);
 			sourceTree = "<group>";
@@ -162,6 +213,7 @@ pbxproj = f"""// !$*UTF8*$!
 			children = (
 				{I['appProduct']} /* {APP}.app */,
 				{I['testProduct']} /* {APP}Tests.xctest */,
+				{I['widgetProduct']} /* {APP}Widgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,10 +228,12 @@ pbxproj = f"""// !$*UTF8*$!
 				{I['appSourcesPhase']} /* Sources */,
 				{I['appFrameworksPhase']} /* Frameworks */,
 				{I['appResourcesPhase']} /* Resources */,
+				{I['embedPhase']} /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				{I['widgetDependency']} /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				{I['appSyncGroup']} /* {APP} */,
@@ -187,10 +241,35 @@ pbxproj = f"""// !$*UTF8*$!
 			name = {APP};
 			packageProductDependencies = (
 				{I['solarProduct']} /* SolarCore */,
+				{I['spotProductApp']} /* SpotKit */,
 			);
 			productName = {APP};
 			productReference = {I['appProduct']} /* {APP}.app */;
 			productType = "com.apple.product-type.application";
+		}};
+		{I['widgetTarget']} /* {APP}Widgets */ = {{
+			isa = PBXNativeTarget;
+			buildConfigurationList = {I['widgetConfigList']} /* Build configuration list for PBXNativeTarget "{APP}Widgets" */;
+			buildPhases = (
+				{I['widgetSourcesPhase']} /* Sources */,
+				{I['widgetFrameworksPhase']} /* Frameworks */,
+				{I['widgetResourcesPhase']} /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				{I['widgetSyncGroup']} /* {APP}Widgets */,
+			);
+			name = {APP}Widgets;
+			packageProductDependencies = (
+				{I['solarProductWidget']} /* SolarCore */,
+				{I['spotProductWidget']} /* SpotKit */,
+			);
+			productName = {APP}Widgets;
+			productReference = {I['widgetProduct']} /* {APP}Widgets.appex */;
+			productType = "com.apple.product-type.app-extension";
 		}};
 		{I['testTarget']} /* {APP}Tests */ = {{
 			isa = PBXNativeTarget;
@@ -211,6 +290,7 @@ pbxproj = f"""// !$*UTF8*$!
 			name = {APP}Tests;
 			packageProductDependencies = (
 				{I['solarProductTest']} /* SolarCore */,
+				{I['spotProductTest']} /* SpotKit */,
 			);
 			productName = {APP}Tests;
 			productReference = {I['testProduct']} /* {APP}Tests.xctest */;
@@ -227,6 +307,9 @@ pbxproj = f"""// !$*UTF8*$!
 				LastUpgradeCheck = 2660;
 				TargetAttributes = {{
 					{I['appTarget']} = {{
+						CreatedOnToolsVersion = 26.6;
+					}};
+					{I['widgetTarget']} = {{
 						CreatedOnToolsVersion = 26.6;
 					}};
 					{I['testTarget']} = {{
@@ -253,6 +336,7 @@ pbxproj = f"""// !$*UTF8*$!
 			projectRoot = "";
 			targets = (
 				{I['appTarget']} /* {APP} */,
+				{I['widgetTarget']} /* {APP}Widgets */,
 				{I['testTarget']} /* {APP}Tests */,
 			);
 		}};
@@ -260,6 +344,13 @@ pbxproj = f"""// !$*UTF8*$!
 
 /* Begin PBXResourcesBuildPhase section */
 		{I['appResourcesPhase']} /* Resources */ = {{
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		}};
+		{I['widgetResourcesPhase']} /* Resources */ = {{
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -284,6 +375,13 @@ pbxproj = f"""// !$*UTF8*$!
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		}};
+		{I['widgetSourcesPhase']} /* Sources */ = {{
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		}};
 		{I['testSourcesPhase']} /* Sources */ = {{
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -293,7 +391,26 @@ pbxproj = f"""// !$*UTF8*$!
 		}};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		{I['embedPhase']} /* Embed Foundation Extensions */ = {{
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				{I['widgetEmbedFile']} /* {APP}Widgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		}};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXTargetDependency section */
+		{I['widgetDependency']} /* PBXTargetDependency */ = {{
+			isa = PBXTargetDependency;
+			target = {I['widgetTarget']} /* {APP}Widgets */;
+			targetProxy = {I['widgetProxy']} /* PBXContainerItemProxy */;
+		}};
 		{I['testDependency']} /* PBXTargetDependency */ = {{
 			isa = PBXTargetDependency;
 			target = {I['appTarget']} /* {APP} */;
@@ -327,6 +444,20 @@ pbxproj = f"""// !$*UTF8*$!
 			isa = XCBuildConfiguration;
 			buildSettings = {{
 {build_settings(APP_COMMON)}
+			}};
+			name = Release;
+		}};
+		{I['widgetDebug']} /* Debug */ = {{
+			isa = XCBuildConfiguration;
+			buildSettings = {{
+{build_settings(WIDGET_COMMON)}
+			}};
+			name = Debug;
+		}};
+		{I['widgetRelease']} /* Release */ = {{
+			isa = XCBuildConfiguration;
+			buildSettings = {{
+{build_settings(WIDGET_COMMON)}
 			}};
 			name = Release;
 		}};
@@ -365,6 +496,15 @@ pbxproj = f"""// !$*UTF8*$!
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		}};
+		{I['widgetConfigList']} /* Build configuration list for PBXNativeTarget "{APP}Widgets" */ = {{
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				{I['widgetDebug']} /* Debug */,
+				{I['widgetRelease']} /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		}};
 		{I['testConfigList']} /* Build configuration list for PBXNativeTarget "{APP}Tests" */ = {{
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -392,6 +532,13 @@ pbxproj = f"""// !$*UTF8*$!
 			isa = XCSwiftPackageProductDependency;
 			productName = SolarCore;
 		}};
+		{I['solarProductWidget']} /* SolarCore */ = {{
+			isa = XCSwiftPackageProductDependency;
+			productName = SolarCore;
+		}};
+		{I['spotProductApp']} /* SpotKit */ = {{isa = XCSwiftPackageProductDependency; productName = SpotKit; }};
+		{I['spotProductWidget']} /* SpotKit */ = {{isa = XCSwiftPackageProductDependency; productName = SpotKit; }};
+		{I['spotProductTest']} /* SpotKit */ = {{isa = XCSwiftPackageProductDependency; productName = SpotKit; }};
 /* End XCSwiftPackageProductDependency section */
 	}};
 	rootObject = {I['project']} /* Project object */;

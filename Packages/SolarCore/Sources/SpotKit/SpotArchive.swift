@@ -7,14 +7,14 @@ import SolarCore
 /// right place, holding the phone up, drawing round the roofs and the trees. Losing that
 /// when the system reclaims the app would be unforgivable, and it is the sort of loss people
 /// discover a week later.
-struct SpotArchive {
+public struct SpotArchive {
 
     /// The container the app and the widget both see.
-    static let appGroup = "group.app.sunspot"
+    public static let appGroup = "group.app.sunspot"
 
     /// Where the file lives now: inside the shared container, because the widget has to read
     /// it too and an app's own Application Support folder is invisible from outside.
-    static func defaultURL() throws -> URL {
+    public static func defaultURL() throws -> URL {
         guard let shared = FileManager.default.containerURL(
             forSecurityApplicationGroupIdentifier: appGroup
         ) else {
@@ -22,27 +22,27 @@ struct SpotArchive {
             // the app still works, only the widget goes quiet.
             return try applicationSupportURL()
         }
-        let url = shared.appendingPathComponent("spots.json", conformingTo: .json)
+        let url = shared.appendingPathComponent("spots.json")
         migrateIfNeeded(to: url)
         return url
     }
 
     /// Where it used to live.
-    static func applicationSupportURL() throws -> URL {
+    public static func applicationSupportURL() throws -> URL {
         let directory = try FileManager.default.url(
             for: .applicationSupportDirectory,
             in: .userDomainMask,
             appropriateFor: nil,
             create: true
         )
-        return directory.appendingPathComponent("spots.json", conformingTo: .json)
+        return directory.appendingPathComponent("spots.json")
     }
 
     /// Carries a spot traced under an earlier version into the shared container.
     ///
     /// Somebody who has already stood in their garden and drawn round the rooftops should not
     /// have to do it again because the file moved house.
-    static func migrateIfNeeded(to destination: URL) {
+    public static func migrateIfNeeded(to destination: URL) {
         let manager = FileManager.default
         guard !manager.fileExists(atPath: destination.path),
               let old = try? applicationSupportURL(),
@@ -53,17 +53,17 @@ struct SpotArchive {
         try? manager.copyItem(at: old, to: destination)
     }
 
-    let url: URL
+    public let url: URL
 
-    init(url: URL) {
+    public init(url: URL) {
         self.url = url
     }
 
-    init() throws {
+    public init() throws {
         self.url = try Self.defaultURL()
     }
 
-    func save(_ spots: [Spot]) throws {
+    public func save(_ spots: [Spot]) throws {
         let encoder = JSONEncoder()
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
         let data = try encoder.encode(spots)
@@ -72,7 +72,7 @@ struct SpotArchive {
         try data.write(to: url, options: .atomic)
     }
 
-    func load() throws -> [Spot] {
+    public func load() throws -> [Spot] {
         guard FileManager.default.fileExists(atPath: url.path) else { return [] }
         let data = try Data(contentsOf: url)
         return try JSONDecoder().decode([Spot].self, from: data)
@@ -81,7 +81,7 @@ struct SpotArchive {
     /// Reads what is there, and returns nothing rather than throwing if the file is damaged.
     ///
     /// A corrupt file is a bad day; a launch that fails because of one is a worse day.
-    func loadIgnoringDamage() -> [Spot] {
+    public func loadIgnoringDamage() -> [Spot] {
         (try? load()) ?? []
     }
 }

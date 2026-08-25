@@ -1,4 +1,5 @@
 import SwiftUI
+import SpotKit
 import Charts
 import SolarCore
 

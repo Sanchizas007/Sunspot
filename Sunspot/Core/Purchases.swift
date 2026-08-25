@@ -1,5 +1,7 @@
 import StoreKit
 import Observation
+import SpotKit
+import WidgetKit
 
 /// One thing to buy, once, for good.
 ///
@@ -26,7 +28,14 @@ final class Purchases {
         case unavailable
     }
 
-    private(set) var state: State = .loading
+    private(set) var state: State = .loading {
+        didSet {
+            guard oldValue != state else { return }
+            // The widget cannot ask the App Store from inside its own timeline, so it is told.
+            Unlock.record(isUnlocked: state == .unlocked)
+            WidgetRefresh.reload()
+        }
+    }
     private(set) var isWorking = false
     private(set) var lastError: String?
 

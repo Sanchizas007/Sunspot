@@ -1,4 +1,5 @@
 import SwiftUI
+import SpotKit
 
 @main
 struct SunspotApp: App {

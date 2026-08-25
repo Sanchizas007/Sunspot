@@ -1,5 +1,7 @@
 import Foundation
+import SpotKit
 import Observation
+import WidgetKit
 import SolarCore
 
 /// The one spot the app is talking about, and the moment being examined.
@@ -36,6 +38,8 @@ final class SpotStore {
         guard let archive, let spot else { return }
         do {
             try archive.save([spot])
+            // The home screen is showing a figure for this spot; it has just changed.
+            WidgetRefresh.reload()
         } catch {
             // Losing a save is bad but not worth taking the app down for; the person can
             // trace again. Silence here is deliberate rather than forgotten.

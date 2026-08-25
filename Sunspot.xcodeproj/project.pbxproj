@@ -10,9 +10,21 @@
 		5U000000000000000000001A /* SolarCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5U0000000000000000000019 /* SolarCore */; };
 		5U000000000000000000001E /* SolarCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5U000000000000000000001D /* SolarCore */; };
 		5U0000000000000000000020 /* Sunspot.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 5U000000000000000000001F /* Sunspot.storekit */; };
+		5U0000000000000000000030 /* SolarCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5U000000000000000000002F /* SolarCore */; };
+		5U0000000000000000000035 /* SpotKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5U0000000000000000000034 /* SpotKit */; };
+		5U0000000000000000000037 /* SpotKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5U0000000000000000000036 /* SpotKit */; };
+		5U0000000000000000000039 /* SpotKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5U0000000000000000000038 /* SpotKit */; };
+		5U000000000000000000002E /* SunspotWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5U0000000000000000000023 /* SunspotWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5U000000000000000000002C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5U0000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5U0000000000000000000022;
+			remoteInfo = SunspotWidgets;
+		};
 		5U000000000000000000001C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5U0000000000000000000001 /* Project object */;
@@ -26,10 +38,15 @@
 		5U0000000000000000000006 /* Sunspot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunspot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5U0000000000000000000007 /* SunspotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SunspotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5U000000000000000000001F /* Sunspot.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Sunspot.storekit; path = Config/Sunspot.storekit; sourceTree = "<group>"; };
+		5U0000000000000000000023 /* SunspotWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SunspotWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5U0000000000000000000031 /* SunspotWidgets-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SunspotWidgets-Info.plist"; path = "Config/SunspotWidgets-Info.plist"; sourceTree = "<group>"; };
+		5U0000000000000000000032 /* Sunspot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Sunspot.entitlements; path = Config/Sunspot.entitlements; sourceTree = "<group>"; };
+		5U0000000000000000000033 /* SunspotWidgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = SunspotWidgets.entitlements; path = Config/SunspotWidgets.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5U000000000000000000000D /* Sunspot */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Sunspot; sourceTree = "<group>"; };
+		5U0000000000000000000024 /* SunspotWidgets */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SunspotWidgets; sourceTree = "<group>"; };
 		5U000000000000000000000E /* SunspotTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SunspotTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -39,6 +56,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5U000000000000000000001A /* SolarCore in Frameworks */,
+				5U0000000000000000000035 /* SpotKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5U0000000000000000000026 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5U0000000000000000000030 /* SolarCore in Frameworks */,
+				5U0000000000000000000037 /* SpotKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5U000000000000000000001E /* SolarCore in Frameworks */,
+				5U0000000000000000000039 /* SpotKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,8 +85,12 @@
 			isa = PBXGroup;
 			children = (
 				5U000000000000000000000D /* Sunspot */,
+				5U0000000000000000000024 /* SunspotWidgets */,
 				5U000000000000000000000E /* SunspotTests */,
 				5U000000000000000000001F /* Sunspot.storekit */,
+				5U0000000000000000000031 /* SunspotWidgets-Info.plist */,
+				5U0000000000000000000032 /* Sunspot.entitlements */,
+				5U0000000000000000000033 /* SunspotWidgets.entitlements */,
 				5U0000000000000000000003 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,6 +100,7 @@
 			children = (
 				5U0000000000000000000006 /* Sunspot.app */,
 				5U0000000000000000000007 /* SunspotTests.xctest */,
+				5U0000000000000000000023 /* SunspotWidgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,10 +115,12 @@
 				5U0000000000000000000008 /* Sources */,
 				5U0000000000000000000009 /* Frameworks */,
 				5U000000000000000000000A /* Resources */,
+				5U000000000000000000002D /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5U000000000000000000002B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				5U000000000000000000000D /* Sunspot */,
@@ -93,10 +128,35 @@
 			name = Sunspot;
 			packageProductDependencies = (
 				5U0000000000000000000019 /* SolarCore */,
+				5U0000000000000000000034 /* SpotKit */,
 			);
 			productName = Sunspot;
 			productReference = 5U0000000000000000000006 /* Sunspot.app */;
 			productType = "com.apple.product-type.application";
+		};
+		5U0000000000000000000022 /* SunspotWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5U0000000000000000000028 /* Build configuration list for PBXNativeTarget "SunspotWidgets" */;
+			buildPhases = (
+				5U0000000000000000000025 /* Sources */,
+				5U0000000000000000000026 /* Frameworks */,
+				5U0000000000000000000027 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5U0000000000000000000024 /* SunspotWidgets */,
+			);
+			name = SunspotWidgets;
+			packageProductDependencies = (
+				5U000000000000000000002F /* SolarCore */,
+				5U0000000000000000000036 /* SpotKit */,
+			);
+			productName = SunspotWidgets;
+			productReference = 5U0000000000000000000023 /* SunspotWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		5U0000000000000000000005 /* SunspotTests */ = {
 			isa = PBXNativeTarget;
@@ -117,6 +177,7 @@
 			name = SunspotTests;
 			packageProductDependencies = (
 				5U000000000000000000001D /* SolarCore */,
+				5U0000000000000000000038 /* SpotKit */,
 			);
 			productName = SunspotTests;
 			productReference = 5U0000000000000000000007 /* SunspotTests.xctest */;
@@ -133,6 +194,9 @@
 				LastUpgradeCheck = 2660;
 				TargetAttributes = {
 					5U0000000000000000000004 = {
+						CreatedOnToolsVersion = 26.6;
+					};
+					5U0000000000000000000022 = {
 						CreatedOnToolsVersion = 26.6;
 					};
 					5U0000000000000000000005 = {
@@ -159,6 +223,7 @@
 			projectRoot = "";
 			targets = (
 				5U0000000000000000000004 /* Sunspot */,
+				5U0000000000000000000022 /* SunspotWidgets */,
 				5U0000000000000000000005 /* SunspotTests */,
 			);
 		};
@@ -166,6 +231,13 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		5U000000000000000000000A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5U0000000000000000000027 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -190,6 +262,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5U0000000000000000000025 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5U000000000000000000000B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -199,7 +278,26 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5U000000000000000000002D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5U000000000000000000002E /* SunspotWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXTargetDependency section */
+		5U000000000000000000002B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5U0000000000000000000022 /* SunspotWidgets */;
+			targetProxy = 5U000000000000000000002C /* PBXContainerItemProxy */;
+		};
 		5U000000000000000000001B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5U0000000000000000000004 /* Sunspot */;
@@ -276,6 +374,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3M856J997X;
+				CODE_SIGN_ENTITLEMENTS = Config/Sunspot.entitlements;
 			};
 			name = Debug;
 		};
@@ -299,6 +398,45 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3M856J997X;
+				CODE_SIGN_ENTITLEMENTS = Config/Sunspot.entitlements;
+			};
+			name = Release;
+		};
+		5U0000000000000000000029 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CURRENT_PROJECT_VERSION = 1;
+				MARKETING_VERSION = 0.1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Config/SunspotWidgets-Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = app.sunspot.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3M856J997X;
+				CODE_SIGN_ENTITLEMENTS = Config/SunspotWidgets.entitlements;
+			};
+			name = Debug;
+		};
+		5U000000000000000000002A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CURRENT_PROJECT_VERSION = 1;
+				MARKETING_VERSION = 0.1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Config/SunspotWidgets-Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = app.sunspot.widgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3M856J997X;
+				CODE_SIGN_ENTITLEMENTS = Config/SunspotWidgets.entitlements;
 			};
 			name = Release;
 		};
@@ -355,6 +493,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		5U0000000000000000000028 /* Build configuration list for PBXNativeTarget "SunspotWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5U0000000000000000000029 /* Debug */,
+				5U000000000000000000002A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5U0000000000000000000011 /* Build configuration list for PBXNativeTarget "SunspotTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -382,6 +529,13 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = SolarCore;
 		};
+		5U000000000000000000002F /* SolarCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SolarCore;
+		};
+		5U0000000000000000000034 /* SpotKit */ = {isa = XCSwiftPackageProductDependency; productName = SpotKit; };
+		5U0000000000000000000036 /* SpotKit */ = {isa = XCSwiftPackageProductDependency; productName = SpotKit; };
+		5U0000000000000000000038 /* SpotKit */ = {isa = XCSwiftPackageProductDependency; productName = SpotKit; };
 /* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5U0000000000000000000001 /* Project object */;

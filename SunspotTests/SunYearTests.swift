@@ -1,6 +1,7 @@
 import Testing
 import Foundation
 import SolarCore
+import SpotKit
 @testable import Sunspot
 
 /// The year screen turns a curve into a sentence someone repeats to a neighbour. If the

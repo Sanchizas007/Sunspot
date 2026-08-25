@@ -1,4 +1,5 @@
 import SwiftUI
+import SpotKit
 import SolarCore
 
 /// Point the phone at the sky and see where the sun goes — then trace what stands in its way.

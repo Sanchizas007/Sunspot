@@ -1,4 +1,5 @@
 import SwiftUI
+import SpotKit
 import SolarCore
 
 /// The first screen: what this spot gets today, answered before it is explained.

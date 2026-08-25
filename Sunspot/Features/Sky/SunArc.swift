@@ -1,4 +1,5 @@
 import Foundation
+import SpotKit
 import SolarCore
 
 /// The sun's whole path for one day, as directions in the sky.

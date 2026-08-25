@@ -6,14 +6,14 @@ import SolarCore
 /// A spot is deliberately more than a coordinate: the whole point of the app is that two
 /// places a few metres apart get very different amounts of sun, because one of them has a
 /// garage to the south of it.
-struct Spot: Identifiable, Equatable, Codable, Sendable {
-    let id: UUID
-    var name: String
-    var coordinate: GeoCoordinate
-    var horizon: HorizonProfile
-    var timeZone: TimeZone
+public struct Spot: Identifiable, Equatable, Codable, Sendable {
+    public let id: UUID
+    public var name: String
+    public var coordinate: GeoCoordinate
+    public var horizon: HorizonProfile
+    public var timeZone: TimeZone
 
-    init(
+    public init(
         id: UUID = UUID(),
         name: String,
         coordinate: GeoCoordinate,
@@ -32,32 +32,32 @@ struct Spot: Identifiable, Equatable, Codable, Sendable {
     /// Below this the samples say nothing about most of the sky, and a profile that thin is
     /// worse than none: one point at 272° was read as a wall in every direction and took a
     /// hundred and sixty-nine minutes off a real answer without saying a word.
-    static let minimumUsefulArc: Double = 30
+    public static let minimumUsefulArc: Double = 30
 
     /// True once enough of the skyline has been traced to mean something.
-    var hasMeasuredSkyline: Bool { horizon.measuredArc >= Self.minimumUsefulArc }
+    public var hasMeasuredSkyline: Bool { horizon.measuredArc >= Self.minimumUsefulArc }
 
     /// The skyline actually used in the sums.
     ///
     /// A trace too thin to trust is set aside rather than applied. Open sky is an honest
     /// upper bound and the screen says as much; a confident wrong number is neither.
-    var effectiveHorizon: HorizonProfile { hasMeasuredSkyline ? horizon : .open }
+    public var effectiveHorizon: HorizonProfile { hasMeasuredSkyline ? horizon : .open }
 
     /// How much of the horizon has been walked over, in degrees.
-    var measuredArc: Double { horizon.measuredArc }
+    public var measuredArc: Double { horizon.measuredArc }
 
     /// The stretch of horizon the sun crosses here across a year — the only part worth
     /// tracing.
-    func sunArcWidth(in year: Int) -> Double? {
+    public func sunArcWidth(in year: Int) -> Double? {
         Solar.sunAzimuthRange(coordinate: coordinate, year: year, timeZone: timeZone)?.width
     }
 
-    func sunDay(on date: Date) -> SunDay {
+    public func sunDay(on date: Date) -> SunDay {
         Solar.sunDay(containing: date, coordinate: coordinate, timeZone: timeZone,
                      horizon: effectiveHorizon)
     }
 
-    func sunPosition(at date: Date) -> SolarPosition {
+    public func sunPosition(at date: Date) -> SolarPosition {
         Solar.position(at: date, coordinate: coordinate)
     }
 
@@ -67,7 +67,7 @@ struct Spot: Identifiable, Equatable, Codable, Sendable {
         case id, name, coordinate, horizon, timeZoneIdentifier
     }
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(UUID.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
@@ -79,7 +79,7 @@ struct Spot: Identifiable, Equatable, Codable, Sendable {
         timeZone = TimeZone(identifier: identifier) ?? .current
     }
 
-    func encode(to encoder: Encoder) throws {
+    public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)

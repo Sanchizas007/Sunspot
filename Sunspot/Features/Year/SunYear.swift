@@ -1,4 +1,5 @@
 import Foundation
+import SpotKit
 import SolarCore
 
 /// A whole year of direct sun at one spot, and the plain answers hidden in it.

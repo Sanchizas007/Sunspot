@@ -1,6 +1,7 @@
 import Testing
 import Foundation
 import SolarCore
+import SpotKit
 @testable import Sunspot
 
 struct SunArcTests {

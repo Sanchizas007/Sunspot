@@ -1,5 +1,6 @@
 import Testing
 import Foundation
+import SpotKit
 @testable import Sunspot
 
 /// The formatter is the layer between correct numbers and an answer a person can act on,
