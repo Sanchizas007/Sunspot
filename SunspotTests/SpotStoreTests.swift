@@ -207,3 +207,55 @@ struct SpotPersistenceTests {
         #expect(restored.name == "Balcony")
     }
 }
+
+/// Moving the file must not cost anyone their tracing.
+@MainActor
+struct ArchiveMigrationTests {
+
+    static func temporary() -> URL {
+        FileManager.default.temporaryDirectory
+            .appendingPathComponent("migration-\(UUID().uuidString)", isDirectory: true)
+    }
+
+    @Test("A spot saved by an older version is carried across, not left behind")
+    func oldFileIsCarriedAcross() throws {
+        let folder = Self.temporary()
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        let old = folder.appendingPathComponent("old.json")
+        let new = folder.appendingPathComponent("new.json")
+
+        let traced = HorizonProfile(samples: [
+            .init(azimuth: 100, elevation: 20),
+            .init(azimuth: 200, elevation: 30)
+        ])
+        try SpotArchive(url: old).save([Spot(
+            name: "Here",
+            coordinate: GeoCoordinate(latitude: 47.8, longitude: 35.1),
+            horizon: traced
+        )])
+
+        // Stand in for the real migration: copy across only when nothing is there yet.
+        #expect(!FileManager.default.fileExists(atPath: new.path))
+        try FileManager.default.copyItem(at: old, to: new)
+
+        let restored = try SpotArchive(url: new).load()
+        #expect(restored.first?.horizon == traced)
+        #expect(FileManager.default.fileExists(atPath: old.path),
+                "the original must survive the copy")
+    }
+
+    @Test("Migration never overwrites something already in the new place")
+    func existingFileWins() throws {
+        let folder = Self.temporary()
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        let new = folder.appendingPathComponent("new.json")
+
+        let current = Spot(name: "Current", coordinate: GeoCoordinate(latitude: 1, longitude: 2))
+        try SpotArchive(url: new).save([current])
+
+        SpotArchive.migrateIfNeeded(to: new)
+
+        let after = try SpotArchive(url: new).load()
+        #expect(after.first?.name == "Current", "migration clobbered a newer file")
+    }
+}
