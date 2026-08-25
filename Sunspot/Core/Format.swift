@@ -36,6 +36,20 @@ enum Format {
         return "\(points[index]) (\(Int(azimuth.rounded()))°)"
     }
 
+    /// "12 Mar" — a day without the year, because the year is the whole point of the screen.
+    static func day(_ date: Date, in timeZone: TimeZone) -> String {
+        var style = Date.FormatStyle.dateTime.day().month(.abbreviated)
+        style.timeZone = timeZone
+        return date.formatted(style)
+    }
+
+    /// "12 Mar – 28 Sep", or "all year" when a window covers it.
+    static func dateRange(_ range: ClosedRange<Date>, in timeZone: TimeZone) -> String {
+        let days = range.upperBound.timeIntervalSince(range.lowerBound) / 86400
+        if days > 355 { return "all year" }
+        return "\(day(range.lowerBound, in: timeZone)) – \(day(range.upperBound, in: timeZone))"
+    }
+
     static func coordinate(_ value: Double) -> String {
         String(format: "%.4f°", value)
     }

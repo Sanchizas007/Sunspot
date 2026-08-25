@@ -6,7 +6,7 @@ import SolarCore
 /// A spot is deliberately more than a coordinate: the whole point of the app is that two
 /// places a few metres apart get very different amounts of sun, because one of them has a
 /// garage to the south of it.
-struct Spot: Identifiable, Equatable, Codable {
+struct Spot: Identifiable, Equatable, Codable, Sendable {
     let id: UUID
     var name: String
     var coordinate: GeoCoordinate

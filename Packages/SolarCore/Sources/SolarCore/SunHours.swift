@@ -38,6 +38,25 @@ public struct SunDay: Sendable, Equatable {
 
 extension Solar {
 
+    /// How closely to walk the day.
+    ///
+    /// The sun moves smoothly, so a coarser walk changes a day's total by a few minutes at
+    /// most — but it changes a year's computation from seconds to a blink, which is the
+    /// difference between a chart that appears and one that hangs the screen.
+    public enum Resolution: Sendable {
+        /// Every minute. For the day in front of someone.
+        case exact
+        /// Every five minutes. For a year at a glance.
+        case survey
+
+        var step: TimeInterval {
+            switch self {
+            case .exact: 60
+            case .survey: 300
+            }
+        }
+    }
+
     /// Walks one local day a minute at a time and counts only the light that actually
     /// reaches the spot.
     ///
@@ -50,16 +69,15 @@ extension Solar {
         containing day: Date,
         coordinate: GeoCoordinate,
         timeZone: TimeZone = .current,
-        horizon: HorizonProfile = .open
+        horizon: HorizonProfile = .open,
+        resolution: Resolution = .exact
     ) -> SunDay {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = timeZone
         let start = calendar.startOfDay(for: day)
         let end = calendar.date(byAdding: .day, value: 1, to: start) ?? start.addingTimeInterval(86400)
 
-        // A minute of resolution is finer than the answer needs and keeps a whole year of
-        // days cheap enough to compute on demand.
-        let step: TimeInterval = 60
+        let step = resolution.step
 
         var intervals: [DateInterval] = []
         var runStart: Date?
@@ -209,7 +227,9 @@ extension Solar {
         year: Int,
         coordinate: GeoCoordinate,
         timeZone: TimeZone = .current,
-        horizon: HorizonProfile = .open
+        horizon: HorizonProfile = .open,
+        resolution: Resolution = .survey,
+        everyNthDay: Int = 1
     ) -> [(date: Date, directMinutes: Int)] {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = timeZone
@@ -218,10 +238,11 @@ extension Solar {
         }
         let dayCount = calendar.range(of: .day, in: .year, for: start)?.count ?? 365
 
-        return (0..<dayCount).compactMap { offset in
+        return stride(from: 0, to: dayCount, by: max(1, everyNthDay)).compactMap { offset in
             guard let day = calendar.date(byAdding: .day, value: offset, to: start) else { return nil }
             let result = sunDay(
-                containing: day, coordinate: coordinate, timeZone: timeZone, horizon: horizon
+                containing: day, coordinate: coordinate, timeZone: timeZone,
+                horizon: horizon, resolution: resolution
             )
             return (day, result.directMinutes)
         }

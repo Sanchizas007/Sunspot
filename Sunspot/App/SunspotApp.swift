@@ -30,6 +30,8 @@ private struct RootView: View {
                 .tabItem { Label("Map", systemImage: "map") }
             SkyView()
                 .tabItem { Label("Sky", systemImage: "camera.viewfinder") }
+            YearView()
+                .tabItem { Label("Year", systemImage: "calendar") }
         }
         .task { location.start() }
         .onReceive(tick) { store.clockTicked(to: $0) }
