@@ -41,7 +41,7 @@ struct TodaySunView: View {
 }
 
 private struct Reading: View {
-    let reading: TodaySunEntry.Reading
+    let reading: SunSnapshot.Reading
     let wide: Bool
 
     var body: some View {

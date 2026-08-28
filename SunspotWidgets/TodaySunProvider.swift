@@ -17,9 +17,7 @@ struct TodaySunProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<TodaySunEntry>) -> Void) {
         let now = Date()
-        let entries = Unlock.isUnlocked
-            ? upcoming(from: now)
-            : [TodaySunEntry(date: now, state: .locked)]
+        let entries = upcoming(from: now)
 
         // Refreshed after the last entry, or just after midnight, whichever comes first: the
         // figure is a whole day's total and only changes when the day does.
@@ -36,21 +34,13 @@ struct TodaySunProvider: TimelineProvider {
     }
 
     private func entry(at date: Date) -> TodaySunEntry {
-        guard let archive = try? SpotArchive(),
-              let spot = SharedSelection.spot(from: archive.loadIgnoringDamage())
-        else {
-            return TodaySunEntry(date: date, state: .noSpot)
-        }
-        let day = spot.sunDay(on: date)
-        return TodaySunEntry(date: date, state: .reading(TodaySunEntry.Reading(
-            name: spot.name,
-            directMinutes: day.directMinutes,
-            exposure: day.exposure,
-            firstSun: day.firstSun,
-            lastSun: day.lastSun,
-            timeZone: spot.timeZone,
-            measured: spot.hasMeasuredSkyline
-        )))
+        let spots = (try? SpotArchive())?.loadIgnoringDamage() ?? []
+        return TodaySunEntry(date: date, state: SunSnapshot.state(
+            spots: spots,
+            selectedID: SharedSelection.selectedID,
+            isUnlocked: Unlock.isUnlocked,
+            at: date
+        ))
     }
 
     private func midnightAfter(_ date: Date) -> Date {

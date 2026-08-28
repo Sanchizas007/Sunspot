@@ -29,12 +29,7 @@ public enum SharedSelection {
     }
 
     /// Picks the spot to show from everything saved.
-    ///
-    /// Falls back to the first rather than to nothing: a selection can outlive the spot it
-    /// pointed at — deleted on the phone while the widget still holds the old id — and an
-    /// empty home screen would be a worse answer than a slightly stale one.
     public static func spot(from spots: [Spot]) -> Spot? {
-        guard let selectedID else { return spots.first }
-        return spots.first { $0.id == selectedID } ?? spots.first
+        SunSnapshot.spot(from: spots, selectedID: selectedID)
     }
 }

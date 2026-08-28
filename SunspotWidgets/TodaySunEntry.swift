@@ -4,32 +4,15 @@ import SolarCore
 import SpotKit
 
 /// One reading of the spot, for one moment.
+///
+/// A thin wrapper: what to show is decided by `SunSnapshot` in the shared module, where it
+/// can be tested without a home screen.
 struct TodaySunEntry: TimelineEntry {
     let date: Date
-    let state: State
-
-    enum State {
-        /// Nothing traced yet, or no spot saved.
-        case noSpot
-        /// Bought, with a spot to report on.
-        case reading(Reading)
-        /// The year and the widget are behind the purchase.
-        case locked
-    }
-
-    struct Reading {
-        let name: String
-        let directMinutes: Int
-        let exposure: SunExposure
-        let firstSun: Date?
-        let lastSun: Date?
-        let timeZone: TimeZone
-        /// False while the answer is still an open-sky upper bound.
-        let measured: Bool
-    }
+    let state: SunSnapshot.State
 
     static func placeholder(at date: Date = .now) -> TodaySunEntry {
-        TodaySunEntry(date: date, state: .reading(Reading(
+        TodaySunEntry(date: date, state: .reading(SunSnapshot.Reading(
             name: "Here",
             directMinutes: 382,
             exposure: .fullSun,
