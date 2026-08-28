@@ -583,10 +583,12 @@ SCHEME = f"""<?xml version="1.0" encoding="UTF-8"?>
             ReferencedContainer = "container:{APP}.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <!-- Path form copied from a project where purchases are known to work. An extra "../"
-           here once cost a whole build cycle: the app runs, the paywall appears, and the
-           store simply reports no products, with nothing to say why. Tools/check.sh asserts
-           that whatever this names is actually on disk. -->
+      <!-- The path here is right, and was right the first time. Xcode still will not use it
+           until somebody picks the configuration once by hand in Edit Scheme, after which it
+           remembers. So after regenerating this file: run the app, and if the paywall says it
+           cannot reach the store, open Product > Scheme > Edit Scheme > Run > Options and
+           choose Sunspot.storekit. It is a one-click, one-time thing per checkout, not a
+           broken path. Tools/check.sh asserts the file this names is actually on disk. -->
       <StoreKitConfigurationFileReference
          identifier = "../../Config/{APP}.storekit">
       </StoreKitConfigurationFileReference>
