@@ -67,7 +67,7 @@ final class CameraFeed: NSObject {
             // real phone, which is how a crash got that far. A typical wide lens stands in.
             state = .running(fieldOfView: 68)
             #else
-            state = .unavailable("No camera on this device, so the live view is not available.")
+            state = .unavailable(String(localized: "No camera on this device, so the live view is not available."))
             #endif
             return
         }
@@ -80,7 +80,7 @@ final class CameraFeed: NSObject {
                 if session.canAddInput(input) { session.addInput(input) }
                 session.commitConfiguration()
             } catch {
-                state = .unavailable("The camera could not be started.")
+                state = .unavailable(String(localized: "The camera could not be started."))
                 return
             }
         }

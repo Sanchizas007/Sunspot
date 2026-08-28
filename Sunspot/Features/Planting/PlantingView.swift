@@ -41,20 +41,20 @@ struct PlantingView: View {
     }
 
     @ViewBuilder
-    private func group(_ title: String, _ plants: [Plant], tint: Color) -> some View {
+    private func group(_ title: LocalizedStringKey, _ plants: [Plant], tint: Color) -> some View {
         if !plants.isEmpty {
             Section(title) {
                 ForEach(plants) { plant in
                     VStack(alignment: .leading, spacing: 2) {
                         HStack {
-                            Text(plant.name)
+                            Text(LocalizedStringKey(plant.name))
                             Spacer()
                             Text("\(Format.hours(plant.minimumHours))+")
                                 .font(.caption.monospacedDigit())
                                 .foregroundStyle(tint)
                         }
                         if let note = plant.note {
-                            Text(note).font(.caption).foregroundStyle(.secondary)
+                            Text(LocalizedStringKey(note)).font(.caption).foregroundStyle(.secondary)
                         }
                     }
                 }

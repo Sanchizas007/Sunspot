@@ -306,7 +306,7 @@ private struct TraceControls: View {
 }
 
 private struct Message: View {
-    let title: String
+    let title: LocalizedStringKey
     let detail: String
 
     var body: some View {

@@ -69,7 +69,11 @@ private struct SunSummary: View {
                 if dayIsBroken {
                     LabeledContent("Longest stretch",
                                    value: Format.duration(minutes: day.longestStretchMinutes))
-                    LabeledContent("Broken into", value: "\(day.intervals.count) stretches")
+                    // As a Text rather than a plain value: LabeledContent's `value:` takes a
+                    // String, which never reaches the translations.
+                    LabeledContent("Broken into") {
+                        Text("\(day.intervals.count) stretches")
+                    }
                 }
             }
 

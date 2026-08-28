@@ -28,11 +28,11 @@ final class MotionTracker {
         var advice: String? {
             switch self {
             case .unavailable:
-                "This device cannot report which way it is pointing."
+                String(localized: "This device cannot report which way it is pointing.")
             case .uncalibrated, .low:
-                "Wave the phone in a figure of eight to calibrate the compass. Keep away from speakers, magnets and car dashboards."
+                String(localized: "Wave the phone in a figure of eight to calibrate the compass. Keep away from speakers, magnets and car dashboards.")
             case .medium:
-                "The compass is roughly right. A figure of eight will sharpen it."
+                String(localized: "The compass is roughly right. A figure of eight will sharpen it.")
             case .high:
                 nil
             }

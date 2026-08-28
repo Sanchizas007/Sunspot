@@ -77,8 +77,13 @@ struct SpotPicker: ToolbarContent {
                 // exists to tell you.
                 HStack(spacing: 4) {
                     Image(systemName: "mappin.and.ellipse")
-                    Text(store.spot?.name ?? "Spots")
-                        .lineLimit(1)
+                    // The name is the person's own words and stays as typed; only the
+                    // stand-in for having none is ours to translate.
+                    if let name = store.spot?.name {
+                        Text(name).lineLimit(1)
+                    } else {
+                        Text("Spots")
+                    }
                 }
                 .font(.subheadline)
             }

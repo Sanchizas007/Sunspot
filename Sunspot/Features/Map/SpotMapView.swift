@@ -19,7 +19,7 @@ struct SpotMapView: View {
                     ContentUnavailableView(
                         "No spot yet",
                         systemImage: "mappin.slash",
-                        description: Text("Once Sunspot knows where you are, the sun's path appears here. You can also tap the map to move the spot.")
+                        description: Text("Once Sunspot knows where you are, the sun's path appears here.")
                     )
                 }
             }
@@ -144,7 +144,7 @@ private struct Legend: View {
         .padding(.top, 8)
     }
 
-    private func entry(_ colour: Color, _ text: String) -> some View {
+    private func entry(_ colour: Color, _ text: LocalizedStringKey) -> some View {
         HStack(spacing: 7) {
             Capsule().fill(colour).frame(width: 16, height: 4)
             Text(text)

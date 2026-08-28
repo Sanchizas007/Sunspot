@@ -129,8 +129,8 @@ private struct Verdict: View {
     private struct Line: View {
         let icon: String
         let tint: Color
-        let title: String
-        let detail: String?
+        let title: LocalizedStringKey
+        let detail: LocalizedStringKey?
 
         var body: some View {
             HStack(alignment: .top, spacing: 12) {

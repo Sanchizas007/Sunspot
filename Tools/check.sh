@@ -78,6 +78,13 @@ print("ссылка, товар и цена совпадают")
 PYEOF
 if [[ $? -eq 0 ]]; then print -n "$(tail -1 "$LOG")  "; ok; else bad "конфигурация покупок"; cat "$LOG"; fi
 
+step "локализация          "
+if python3 Tools/check-localisation.py > "$LOG" 2>&1; then
+  print -n "$(tail -1 "$LOG")  "; ok
+else
+  bad "локализация"; cat "$LOG"
+fi
+
 step "тесты приложения      "
 UDID=$(xcrun simctl list devices available -j | python3 -c "
 import json,sys

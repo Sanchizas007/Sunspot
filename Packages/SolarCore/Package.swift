@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "SolarCore",
+    defaultLocalization: "en",
     platforms: [.iOS(.v17), .macOS(.v14)],
     products: [
         .library(name: "SolarCore", targets: ["SolarCore"]),
@@ -13,7 +14,7 @@ let package = Package(
     ],
     targets: [
         .target(name: "SolarCore"),
-        .target(name: "SpotKit", dependencies: ["SolarCore"]),
+        .target(name: "SpotKit", dependencies: ["SolarCore"], resources: [.process("Resources")]),
         .testTarget(name: "SolarCoreTests", dependencies: ["SolarCore"]),
         .testTarget(name: "SpotKitTests", dependencies: ["SpotKit"])
     ]

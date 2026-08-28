@@ -112,10 +112,10 @@ final class SunAlerts {
     static func wording(minutesBefore: Int, arrival: Date, timeZone: TimeZone) -> String {
         let at = Format.time(arrival, in: timeZone)
         return switch minutesBefore {
-        case 0: "The sun is reaching this spot now."
-        case 1: "The sun reaches this spot in a minute, at \(at)."
-        case 2...90: "The sun reaches this spot in \(minutesBefore) minutes, at \(at)."
-        default: "The sun reaches this spot at \(at)."
+        case 0: String(localized: "The sun is reaching this spot now.")
+        case 1: String(localized: "The sun reaches this spot in a minute, at \(at).")
+        case 2...90: String(localized: "The sun reaches this spot in \(minutesBefore) minutes, at \(at).")
+        default: String(localized: "The sun reaches this spot at \(at).")
         }
     }
 

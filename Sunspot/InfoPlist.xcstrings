@@ -1,0 +1,75 @@
+{
+  "sourceLanguage": "en",
+  "version": "1.0",
+  "strings": {
+    "NSCameraUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunspot uses the camera so you can trace the roofs and trees around a spot."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunspot nutzt die Kamera, damit du Dächer und Bäume rund um eine Stelle nachzeichnen kannst."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunspot utilise l’appareil photo pour vous permettre de tracer les toits et les arbres autour d’un emplacement."
+          }
+        }
+      }
+    },
+    "NSLocationWhenInUseUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunspot needs your location to work out where the sun travels over this spot."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunspot braucht deinen Standort, um den Sonnenlauf über dieser Stelle zu berechnen."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunspot a besoin de votre position pour calculer la course du soleil au-dessus de cet endroit."
+          }
+        }
+      }
+    },
+    "NSMotionUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunspot reads which way the phone is pointing so the sun's path lines up with what the camera sees."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunspot liest aus, wohin das Telefon zeigt, damit der Sonnenlauf zum Kamerabild passt."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunspot lit l’orientation du téléphone pour aligner la course du soleil sur ce que voit l’appareil photo."
+          }
+        }
+      }
+    }
+  }
+}

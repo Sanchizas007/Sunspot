@@ -80,8 +80,8 @@ private struct Reading: View {
 
 private struct Message: View {
     let icon: String
-    let title: String
-    let detail: String
+    let title: LocalizedStringKey
+    let detail: LocalizedStringKey
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {

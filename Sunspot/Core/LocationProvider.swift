@@ -43,11 +43,11 @@ final class LocationProvider: NSObject {
             state = .requesting
             manager.requestLocation()
         case .denied:
-            state = .unavailable(reason: "Location is off for Sunspot. Turn it on in Settings, or pick a spot on the map.")
+            state = .unavailable(reason: String(localized: "Location is off for Sunspot. Turn it on in Settings, or pick a spot on the map."))
         case .restricted:
-            state = .unavailable(reason: "This device does not allow location. Pick a spot on the map instead.")
+            state = .unavailable(reason: String(localized: "This device does not allow location. Pick a spot on the map instead."))
         @unknown default:
-            state = .unavailable(reason: "Location is not available. Pick a spot on the map instead.")
+            state = .unavailable(reason: String(localized: "Location is not available. Pick a spot on the map instead."))
         }
     }
 
@@ -76,8 +76,8 @@ extension LocationProvider: CLLocationManagerDelegate {
 
     nonisolated func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         let description = (error as? CLError)?.code == .denied
-            ? "Location is off for Sunspot. Turn it on in Settings, or pick a spot on the map."
-            : "Could not get a position just now. Pick a spot on the map instead."
+            ? String(localized: "Location is off for Sunspot. Turn it on in Settings, or pick a spot on the map.")
+            : String(localized: "Could not get a position just now. Pick a spot on the map instead.")
         Task { @MainActor [weak self] in
             self?.fail(description)
         }
@@ -92,9 +92,9 @@ extension LocationProvider: CLLocationManagerDelegate {
                 self.state = .requesting
                 self.manager.requestLocation()
             case .denied:
-                self.fail("Location is off for Sunspot. Turn it on in Settings, or pick a spot on the map.")
+                self.fail(String(localized: "Location is off for Sunspot. Turn it on in Settings, or pick a spot on the map."))
             case .restricted:
-                self.fail("This device does not allow location. Pick a spot on the map instead.")
+                self.fail(String(localized: "This device does not allow location. Pick a spot on the map instead."))
             case .notDetermined:
                 break
             @unknown default:

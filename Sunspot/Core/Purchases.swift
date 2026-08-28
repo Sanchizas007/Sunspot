@@ -104,18 +104,18 @@ final class Purchases {
                     await transaction.finish()
                     await refreshEntitlement()
                 } else {
-                    lastError = "That purchase could not be verified. Nothing has been charged."
+                    lastError = String(localized: "That purchase could not be verified. Nothing has been charged.")
                 }
             case .userCancelled:
                 break
             case .pending:
                 // Ask-to-buy and similar: the answer arrives later through Transaction.updates.
-                lastError = "Waiting for approval. It will unlock as soon as that comes through."
+                lastError = String(localized: "Waiting for approval. It will unlock as soon as that comes through.")
             @unknown default:
                 break
             }
         } catch {
-            lastError = "The purchase did not go through. Nothing has been charged."
+            lastError = String(localized: "The purchase did not go through. Nothing has been charged.")
         }
     }
 
@@ -129,10 +129,10 @@ final class Purchases {
             try await AppStore.sync()
             await refreshEntitlement()
             if state != .unlocked {
-                lastError = "No earlier purchase found on this Apple Account."
+                lastError = String(localized: "No earlier purchase found on this Apple Account.")
             }
         } catch {
-            lastError = "Could not reach the store to check. Try again in a moment."
+            lastError = String(localized: "Could not reach the store to check. Try again in a moment.")
         }
     }
 

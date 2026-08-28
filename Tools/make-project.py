@@ -323,6 +323,8 @@ pbxproj = f"""// !$*UTF8*$!
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				de,
+				fr,
 				Base,
 			);
 			mainGroup = {I['mainGroup']};
