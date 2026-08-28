@@ -4,16 +4,29 @@ import Observation
 import WidgetKit
 import SolarCore
 
-/// The one spot the app is talking about, and the moment being examined.
+/// Every spot the person keeps, which one they are looking at, and the moment being examined.
 ///
-/// Both screens read from here so they can never disagree: scrubbing the day on the map
-/// moves the sun on every other screen too.
+/// All the screens read from here so they can never disagree: scrubbing the day on the map
+/// moves the sun on every other screen too, and switching spots switches all of them at once.
 @MainActor
 @Observable
 final class SpotStore {
 
-    private(set) var spot: Spot? {
+    /// How many spots come without paying. One is enough to answer the question that brought
+    /// somebody here; the second is what the purchase is for.
+    static let freeSpotLimit = 1
+
+    private(set) var spots: [Spot] = [] {
         didSet { persist() }
+    }
+
+    /// Which spot every screen is currently talking about.
+    private(set) var selectedID: UUID? {
+        didSet {
+            guard oldValue != selectedID else { return }
+            SharedSelection.record(selectedID: selectedID)
+            WidgetRefresh.reload()
+        }
     }
 
     private let archive: SpotArchive?
@@ -29,47 +42,99 @@ final class SpotStore {
         self.archive = archive
         // Assigning through the backing store on purpose: loading is not a change worth
         // writing straight back to disk.
-        if let restored = archive?.loadIgnoringDamage().first {
-            _spot = restored
-        }
+        let restored = archive?.loadIgnoringDamage() ?? []
+        _spots = restored
+        // A selection made before the app was last closed outlives it.
+        selectedID = SharedSelection.spot(from: restored)?.id
     }
 
-    private func persist() {
-        guard let archive, let spot else { return }
-        do {
-            try archive.save([spot])
-            // The home screen is showing a figure for this spot; it has just changed.
-            WidgetRefresh.reload()
-        } catch {
-            // Losing a save is bad but not worth taking the app down for; the person can
-            // trace again. Silence here is deliberate rather than forgotten.
-        }
+    // MARK: - The spot in front of you
+
+    /// The spot every screen is showing.
+    var spot: Spot? {
+        guard let selectedID else { return spots.first }
+        return spots.first { $0.id == selectedID } ?? spots.first
     }
 
-    /// Adopts a position from the device, unless the person has already placed a spot by
-    /// hand — a location update should not yank the pin out from under them.
+    func select(_ id: UUID) {
+        guard spots.contains(where: { $0.id == id }) else { return }
+        selectedID = id
+    }
+
+    /// True when another spot may be added.
+    func canAddSpot(isUnlocked: Bool) -> Bool {
+        isUnlocked || spots.count < Self.freeSpotLimit
+    }
+
+    // MARK: - Changing the collection
+
+    /// Adds a spot and makes it the one being looked at.
+    @discardableResult
+    func addSpot(at coordinate: GeoCoordinate, named name: String? = nil) -> Spot {
+        let spot = Spot(name: name ?? Self.nextName(after: spots), coordinate: coordinate)
+        spots.append(spot)
+        selectedID = spot.id
+        return spot
+    }
+
+    func rename(_ id: UUID, to name: String) {
+        let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        // An empty name would leave a row with nothing in it and no way to tell spots apart.
+        guard !trimmed.isEmpty, let index = spots.firstIndex(where: { $0.id == id }) else { return }
+        spots[index].name = trimmed
+    }
+
+    func remove(_ id: UUID) {
+        spots.removeAll { $0.id == id }
+        if selectedID == id { selectedID = spots.first?.id }
+    }
+
+    /// Names for spots after the first, so a list of them can be told apart at a glance.
+    static func nextName(after existing: [Spot]) -> String {
+        guard !existing.isEmpty else { return "Here" }
+        let taken = Set(existing.map(\.name))
+        var number = 2
+        while taken.contains("Spot \(number)") { number += 1 }
+        return "Spot \(number)"
+    }
+
+    // MARK: - Changing the selected spot
+
+    /// Adopts a position from the device, unless a spot has already been placed by hand — a
+    /// location update should not yank the pin out from under anybody.
     func adoptDeviceLocation(latitude: Double, longitude: Double) {
         // A restored spot counts as already placed, so a location fix on launch must not
         // discard the skyline someone traced last week.
-        guard spot == nil else { return }
-        spot = Spot(name: "Here", coordinate: GeoCoordinate(latitude: latitude, longitude: longitude))
+        guard spots.isEmpty else { return }
+        addSpot(
+            at: GeoCoordinate(latitude: latitude, longitude: longitude),
+            named: "Here"
+        )
     }
 
-    /// Moves the spot, keeping any skyline already traced for it.
+    /// Moves the selected spot, keeping any skyline already traced for it.
     func move(to coordinate: GeoCoordinate) {
-        if var existing = spot {
-            existing.coordinate = coordinate
-            spot = existing
-        } else {
-            spot = Spot(name: "Spot", coordinate: coordinate)
+        guard updateSelected({ $0.coordinate = coordinate }) else {
+            addSpot(at: coordinate, named: "Spot")
+            return
         }
     }
 
     func setHorizon(_ horizon: HorizonProfile) {
-        guard var existing = spot else { return }
-        existing.horizon = horizon
-        spot = existing
+        _ = updateSelected { $0.horizon = horizon }
     }
+
+    /// Applies a change to the selected spot. Returns false when there is nothing selected.
+    @discardableResult
+    private func updateSelected(_ change: (inout Spot) -> Void) -> Bool {
+        guard let id = spot?.id, let index = spots.firstIndex(where: { $0.id == id }) else {
+            return false
+        }
+        change(&spots[index])
+        return true
+    }
+
+    // MARK: - Time
 
     /// Jumps to a time on the day currently being viewed.
     func scrub(toMinuteOfDay minute: Int) {
@@ -100,5 +165,19 @@ final class SpotStore {
         calendar.timeZone = spot.timeZone
         let startOfDay = calendar.startOfDay(for: viewedDate)
         return Int(viewedDate.timeIntervalSince(startOfDay) / 60)
+    }
+
+    // MARK: - Storing
+
+    private func persist() {
+        guard let archive else { return }
+        do {
+            try archive.save(spots)
+            // The home screen is showing a figure for one of these; it may have just changed.
+            WidgetRefresh.reload()
+        } catch {
+            // Losing a save is bad but not worth taking the app down for; the person can
+            // trace again. Silence here is deliberate rather than forgotten.
+        }
     }
 }

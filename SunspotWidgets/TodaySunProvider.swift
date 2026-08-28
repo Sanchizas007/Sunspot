@@ -36,7 +36,9 @@ struct TodaySunProvider: TimelineProvider {
     }
 
     private func entry(at date: Date) -> TodaySunEntry {
-        guard let archive = try? SpotArchive(), let spot = archive.loadIgnoringDamage().first else {
+        guard let archive = try? SpotArchive(),
+              let spot = SharedSelection.spot(from: archive.loadIgnoringDamage())
+        else {
             return TodaySunEntry(date: date, state: .noSpot)
         }
         let day = spot.sunDay(on: date)

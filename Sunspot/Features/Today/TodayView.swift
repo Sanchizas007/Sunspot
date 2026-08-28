@@ -7,6 +7,9 @@ struct TodayView: View {
     @Environment(LocationProvider.self) private var location
     @Environment(SpotStore.self) private var store
 
+    @State private var renaming: Spot?
+    @State private var showingPaywall = false
+
     var body: some View {
         NavigationStack {
             Group {
@@ -17,6 +20,13 @@ struct TodayView: View {
                 }
             }
             .navigationTitle("Today")
+            .toolbar {
+                if store.spot != nil {
+                    SpotPicker(renaming: $renaming, showingPaywall: $showingPaywall)
+                }
+            }
+            .renameSpot($renaming)
+            .sheet(isPresented: $showingPaywall) { Paywall() }
         }
     }
 }

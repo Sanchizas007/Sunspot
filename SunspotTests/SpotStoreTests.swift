@@ -260,3 +260,148 @@ struct ArchiveMigrationTests {
         #expect(after.first?.name == "Current", "migration clobbered a newer file")
     }
 }
+
+/// Until now the app kept one spot while the paywall offered "as many as you like". These
+/// pin the behaviour that closes that gap.
+@MainActor
+struct MultipleSpotsTests {
+
+    static func store() -> (SpotStore, SpotArchive) {
+        let archive = SpotArchive(url: FileManager.default.temporaryDirectory
+            .appendingPathComponent("spots-\(UUID().uuidString).json"))
+        SharedSelection.record(selectedID: nil)
+        return (SpotStore(archive: archive), archive)
+    }
+
+    static let fence = GeoCoordinate(latitude: 47.8388, longitude: 35.1495)
+    static let garage = GeoCoordinate(latitude: 47.8390, longitude: 35.1500)
+
+    @Test("A second spot can be added, and becomes the one being looked at")
+    func addingSelectsTheNewSpot() {
+        let (store, _) = Self.store()
+        store.addSpot(at: Self.fence, named: "By the fence")
+        let garage = store.addSpot(at: Self.garage, named: "By the garage")
+
+        #expect(store.spots.count == 2)
+        #expect(store.spot?.id == garage.id, "a spot you just placed should be the one on screen")
+    }
+
+    @Test("Switching spots switches what every screen is showing")
+    func selectingChangesTheCurrentSpot() {
+        let (store, _) = Self.store()
+        let fence = store.addSpot(at: Self.fence, named: "By the fence")
+        store.addSpot(at: Self.garage, named: "By the garage")
+
+        store.select(fence.id)
+        #expect(store.spot?.name == "By the fence")
+    }
+
+    @Test("Selecting something that is not there leaves the choice alone")
+    func selectingAnUnknownSpotIsIgnored() {
+        let (store, _) = Self.store()
+        let only = store.addSpot(at: Self.fence, named: "Only")
+        store.select(UUID())
+        #expect(store.spot?.id == only.id)
+    }
+
+    @Test("Two spots a few metres apart keep their own skylines")
+    func spotsKeepSeparateSkylines() {
+        // The whole reason for having more than one: the bed by the fence and the bed by the
+        // garage are metres apart and answer completely differently.
+        let (store, _) = Self.store()
+        let fence = store.addSpot(at: Self.fence, named: "By the fence")
+        store.setHorizon(HorizonProfile(samples: stride(from: 0.0, to: 360.0, by: 30)
+            .map { .init(azimuth: $0, elevation: 5) }))
+
+        let garage = store.addSpot(at: Self.garage, named: "By the garage")
+        store.setHorizon(HorizonProfile(samples: stride(from: 0.0, to: 360.0, by: 30)
+            .map { .init(azimuth: $0, elevation: 70) }))
+
+        store.select(fence.id)
+        let open = store.spot?.horizon.obstructionElevation(atAzimuth: 180)
+        store.select(garage.id)
+        let walled = store.spot?.horizon.obstructionElevation(atAzimuth: 180)
+
+        #expect(open == 5)
+        #expect(walled == 70, "tracing one spot wrote over the other")
+    }
+
+    @Test("Moving a spot moves only that one")
+    func movingAffectsOnlyTheSelectedSpot() {
+        let (store, _) = Self.store()
+        let fence = store.addSpot(at: Self.fence, named: "By the fence")
+        store.addSpot(at: Self.garage, named: "By the garage")
+
+        store.move(to: GeoCoordinate(latitude: 10, longitude: 20))
+
+        #expect(store.spot?.coordinate == GeoCoordinate(latitude: 10, longitude: 20))
+        store.select(fence.id)
+        #expect(store.spot?.coordinate == Self.fence, "the other spot moved too")
+    }
+
+    @Test("Renaming takes, and an empty name is refused")
+    func renaming() {
+        let (store, _) = Self.store()
+        let spot = store.addSpot(at: Self.fence, named: "Here")
+
+        store.rename(spot.id, to: "  Balcony  ")
+        #expect(store.spot?.name == "Balcony", "the name should be trimmed")
+
+        store.rename(spot.id, to: "   ")
+        #expect(store.spot?.name == "Balcony", "an empty name would leave a row with nothing in it")
+    }
+
+    @Test("Deleting the selected spot falls back to another rather than to nothing")
+    func deletingSelectsAnother() {
+        let (store, _) = Self.store()
+        let fence = store.addSpot(at: Self.fence, named: "By the fence")
+        let garage = store.addSpot(at: Self.garage, named: "By the garage")
+
+        store.remove(garage.id)
+        #expect(store.spots.count == 1)
+        #expect(store.spot?.id == fence.id, "deleting left the app with nothing on screen")
+    }
+
+    @Test("Without paying there is one spot; the purchase is what lifts that")
+    func freeLimitIsOneSpot() {
+        let (store, _) = Self.store()
+        #expect(store.canAddSpot(isUnlocked: false), "the first spot must always be free")
+
+        store.addSpot(at: Self.fence)
+        #expect(!store.canAddSpot(isUnlocked: false), "the second is what the purchase is for")
+        #expect(store.canAddSpot(isUnlocked: true))
+    }
+
+    @Test("New spots get names that tell them apart")
+    func namesAreDistinct() {
+        let (store, _) = Self.store()
+        store.addSpot(at: Self.fence)
+        store.addSpot(at: Self.garage)
+        store.addSpot(at: Self.fence)
+
+        let names = store.spots.map(\.name)
+        #expect(names.first == "Here")
+        #expect(Set(names).count == names.count, "two spots ended up with the same name: \(names)")
+    }
+
+    @Test("All the spots are saved, and come back with the right one selected")
+    func everythingSurvivesRelaunch() {
+        let (store, archive) = Self.store()
+        store.addSpot(at: Self.fence, named: "By the fence")
+        let garage = store.addSpot(at: Self.garage, named: "By the garage")
+        store.select(garage.id)
+
+        let reopened = SpotStore(archive: archive)
+        #expect(reopened.spots.count == 2, "only \(reopened.spots.count) spot(s) came back")
+        #expect(reopened.spot?.id == garage.id, "the app reopened on a different spot")
+    }
+
+    @Test("A location fix does not add a second spot on top of the first")
+    func locationDoesNotPileUpSpots() {
+        let (store, _) = Self.store()
+        store.addSpot(at: Self.fence, named: "By the fence")
+        store.adoptDeviceLocation(latitude: 10, longitude: 20)
+
+        #expect(store.spots.count == 1, "every launch would add another spot")
+    }
+}
