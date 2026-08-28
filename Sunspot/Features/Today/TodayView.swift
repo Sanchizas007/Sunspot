@@ -9,6 +9,7 @@ struct TodayView: View {
 
     @State private var renaming: Spot?
     @State private var showingPaywall = false
+    @State private var comparing = false
 
     var body: some View {
         NavigationStack {
@@ -22,11 +23,16 @@ struct TodayView: View {
             .navigationTitle("Today")
             .toolbar {
                 if store.spot != nil {
-                    SpotPicker(renaming: $renaming, showingPaywall: $showingPaywall)
+                    SpotPicker(
+                        renaming: $renaming,
+                        showingPaywall: $showingPaywall,
+                        comparing: $comparing
+                    )
                 }
             }
             .renameSpot($renaming)
             .sheet(isPresented: $showingPaywall) { Paywall() }
+            .sheet(isPresented: $comparing) { CompareSpots() }
         }
     }
 }

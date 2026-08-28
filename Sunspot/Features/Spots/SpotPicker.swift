@@ -13,6 +13,7 @@ struct SpotPicker: ToolbarContent {
 
     @Binding var renaming: Spot?
     @Binding var showingPaywall: Bool
+    @Binding var comparing: Bool
 
     var body: some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
@@ -33,6 +34,15 @@ struct SpotPicker: ToolbarContent {
                 }
 
                 Section {
+                    // Only worth offering once there is something to compare against.
+                    if store.spots.count > 1 {
+                        Button {
+                            comparing = true
+                        } label: {
+                            Label("Which is better?", systemImage: "square.on.square.dashed")
+                        }
+                    }
+
                     Button {
                         addSpot()
                     } label: {
