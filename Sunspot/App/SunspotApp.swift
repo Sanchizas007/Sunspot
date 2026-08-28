@@ -6,6 +6,7 @@ struct SunspotApp: App {
     @State private var location = LocationProvider()
     @State private var store = SpotStore()
     @State private var purchases = Purchases()
+    @State private var alerts = SunAlerts()
 
     var body: some Scene {
         WindowGroup {
@@ -13,6 +14,7 @@ struct SunspotApp: App {
                 .environment(location)
                 .environment(store)
                 .environment(purchases)
+                .environment(alerts)
         }
     }
 }
@@ -21,6 +23,7 @@ private struct RootView: View {
     @Environment(LocationProvider.self) private var location
     @Environment(SpotStore.self) private var store
     @Environment(Purchases.self) private var purchases
+    @Environment(SunAlerts.self) private var alerts
 
     private let tick = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
 

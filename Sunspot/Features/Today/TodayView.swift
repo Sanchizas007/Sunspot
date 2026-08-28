@@ -63,7 +63,63 @@ private struct SunSummary: View {
                 LabeledContent("Sun height", value: Format.angle(sun.elevation))
                 LabeledContent("Direction", value: Format.compass(sun.azimuth))
             }
+
+            AlertRow(spot: spot)
         }
+    }
+}
+
+/// Offers to say something when the sun arrives, which is the only part of this app that
+/// works while it is shut.
+private struct AlertRow: View {
+    @Environment(SpotStore.self) private var store
+    @Environment(Purchases.self) private var purchases
+    @Environment(SunAlerts.self) private var alerts
+
+    let spot: Spot
+
+    private var isOn: Bool { spot.alertMinutesBefore != nil }
+
+    var body: some View {
+        Section {
+            if purchases.isUnlocked {
+                Toggle(isOn: Binding(
+                    get: { isOn },
+                    set: { wanted in Task { await set(wanted) } }
+                )) {
+                    Label("Tell me when the sun arrives", systemImage: "bell")
+                }
+
+                if isOn, let first = spot.sunDay(on: .now).firstSun {
+                    Text("\(SunAlerts.defaultLeadMinutes) minutes before — around \(Format.time(first.addingTimeInterval(-Double(SunAlerts.defaultLeadMinutes) * 60), in: spot.timeZone)) tomorrow.")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
+            } else {
+                NavigationLink {
+                    Paywall()
+                } label: {
+                    Label("Tell me when the sun arrives", systemImage: "bell")
+                }
+            }
+        } footer: {
+            if purchases.isUnlocked, alerts.permission == .denied {
+                Text("Notifications are switched off for Sunspot. Turn them on in Settings and this will start working.")
+                    .foregroundStyle(.orange)
+            }
+        }
+    }
+
+    private func set(_ wanted: Bool) async {
+        guard wanted else {
+            store.setAlert(minutesBefore: nil)
+            await alerts.reschedule(for: store.spots)
+            return
+        }
+        // Only ask for permission at the moment somebody actually wants the thing it is for.
+        guard await alerts.requestPermission() else { return }
+        store.setAlert(minutesBefore: SunAlerts.defaultLeadMinutes)
+        await alerts.reschedule(for: store.spots)
     }
 }
 

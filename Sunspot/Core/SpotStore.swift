@@ -124,6 +124,11 @@ final class SpotStore {
         _ = updateSelected { $0.horizon = horizon }
     }
 
+    /// Turns the arrival warning on or off for the selected spot.
+    func setAlert(minutesBefore: Int?) {
+        _ = updateSelected { $0.alertMinutesBefore = minutesBefore }
+    }
+
     /// Applies a change to the selected spot. Returns false when there is nothing selected.
     @discardableResult
     private func updateSelected(_ change: (inout Spot) -> Void) -> Bool {

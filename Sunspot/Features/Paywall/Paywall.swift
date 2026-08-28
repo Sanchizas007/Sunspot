@@ -24,6 +24,11 @@ struct Paywall: View {
                         detail: "The bed by the fence and the one by the garage answer differently."
                     )
                     Feature(
+                        icon: "bell",
+                        title: "Told when the sun arrives",
+                        detail: "A word before it reaches the spot, so a short winter afternoon is not missed."
+                    )
+                    Feature(
                         icon: "square.grid.2x2",
                         title: "The widget",
                         detail: "Today's hours on the home screen, without opening anything."
