@@ -51,6 +51,13 @@ public enum Format {
         return "\(day(range.lowerBound, in: timeZone)) – \(day(range.upperBound, in: timeZone))"
     }
 
+    /// "6h", "4.5h" — for stating a requirement rather than a measurement.
+    public static func hours(_ value: Double) -> String {
+        value == value.rounded()
+            ? "\(Int(value))h"
+            : String(format: "%.1fh", value)
+    }
+
     public static func coordinate(_ value: Double) -> String {
         String(format: "%.4f°", value)
     }

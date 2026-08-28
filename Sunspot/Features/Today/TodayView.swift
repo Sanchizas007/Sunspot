@@ -55,6 +55,14 @@ private struct SunSummary: View {
                     .listRowInsets(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
             }
 
+            Section {
+                NavigationLink {
+                    PlantingView(spot: spot, minutes: day.directMinutes)
+                } label: {
+                    Label("What will grow here", systemImage: "leaf")
+                }
+            }
+
             Section("The day") {
                 LabeledContent("First sun", value: Format.time(day.firstSun, in: spot.timeZone))
                 LabeledContent("Last sun", value: Format.time(day.lastSun, in: spot.timeZone))
