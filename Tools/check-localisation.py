@@ -39,8 +39,12 @@ def keys_in_source(paths):
 def swiftui_key(raw):
     """Turns a Swift literal into the key SwiftUI looks up.
 
-    Interpolations become format specifiers, and more than one becomes positional — matching
-    what the compiler emits, which is the whole reason a hand-written catalogue drifts.
+    Interpolations become format specifiers. Never positional ones, however many there are:
+    that was assumed here once, the catalogue was written to match the assumption, and five
+    strings reached German and French readers in English because the app was asking for
+    `%lld … %@` while the catalogue answered to `%1$lld … %2$@`. Nothing failed, nothing
+    warned; it took looking at a German screen. `LocalisationKeyTests` pins the real
+    behaviour of both `LocalizedStringKey` and `String(localized:)` so this cannot drift back.
     """
     spans = []
     i = 0
@@ -59,7 +63,7 @@ def swiftui_key(raw):
         return raw
 
     out, shift = raw, 0
-    for index, (start, end, expression) in enumerate(spans, start=1):
+    for start, end, expression in spans:
         # What the expression *returns*, not what words appear inside it: a call to
         # Format.time can mention defaultLeadMinutes in its arguments and still hand back
         # a string.
@@ -68,8 +72,7 @@ def swiftui_key(raw):
         integral = not produces_string and (
             text.startswith("Int(") or text.endswith((".count", "Before", "Minutes"))
         )
-        spec = "lld" if integral else "@"
-        placeholder = f"%{index}${spec}" if len(spans) > 1 else f"%{spec}"
+        placeholder = "%lld" if integral else "%@"
         out = out[:start + shift] + placeholder + out[end + shift:]
         shift += len(placeholder) - (end - start)
     return out

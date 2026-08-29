@@ -2,1083 +2,186 @@
   "sourceLanguage": "en",
   "version": "1.0",
   "strings": {
-    "Today": {
+    "%@ of direct sun": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Today"
+            "value": "%@ of direct sun"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Heute"
+            "value": "%@ direkte Sonne"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aujourd’hui"
+            "value": "%@ de soleil direct"
           }
         }
       }
     },
-    "Map": {
+    "%@ – %@": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Map"
+            "value": "%@ – %@"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Karte"
+            "value": "%1$@ – %2$@"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Carte"
+            "value": "%1$@ – %2$@"
           }
         }
       }
     },
-    "Sky": {
+    "%@+": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sky"
+            "value": "%@+"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Himmel"
+            "value": "%@+"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ciel"
+            "value": "%@+"
           }
         }
       }
     },
-    "Year": {
+    "%lld minutes before — around %@ tomorrow.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Year"
+            "value": "%lld minutes before — around %@ tomorrow."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Jahr"
+            "value": "%1$lld Minuten vorher — morgen gegen %2$@."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Année"
+            "value": "%1$lld minutes avant — vers %2$@ demain."
           }
         }
       }
     },
-    "Spots": {
+    "%lld stretches": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Spots"
+            "value": "%lld stretches"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Stellen"
+            "value": "%lld Abschnitte"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Emplacements"
+            "value": "%lld périodes"
           }
         }
       }
     },
-    "The day": {
+    "%lld° of the %lld° the sun crosses here": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The day"
+            "value": "%lld° of the %lld° the sun crosses here"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Der Tag"
+            "value": "%1$lld° von %2$lld°, die die Sonne hier überstreicht"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "La journée"
+            "value": "%1$lld° sur les %2$lld° que le soleil parcourt ici"
           }
         }
       }
     },
-    "Right now": {
+    "%lld° so far — keep going": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Right now"
+            "value": "%lld° so far — keep going"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gerade jetzt"
+            "value": "%lld° bisher — weiter so"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "En ce moment"
+            "value": "%lld° pour l’instant — continuez"
           }
         }
       }
     },
-    "Across the year": {
+    "%lld° traced": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Across the year"
+            "value": "%lld° traced"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Übers Jahr"
+            "value": "%lld° nachgezeichnet"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sur l’année"
-          }
-        }
-      }
-    },
-    "What will grow": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "What will grow"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Was hier wächst"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ce qui poussera"
-          }
-        }
-      }
-    },
-    "Which is better?": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Which is better?"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Welche ist besser?"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Laquelle est meilleure ?"
-          }
-        }
-      }
-    },
-    "Done": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Done"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fertig"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Terminé"
-          }
-        }
-      }
-    },
-    "Cancel": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancel"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Abbrechen"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Annuler"
-          }
-        }
-      }
-    },
-    "Save": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sichern"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enregistrer"
-          }
-        }
-      }
-    },
-    "Now": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Now"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jetzt"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Maintenant"
-          }
-        }
-      }
-    },
-    "Try again": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Try again"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Erneut versuchen"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Réessayer"
-          }
-        }
-      }
-    },
-    "Save skyline": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save skyline"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Horizont sichern"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enregistrer l’horizon"
-          }
-        }
-      }
-    },
-    "Trace the skyline": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Trace the skyline"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Horizont nachzeichnen"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tracer l’horizon"
-          }
-        }
-      }
-    },
-    "Add a spot": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add a spot"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stelle hinzufügen"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ajouter un emplacement"
-          }
-        }
-      }
-    },
-    "First sun": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "First sun"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Erste Sonne"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Premier soleil"
-          }
-        }
-      }
-    },
-    "Last sun": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Last sun"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Letzte Sonne"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dernier soleil"
-          }
-        }
-      }
-    },
-    "Longest stretch": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Longest stretch"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Längster Abschnitt"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Plus longue période"
-          }
-        }
-      }
-    },
-    "Broken into": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Broken into"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unterbrochen in"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Découpé en"
-          }
-        }
-      }
-    },
-    "Sun height": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sun height"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sonnenhöhe"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hauteur du soleil"
-          }
-        }
-      }
-    },
-    "Direction": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Direction"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Richtung"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Direction"
-          }
-        }
-      }
-    },
-    "What will grow here": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "What will grow here"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Was hier wächst"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ce qui poussera ici"
-          }
-        }
-      }
-    },
-    "Tell me when the sun arrives": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tell me when the sun arrives"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sag mir, wenn die Sonne kommt"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prévenez-moi quand le soleil arrive"
-          }
-        }
-      }
-    },
-    "Where is the spot?": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Where is the spot?"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wo liegt die Stelle?"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Où se trouve l’emplacement ?"
-          }
-        }
-      }
-    },
-    "Sunspot needs a position to work out where the sun travels overhead.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sunspot needs a position to work out where the sun travels overhead."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sunspot braucht eine Position, um den Sonnenlauf über dieser Stelle zu berechnen."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sunspot a besoin d’une position pour calculer la course du soleil au-dessus de cet endroit."
-          }
-        }
-      }
-    },
-    "Open sky, so this is the most it could get. Trace the roofs and trees to get the real figure.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open sky, so this is the most it could get. Trace the roofs and trees to get the real figure."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Freier Himmel — mehr als das kann es nicht werden. Zeichne Dächer und Bäume nach, um den echten Wert zu bekommen."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ciel dégagé : c’est donc le maximum possible. Tracez les toits et les arbres pour obtenir le vrai chiffre."
-          }
-        }
-      }
-    },
-    "Notifications are switched off for Sunspot. Turn them on in Settings and this will start working.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notifications are switched off for Sunspot. Turn them on in Settings and this will start working."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mitteilungen sind für Sunspot ausgeschaltet. Schalte sie in den Einstellungen ein, dann funktioniert das hier."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les notifications sont désactivées pour Sunspot. Activez-les dans Réglages pour que cela fonctionne."
-          }
-        }
-      }
-    },
-    "Press and hold to move the spot": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Press and hold to move the spot"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gedrückt halten, um die Stelle zu verschieben"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Appuyez longuement pour déplacer l’emplacement"
-          }
-        }
-      }
-    },
-    "The sun is down": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The sun is down"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die Sonne ist unter"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le soleil est couché"
-          }
-        }
-      }
-    },
-    "Midnight": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Midnight"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mitternacht"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Minuit"
-          }
-        }
-      }
-    },
-    "Noon": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Noon"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mittag"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Midi"
-          }
-        }
-      }
-    },
-    "No spot yet": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No spot yet"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Noch keine Stelle"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aucun emplacement"
-          }
-        }
-      }
-    },
-    "Camera is off": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Camera is off"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kamera ist aus"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L’appareil photo est désactivé"
-          }
-        }
-      }
-    },
-    "No live view": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No live view"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keine Live-Ansicht"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pas de vue en direct"
-          }
-        }
-      }
-    },
-    "Sweep along the tops of the roofs and trees": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sweep along the tops of the roofs and trees"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fahre an den Dach- und Baumkanten entlang"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Suivez le sommet des toits et des arbres"
-          }
-        }
-      }
-    },
-    "Keep your finger down and turn on the spot": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keep your finger down and turn on the spot"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Finger halten und dich auf der Stelle drehen"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gardez le doigt appuyé et tournez sur place"
-          }
-        }
-      }
-    },
-    "Working out the year": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Working out the year"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das Jahr wird berechnet"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Calcul de l’année"
-          }
-        }
-      }
-    },
-    "hours of sun": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "hours of sun"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sonnenstunden"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "heures de soleil"
-          }
-        }
-      }
-    },
-    "full sun": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "full sun"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "volle Sonne"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "plein soleil"
-          }
-        }
-      }
-    },
-    "Once there is a spot, this shows how its sun changes across the year.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Once there is a spot, this shows how its sun changes across the year."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sobald eine Stelle gesetzt ist, zeigt sich hier, wie sich ihre Sonne übers Jahr verändert."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dès qu’un emplacement existe, vous verrez ici comment son ensoleillement change au fil de l’année."
-          }
-        }
-      }
-    },
-    "This is open sky. Trace the roofs and trees on the Sky screen and the shape of this year will change — often dramatically in winter.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This is open sky. Trace the roofs and trees on the Sky screen and the shape of this year will change — often dramatically in winter."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das ist freier Himmel. Zeichne Dächer und Bäume im Himmel-Tab nach, und die Kurve verändert sich — im Winter oft drastisch."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ceci est un ciel dégagé. Tracez les toits et les arbres dans l’onglet Ciel et la courbe changera — souvent radicalement en hiver."
-          }
-        }
-      }
-    },
-    "Six hours or more. Tomatoes, peppers and most vegetables want this window.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Six hours or more. Tomatoes, peppers and most vegetables want this window."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sechs Stunden oder mehr. Tomaten, Paprika und die meisten Gemüsesorten brauchen dieses Fenster."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Six heures ou plus. Tomates, poivrons et la plupart des légumes veulent cette fenêtre."
-          }
-        }
-      }
-    },
-    "Never six hours in a day. Beans, carrots and herbs will manage; fruiting crops will not.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Never six hours in a day. Beans, carrots and herbs will manage; fruiting crops will not."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nie sechs Stunden am Tag. Bohnen, Karotten und Kräuter kommen zurecht, Fruchtgemüse nicht."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jamais six heures dans la journée. Haricots, carottes et herbes s’en sortiront ; les cultures à fruits, non."
-          }
-        }
-      }
-    },
-    "Never more than four hours": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Never more than four hours"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nie mehr als vier Stunden"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jamais plus de quatre heures"
+            "value": "%lld° tracés"
           }
         }
       }
@@ -1106,71 +209,71 @@
         }
       }
     },
-    "The sun never clears the skyline here on those days.": {
+    "A word before it reaches the spot, so a short winter afternoon is not missed.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The sun never clears the skyline here on those days."
+            "value": "A word before it reaches the spot, so a short winter afternoon is not missed."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "An diesen Tagen kommt die Sonne hier nie über den Horizont."
+            "value": "Ein Hinweis, bevor sie die Stelle erreicht — damit ein kurzer Winternachmittag nicht verpasst wird."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ces jours-là, le soleil ne dépasse jamais l’horizon ici."
+            "value": "Un mot avant qu’il n’atteigne l’endroit, pour ne pas manquer un court après-midi d’hiver."
           }
         }
       }
     },
-    "Comparing": {
+    "Across the year": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Comparing"
+            "value": "Across the year"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vergleich läuft"
+            "value": "Übers Jahr"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Comparaison en cours"
+            "value": "Sur l’année"
           }
         }
       }
     },
-    "Only one spot": {
+    "Add a spot": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Only one spot"
+            "value": "Add a spot"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nur eine Stelle"
+            "value": "Stelle hinzufügen"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un seul emplacement"
+            "value": "Ajouter un emplacement"
           }
         }
       }
@@ -1198,232 +301,48 @@
         }
       }
     },
-    "showing": {
+    "Already bought it? Restore": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "showing"
+            "value": "Already bought it? Restore"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "angezeigt"
+            "value": "Schon gekauft? Wiederherstellen"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "affiché"
+            "value": "Déjà acheté ? Restaurer"
           }
         }
       }
     },
-    "open sky — not traced yet": {
+    "Apple and pear trees": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "open sky — not traced yet"
+            "value": "Apple and pear trees"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "freier Himmel — noch nicht nachgezeichnet"
+            "value": "Apfel- und Birnbäume"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "ciel dégagé — pas encore tracé"
-          }
-        }
-      }
-    },
-    "Will do well here": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Will do well here"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wächst hier gut"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Poussera bien ici"
-          }
-        }
-      }
-    },
-    "Will manage": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Will manage"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kommt zurecht"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "S’en sortira"
-          }
-        }
-      }
-    },
-    "Too much sun here": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Too much sun here"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hier zu viel Sonne"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Trop de soleil ici"
-          }
-        }
-      }
-    },
-    "Sun is one thing of several. Soil, water and wind decide plenty too, and none of them are in this app.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sun is one thing of several. Soil, water and wind decide plenty too, and none of them are in this app."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sonne ist nur einer von mehreren Faktoren. Boden, Wasser und Wind entscheiden ebenso viel — und davon weiß diese App nichts."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le soleil n’est qu’un facteur parmi d’autres. Le sol, l’eau et le vent comptent tout autant, et cette app n’en sait rien."
-          }
-        }
-      }
-    },
-    "What about in October?": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "What about in October?"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Und im Oktober?"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Et en octobre ?"
-          }
-        }
-      }
-    },
-    "You know what this spot gets today. The year is where the surprises are.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You know what this spot gets today. The year is where the surprises are."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Du weißt, was diese Stelle heute bekommt. Die Überraschungen stecken im Jahr."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vous savez ce que cet endroit reçoit aujourd’hui. Les surprises sont dans l’année."
-          }
-        }
-      }
-    },
-    "The whole year at this spot": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The whole year at this spot"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das ganze Jahr an dieser Stelle"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Toute l’année à cet endroit"
-          }
-        }
-      }
-    },
-    "When full sun starts and ends, and the weeks it gets none at all.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When full sun starts and ends, and the weeks it gets none at all."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wann die volle Sonne beginnt und endet — und die Wochen ganz ohne."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quand le plein soleil commence et finit, et les semaines sans rien du tout."
+            "value": "Pommiers et poiriers"
           }
         }
       }
@@ -1451,485 +370,117 @@
         }
       }
     },
-    "The bed by the fence and the one by the garage answer differently.": {
+    "At %@, today. The year matters too — a bed that manages six hours in June may get two in September.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The bed by the fence and the one by the garage answer differently."
+            "value": "At %@, today. The year matters too — a bed that manages six hours in June may get two in September."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Das Beet am Zaun und das an der Garage antworten unterschiedlich."
+            "value": "Heute an %@. Das Jahr zählt auch — ein Beet mit sechs Stunden im Juni hat im September vielleicht zwei."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le massif près de la clôture et celui près du garage ne donnent pas la même réponse."
+            "value": "À %@, aujourd’hui. L’année compte aussi : un massif qui obtient six heures en juin peut n’en avoir que deux en septembre."
           }
         }
       }
     },
-    "Told when the sun arrives": {
+    "Aubergine": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Told when the sun arrives"
+            "value": "Aubergine"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bescheid, wenn die Sonne kommt"
+            "value": "Aubergine"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Prévenu quand le soleil arrive"
+            "value": "Aubergine"
           }
         }
       }
     },
-    "A word before it reaches the spot, so a short winter afternoon is not missed.": {
+    "Basil": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "A word before it reaches the spot, so a short winter afternoon is not missed."
+            "value": "Basil"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ein Hinweis, bevor sie die Stelle erreicht — damit ein kurzer Winternachmittag nicht verpasst wird."
+            "value": "Basilikum"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Un mot avant qu’il n’atteigne l’endroit, pour ne pas manquer un court après-midi d’hiver."
+            "value": "Basilic"
           }
         }
       }
     },
-    "The widget": {
+    "Beans": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The widget"
+            "value": "Beans"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Das Widget"
+            "value": "Bohnen"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le widget"
+            "value": "Haricots"
           }
         }
       }
     },
-    "Today's hours on the home screen, without opening anything.": {
+    "Beetroot": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Today's hours on the home screen, without opening anything."
+            "value": "Beetroot"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die heutigen Stunden auf dem Home-Bildschirm, ohne etwas zu öffnen."
+            "value": "Rote Bete"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Les heures du jour sur l’écran d’accueil, sans rien ouvrir."
-          }
-        }
-      }
-    },
-    "One payment. No subscription, no renewal, nothing to cancel.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "One payment. No subscription, no renewal, nothing to cancel."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Einmal zahlen. Kein Abo, keine Verlängerung, nichts zu kündigen."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Un seul paiement. Pas d’abonnement, pas de renouvellement, rien à résilier."
-          }
-        }
-      }
-    },
-    "Already bought it? Restore": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Already bought it? Restore"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schon gekauft? Wiederherstellen"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Déjà acheté ? Restaurer"
-          }
-        }
-      }
-    },
-    "Unlocked": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unlocked"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Freigeschaltet"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Débloqué"
-          }
-        }
-      }
-    },
-    "Can't reach the App Store just now": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Can't reach the App Store just now"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der App Store ist gerade nicht erreichbar"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Impossible de joindre l’App Store pour l’instant"
-          }
-        }
-      }
-    },
-    "Sun today": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sun today"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sonne heute"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Soleil aujourd’hui"
-          }
-        }
-      }
-    },
-    "Hours of direct sun at your spot, counting the roofs and trees in the way.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hours of direct sun at your spot, counting the roofs and trees in the way."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stunden direkter Sonne an deiner Stelle — Dächer und Bäume eingerechnet."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Heures de soleil direct à votre emplacement, toits et arbres compris."
-          }
-        }
-      }
-    },
-    "Not unlocked": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Not unlocked"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nicht freigeschaltet"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Non débloqué"
-          }
-        }
-      }
-    },
-    "The widget comes with the full picture, in Sunspot.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The widget comes with the full picture, in Sunspot."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Das Widget gehört zum vollen Bild in Sunspot."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le widget fait partie de la version complète de Sunspot."
-          }
-        }
-      }
-    },
-    "Open Sunspot and trace the skyline where you are.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Open Sunspot and trace the skyline where you are."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Öffne Sunspot und zeichne den Horizont dort nach, wo du bist."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ouvrez Sunspot et tracez l’horizon là où vous êtes."
-          }
-        }
-      }
-    },
-    "open sky": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "open sky"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "freier Himmel"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ciel dégagé"
-          }
-        }
-      }
-    },
-    "Name this spot": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Name this spot"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stelle benennen"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nommer cet emplacement"
-          }
-        }
-      }
-    },
-    "Name": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Name"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Name"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nom"
-          }
-        }
-      }
-    },
-    "Something you will recognise: the bed by the fence, the balcony, the shed roof.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Something you will recognise: the bed by the fence, the balcony, the shed roof."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Etwas, das du wiedererkennst: das Beet am Zaun, der Balkon, das Schuppendach."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quelque chose que vous reconnaîtrez : le massif près de la clôture, le balcon, le toit de l’abri."
-          }
-        }
-      }
-    },
-    "of direct sun — %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "of direct sun — %@"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "direkte Sonne — %@"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "de soleil direct — %@"
-          }
-        }
-      }
-    },
-    "%@ of direct sun": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ of direct sun"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ direkte Sonne"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ de soleil direct"
-          }
-        }
-      }
-    },
-    "Full sun %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Full sun %@"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Volle Sonne %@"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Plein soleil %@"
+            "value": "Betteraves"
           }
         }
       }
@@ -1957,232 +508,301 @@
         }
       }
     },
-    "No direct sun at all %@": {
+    "Blackcurrants": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No direct sun at all %@"
+            "value": "Blackcurrants"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Überhaupt keine direkte Sonne %@"
+            "value": "Schwarze Johannisbeeren"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aucun soleil direct %@"
+            "value": "Cassis"
           }
         }
       }
     },
-    "Most sun: %1$@ on %2$@": {
+    "Bolts in a hot, wide-open spot. Afternoon shade suits it.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Most sun: %1$@ on %2$@"
+            "value": "Bolts in a hot, wide-open spot. Afternoon shade suits it."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Meiste Sonne: %1$@ am %2$@"
+            "value": "Schießt an einem heißen, offenen Platz. Nachmittagsschatten tut ihm gut."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Maximum de soleil : %1$@ le %2$@"
+            "value": "Monte en graine dans un endroit chaud et dégagé. L’ombre de l’après-midi lui convient."
           }
         }
       }
     },
-    "Rename %@": {
+    "Broken into": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rename %@"
+            "value": "Broken into"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ umbenennen"
+            "value": "Unterbrochen in"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Renommer %@"
+            "value": "Découpé en"
           }
         }
       }
     },
-    "Delete %@": {
+    "Camera is off": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Delete %@"
+            "value": "Camera is off"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ löschen"
+            "value": "Kamera ist aus"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Supprimer %@"
+            "value": "L’appareil photo est désactivé"
           }
         }
       }
     },
-    "Sun arrives from %@": {
+    "Can't reach the App Store just now": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sun arrives from %@"
+            "value": "Can't reach the App Store just now"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aufgang: %@"
+            "value": "Der App Store ist gerade nicht erreichbar"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lever : %@"
+            "value": "Impossible de joindre l’App Store pour l’instant"
           }
         }
       }
     },
-    "Leaves towards %@": {
+    "Cancel": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Leaves towards %@"
+            "value": "Cancel"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Untergang: %@"
+            "value": "Abbrechen"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Coucher : %@"
+            "value": "Annuler"
           }
         }
       }
     },
-    "Now: %@": {
+    "Carrots": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Now: %@"
+            "value": "Carrots"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Jetzt: %@"
+            "value": "Karotten"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Maintenant : %@"
+            "value": "Carottes"
           }
         }
       }
     },
-    "Tomatoes": {
+    "Chives": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tomatoes"
+            "value": "Chives"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tomaten"
+            "value": "Schnittlauch"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tomates"
+            "value": "Ciboulette"
           }
         }
       }
     },
-    "Peppers and chillies": {
+    "Clematis": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Peppers and chillies"
+            "value": "Clematis"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Paprika und Chili"
+            "value": "Clematis"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Poivrons et piments"
+            "value": "Clématite"
           }
         }
       }
     },
-    "Aubergine": {
+    "Comparing": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aubergine"
+            "value": "Comparing"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aubergine"
+            "value": "Vergleich läuft"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aubergine"
+            "value": "Comparaison en cours"
+          }
+        }
+      }
+    },
+    "Coriander": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coriander"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Koriander"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coriandre"
+          }
+        }
+      }
+    },
+    "Could not get a position just now. Pick a spot on the map instead.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not get a position just now. Pick a spot on the map instead."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Momentan keine Position zu bekommen. Wähle stattdessen eine Stelle auf der Karte."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossible d’obtenir une position pour l’instant. Choisissez plutôt un emplacement sur la carte."
+          }
+        }
+      }
+    },
+    "Could not reach the store to check. Try again in a moment.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not reach the store to check. Try again in a moment."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Store war nicht erreichbar. Versuche es gleich noch einmal."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossible de joindre la boutique. Réessayez dans un instant."
           }
         }
       }
@@ -2233,830 +853,71 @@
         }
       }
     },
-    "Sweetcorn": {
+    "Delete %@": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sweetcorn"
+            "value": "Delete %@"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zuckermais"
+            "value": "%@ löschen"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Maïs doux"
+            "value": "Supprimer %@"
           }
         }
       }
     },
-    "Beans": {
+    "Direction": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Beans"
+            "value": "Direction"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bohnen"
+            "value": "Richtung"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Haricots"
+            "value": "Direction"
           }
         }
       }
     },
-    "Peas": {
+    "Done": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Peas"
+            "value": "Done"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Erbsen"
+            "value": "Fertig"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Petits pois"
-          }
-        }
-      }
-    },
-    "Onions and garlic": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Onions and garlic"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zwiebeln und Knoblauch"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Oignons et ail"
-          }
-        }
-      }
-    },
-    "Carrots": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Carrots"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Karotten"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Carottes"
-          }
-        }
-      }
-    },
-    "Beetroot": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Beetroot"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rote Bete"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Betteraves"
-          }
-        }
-      }
-    },
-    "Potatoes": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Potatoes"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kartoffeln"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pommes de terre"
-          }
-        }
-      }
-    },
-    "Radishes": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radishes"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radieschen"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radis"
-          }
-        }
-      }
-    },
-    "Lettuce": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lettuce"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kopfsalat"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Laitue"
-          }
-        }
-      }
-    },
-    "Spinach": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spinach"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spinat"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Épinards"
-          }
-        }
-      }
-    },
-    "Kale and chard": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kale and chard"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Grünkohl und Mangold"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chou frisé et blettes"
-          }
-        }
-      }
-    },
-    "Rocket": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rocket"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rucola"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Roquette"
-          }
-        }
-      }
-    },
-    "Basil": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Basil"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Basilikum"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Basilic"
-          }
-        }
-      }
-    },
-    "Rosemary": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rosemary"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rosmarin"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Romarin"
-          }
-        }
-      }
-    },
-    "Thyme": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thyme"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thymian"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thym"
-          }
-        }
-      }
-    },
-    "Oregano": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Oregano"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Oregano"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Origan"
-          }
-        }
-      }
-    },
-    "Sage": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sage"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Salbei"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sauge"
-          }
-        }
-      }
-    },
-    "Coriander": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Coriander"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Koriander"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Coriandre"
-          }
-        }
-      }
-    },
-    "Parsley": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Parsley"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Petersilie"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Persil"
-          }
-        }
-      }
-    },
-    "Chives": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chives"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schnittlauch"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ciboulette"
-          }
-        }
-      }
-    },
-    "Mint": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mint"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Minze"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Menthe"
-          }
-        }
-      }
-    },
-    "Strawberries": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Strawberries"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Erdbeeren"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fraises"
-          }
-        }
-      }
-    },
-    "Raspberries": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Raspberries"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Himbeeren"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Framboises"
-          }
-        }
-      }
-    },
-    "Blackcurrants": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Blackcurrants"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schwarze Johannisbeeren"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cassis"
-          }
-        }
-      }
-    },
-    "Apple and pear trees": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apple and pear trees"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apfel- und Birnbäume"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pommiers et poiriers"
-          }
-        }
-      }
-    },
-    "Grapes": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Grapes"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Weintrauben"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vigne"
-          }
-        }
-      }
-    },
-    "Sunflowers": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sunflowers"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sonnenblumen"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tournesols"
-          }
-        }
-      }
-    },
-    "Lavender": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lavender"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lavendel"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lavande"
-          }
-        }
-      }
-    },
-    "Roses": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Roses"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rosen"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Roses"
-          }
-        }
-      }
-    },
-    "Geraniums": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geraniums"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geranien"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Géraniums"
-          }
-        }
-      }
-    },
-    "Foxgloves": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Foxgloves"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fingerhut"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Digitales"
-          }
-        }
-      }
-    },
-    "Impatiens": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Impatiens"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fleißiges Lieschen"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Impatiens"
-          }
-        }
-      }
-    },
-    "Hydrangea": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hydrangea"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hortensie"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hortensia"
-          }
-        }
-      }
-    },
-    "Clematis": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clematis"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clematis"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clématite"
-          }
-        }
-      }
-    },
-    "Ivy": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ivy"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Efeu"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lierre"
-          }
-        }
-      }
-    },
-    "Hostas": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hostas"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Funkien"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hostas"
+            "value": "Terminé"
           }
         }
       }
@@ -3084,255 +945,25 @@
         }
       }
     },
-    "Fruit will not ripen properly under six hours.": {
+    "First sun": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Fruit will not ripen properly under six hours."
+            "value": "First sun"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Unter sechs Stunden reifen die Früchte nicht richtig aus."
+            "value": "Erste Sonne"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "En dessous de six heures, les fruits ne mûrissent pas correctement."
-          }
-        }
-      }
-    },
-    "Quick enough to fit into a gap between other crops.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quick enough to fit into a gap between other crops."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schnell genug für eine Lücke zwischen anderen Kulturen."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Assez rapide pour combler un vide entre deux cultures."
-          }
-        }
-      }
-    },
-    "Bolts in a hot, wide-open spot. Afternoon shade suits it.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bolts in a hot, wide-open spot. Afternoon shade suits it."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schießt an einem heißen, offenen Platz. Nachmittagsschatten tut ihm gut."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Monte en graine dans un endroit chaud et dégagé. L’ombre de l’après-midi lui convient."
-          }
-        }
-      }
-    },
-    "Runs to seed fast in strong sun.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Runs to seed fast in strong sun."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schießt bei starker Sonne schnell in die Blüte."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Monte vite en graine sous un soleil fort."
-          }
-        }
-      }
-    },
-    "Happy in shade, and will take over a bed given the chance.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Happy in shade, and will take over a bed given the chance."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kommt im Schatten gut zurecht und übernimmt ein Beet, wenn man sie lässt."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Se plaît à l’ombre, et envahit un massif si on la laisse faire."
-          }
-        }
-      }
-    },
-    "One of the few that flowers properly in real shade.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "One of the few that flowers properly in real shade."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eine der wenigen, die im echten Schatten richtig blüht."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L’une des rares à bien fleurir à l’ombre véritable."
-          }
-        }
-      }
-    },
-    "Wilts in an exposed spot through the afternoon.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wilts in an exposed spot through the afternoon."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lässt an einem ungeschützten Platz über den Nachmittag die Blätter hängen."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Se fane dans un endroit exposé au fil de l’après-midi."
-          }
-        }
-      }
-    },
-    "Leaves scorch where the sun is strong.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Leaves scorch where the sun is strong."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die Blätter verbrennen, wo die Sonne stark ist."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les feuilles brûlent là où le soleil est fort."
-          }
-        }
-      }
-    },
-    "Vegetables": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vegetables"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gemüse"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Légumes"
-          }
-        }
-      }
-    },
-    "Herbs": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Herbs"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kräuter"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Herbes aromatiques"
-          }
-        }
-      }
-    },
-    "Fruit": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fruit"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Obst"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fruits"
+            "value": "Premier soleil"
           }
         }
       }
@@ -3360,278 +991,462 @@
         }
       }
     },
-    "Shrubs and climbers": {
+    "Foxgloves": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Shrubs and climbers"
+            "value": "Foxgloves"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sträucher und Kletterpflanzen"
+            "value": "Fingerhut"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Arbustes et grimpantes"
+            "value": "Digitales"
           }
         }
       }
     },
-    "%lld° so far — keep going": {
+    "Fruit": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld° so far — keep going"
+            "value": "Fruit"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld° bisher — weiter so"
+            "value": "Obst"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld° pour l’instant — continuez"
+            "value": "Fruits"
           }
         }
       }
     },
-    "%1$lld° of the %2$lld° the sun crosses here": {
+    "Fruit will not ripen properly under six hours.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$lld° of the %2$lld° the sun crosses here"
+            "value": "Fruit will not ripen properly under six hours."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$lld° von %2$lld°, die die Sonne hier überstreicht"
+            "value": "Unter sechs Stunden reifen die Früchte nicht richtig aus."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$lld° sur les %2$lld° que le soleil parcourt ici"
+            "value": "En dessous de six heures, les fruits ne mûrissent pas correctement."
           }
         }
       }
     },
-    "%lld° traced": {
+    "Full sun %@": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld° traced"
+            "value": "Full sun %@"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld° nachgezeichnet"
+            "value": "Volle Sonne %@"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld° tracés"
+            "value": "Plein soleil %@"
           }
         }
       }
     },
-    "%lld stretches": {
+    "Geraniums": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld stretches"
+            "value": "Geraniums"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld Abschnitte"
+            "value": "Geranien"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld périodes"
+            "value": "Géraniums"
           }
         }
       }
     },
-    "%1$lld minutes before — around %2$@ tomorrow.": {
+    "Grapes": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$lld minutes before — around %2$@ tomorrow."
+            "value": "Grapes"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$lld Minuten vorher — morgen gegen %2$@."
+            "value": "Weintrauben"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$lld minutes avant — vers %2$@ demain."
+            "value": "Vigne"
           }
         }
       }
     },
-    "At %@, today. The year matters too — a bed that manages six hours in June may get two in September.": {
+    "Happy in shade, and will take over a bed given the chance.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "At %@, today. The year matters too — a bed that manages six hours in June may get two in September."
+            "value": "Happy in shade, and will take over a bed given the chance."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Heute an %@. Das Jahr zählt auch — ein Beet mit sechs Stunden im Juni hat im September vielleicht zwei."
+            "value": "Kommt im Schatten gut zurecht und übernimmt ein Beet, wenn man sie lässt."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "À %@, aujourd’hui. L’année compte aussi : un massif qui obtient six heures en juin peut n’en avoir que deux en septembre."
+            "value": "Se plaît à l’ombre, et envahit un massif si on la laisse faire."
           }
         }
       }
     },
-    "This device cannot report which way it is pointing.": {
+    "Herbs": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This device cannot report which way it is pointing."
+            "value": "Herbs"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dieses Gerät kann nicht melden, wohin es zeigt."
+            "value": "Kräuter"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cet appareil ne peut pas indiquer sa direction."
+            "value": "Herbes aromatiques"
           }
         }
       }
     },
-    "Wave the phone in a figure of eight to calibrate the compass. Keep away from speakers, magnets and car dashboards.": {
+    "Hostas": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wave the phone in a figure of eight to calibrate the compass. Keep away from speakers, magnets and car dashboards."
+            "value": "Hostas"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Beschreibe mit dem Telefon eine Acht, um den Kompass zu kalibrieren. Halte Abstand zu Lautsprechern, Magneten und Armaturenbrettern."
+            "value": "Funkien"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Décrivez un huit avec le téléphone pour calibrer la boussole. Éloignez-vous des haut-parleurs, aimants et tableaux de bord."
+            "value": "Hostas"
           }
         }
       }
     },
-    "The compass is roughly right. A figure of eight will sharpen it.": {
+    "Hours of direct sun at your spot, counting the roofs and trees in the way.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The compass is roughly right. A figure of eight will sharpen it."
+            "value": "Hours of direct sun at your spot, counting the roofs and trees in the way."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Der Kompass stimmt ungefähr. Eine Acht schärft ihn nach."
+            "value": "Stunden direkter Sonne an deiner Stelle — Dächer und Bäume eingerechnet."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "La boussole est à peu près juste. Un huit l’affinera."
+            "value": "Heures de soleil direct à votre emplacement, toits et arbres compris."
           }
         }
       }
     },
-    "Location is off for Sunspot. Turn it on in Settings, or pick a spot on the map.": {
+    "Hydrangea": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Location is off for Sunspot. Turn it on in Settings, or pick a spot on the map."
+            "value": "Hydrangea"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ortung ist für Sunspot ausgeschaltet. Schalte sie in den Einstellungen ein oder wähle eine Stelle auf der Karte."
+            "value": "Hortensie"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "La localisation est désactivée pour Sunspot. Activez-la dans Réglages, ou choisissez un emplacement sur la carte."
+            "value": "Hortensia"
           }
         }
       }
     },
-    "This device does not allow location. Pick a spot on the map instead.": {
+    "Impatiens": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This device does not allow location. Pick a spot on the map instead."
+            "value": "Impatiens"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dieses Gerät erlaubt keine Ortung. Wähle stattdessen eine Stelle auf der Karte."
+            "value": "Fleißiges Lieschen"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cet appareil n’autorise pas la localisation. Choisissez plutôt un emplacement sur la carte."
+            "value": "Impatiens"
+          }
+        }
+      }
+    },
+    "Ivy": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ivy"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Efeu"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lierre"
+          }
+        }
+      }
+    },
+    "Kale and chard": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kale and chard"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grünkohl und Mangold"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chou frisé et blettes"
+          }
+        }
+      }
+    },
+    "Keep your finger down and turn on the spot": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep your finger down and turn on the spot"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finger halten und dich auf der Stelle drehen"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gardez le doigt appuyé et tournez sur place"
+          }
+        }
+      }
+    },
+    "Last sun": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last sun"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Letzte Sonne"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dernier soleil"
+          }
+        }
+      }
+    },
+    "Lavender": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lavender"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lavendel"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lavande"
+          }
+        }
+      }
+    },
+    "Leaves scorch where the sun is strong.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Leaves scorch where the sun is strong."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Blätter verbrennen, wo die Sonne stark ist."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les feuilles brûlent là où le soleil est fort."
+          }
+        }
+      }
+    },
+    "Leaves towards %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Leaves towards %@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untergang: %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coucher : %@"
+          }
+        }
+      }
+    },
+    "Lettuce": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lettuce"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kopfsalat"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laitue"
           }
         }
       }
@@ -3659,25 +1474,232 @@
         }
       }
     },
-    "Could not get a position just now. Pick a spot on the map instead.": {
+    "Location is off for Sunspot. Turn it on in Settings, or pick a spot on the map.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Could not get a position just now. Pick a spot on the map instead."
+            "value": "Location is off for Sunspot. Turn it on in Settings, or pick a spot on the map."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Momentan keine Position zu bekommen. Wähle stattdessen eine Stelle auf der Karte."
+            "value": "Ortung ist für Sunspot ausgeschaltet. Schalte sie in den Einstellungen ein oder wähle eine Stelle auf der Karte."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Impossible d’obtenir une position pour l’instant. Choisissez plutôt un emplacement sur la carte."
+            "value": "La localisation est désactivée pour Sunspot. Activez-la dans Réglages, ou choisissez un emplacement sur la carte."
+          }
+        }
+      }
+    },
+    "Longest stretch": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Longest stretch"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Längster Abschnitt"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plus longue période"
+          }
+        }
+      }
+    },
+    "Map": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Map"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karte"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carte"
+          }
+        }
+      }
+    },
+    "Midnight": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Midnight"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitternacht"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minuit"
+          }
+        }
+      }
+    },
+    "Mint": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mint"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minze"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menthe"
+          }
+        }
+      }
+    },
+    "Most sun: %@ on %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Most sun: %@ on %@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meiste Sonne: %1$@ am %2$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maximum de soleil : %1$@ le %2$@"
+          }
+        }
+      }
+    },
+    "Name": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nom"
+          }
+        }
+      }
+    },
+    "Name this spot": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name this spot"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stelle benennen"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nommer cet emplacement"
+          }
+        }
+      }
+    },
+    "Never more than four hours": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Never more than four hours"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie mehr als vier Stunden"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jamais plus de quatre heures"
+          }
+        }
+      }
+    },
+    "Never six hours in a day. Beans, carrots and herbs will manage; fruiting crops will not.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Never six hours in a day. Beans, carrots and herbs will manage; fruiting crops will not."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie sechs Stunden am Tag. Bohnen, Karotten und Kräuter kommen zurecht, Fruchtgemüse nicht."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jamais six heures dans la journée. Haricots, carottes et herbes s’en sortiront ; les cultures à fruits, non."
           }
         }
       }
@@ -3705,94 +1727,25 @@
         }
       }
     },
-    "The camera could not be started.": {
+    "No direct sun at all %@": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The camera could not be started."
+            "value": "No direct sun at all %@"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die Kamera ließ sich nicht starten."
+            "value": "Überhaupt keine direkte Sonne %@"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "L’appareil photo n’a pas pu démarrer."
-          }
-        }
-      }
-    },
-    "That purchase could not be verified. Nothing has been charged.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "That purchase could not be verified. Nothing has been charged."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der Kauf konnte nicht bestätigt werden. Es wurde nichts abgebucht."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cet achat n’a pas pu être vérifié. Rien n’a été débité."
-          }
-        }
-      }
-    },
-    "Waiting for approval. It will unlock as soon as that comes through.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Waiting for approval. It will unlock as soon as that comes through."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warte auf Freigabe. Sobald sie da ist, wird freigeschaltet."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "En attente d’approbation. Le déblocage suivra dès qu’elle arrive."
-          }
-        }
-      }
-    },
-    "The purchase did not go through. Nothing has been charged.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The purchase did not go through. Nothing has been charged."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Der Kauf ist nicht durchgegangen. Es wurde nichts abgebucht."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L’achat n’a pas abouti. Rien n’a été débité."
+            "value": "Aucun soleil direct %@"
           }
         }
       }
@@ -3820,117 +1773,163 @@
         }
       }
     },
-    "Could not reach the store to check. Try again in a moment.": {
+    "No live view": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Could not reach the store to check. Try again in a moment."
+            "value": "No live view"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Der Store war nicht erreichbar. Versuche es gleich noch einmal."
+            "value": "Keine Live-Ansicht"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Impossible de joindre la boutique. Réessayez dans un instant."
+            "value": "Pas de vue en direct"
           }
         }
       }
     },
-    "The sun is reaching this spot now.": {
+    "No spot yet": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The sun is reaching this spot now."
+            "value": "No spot yet"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die Sonne erreicht diese Stelle jetzt."
+            "value": "Noch keine Stelle"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le soleil atteint cet endroit maintenant."
+            "value": "Aucun emplacement"
           }
         }
       }
     },
-    "The sun reaches this spot in a minute, at %@.": {
+    "Noon": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The sun reaches this spot in a minute, at %@."
+            "value": "Noon"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die Sonne erreicht diese Stelle in einer Minute, um %@."
+            "value": "Mittag"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le soleil atteint cet endroit dans une minute, à %@."
+            "value": "Midi"
           }
         }
       }
     },
-    "The sun reaches this spot in %1$lld minutes, at %2$@.": {
+    "Not unlocked": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The sun reaches this spot in %1$lld minutes, at %2$@."
+            "value": "Not unlocked"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die Sonne erreicht diese Stelle in %1$lld Minuten, um %2$@."
+            "value": "Nicht freigeschaltet"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le soleil atteint cet endroit dans %1$lld minutes, à %2$@."
+            "value": "Non débloqué"
           }
         }
       }
     },
-    "The sun reaches this spot at %@.": {
+    "Notifications are switched off for Sunspot. Turn them on in Settings and this will start working.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The sun reaches this spot at %@."
+            "value": "Notifications are switched off for Sunspot. Turn them on in Settings and this will start working."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die Sonne erreicht diese Stelle um %@."
+            "value": "Mitteilungen sind für Sunspot ausgeschaltet. Schalte sie in den Einstellungen ein, dann funktioniert das hier."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le soleil atteint cet endroit à %@."
+            "value": "Les notifications sont désactivées pour Sunspot. Activez-les dans Réglages pour que cela fonctionne."
+          }
+        }
+      }
+    },
+    "Now": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Now"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jetzt"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maintenant"
+          }
+        }
+      }
+    },
+    "Now: %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Now: %@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jetzt: %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maintenant : %@"
           }
         }
       }
@@ -3958,6 +1957,1087 @@
         }
       }
     },
+    "Once there is a spot, this shows how its sun changes across the year.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Once there is a spot, this shows how its sun changes across the year."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sobald eine Stelle gesetzt ist, zeigt sich hier, wie sich ihre Sonne übers Jahr verändert."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dès qu’un emplacement existe, vous verrez ici comment son ensoleillement change au fil de l’année."
+          }
+        }
+      }
+    },
+    "One of the few that flowers properly in real shade.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One of the few that flowers properly in real shade."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine der wenigen, die im echten Schatten richtig blüht."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L’une des rares à bien fleurir à l’ombre véritable."
+          }
+        }
+      }
+    },
+    "One payment. No subscription, no renewal, nothing to cancel.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One payment. No subscription, no renewal, nothing to cancel."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einmal zahlen. Kein Abo, keine Verlängerung, nichts zu kündigen."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un seul paiement. Pas d’abonnement, pas de renouvellement, rien à résilier."
+          }
+        }
+      }
+    },
+    "Onions and garlic": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Onions and garlic"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zwiebeln und Knoblauch"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oignons et ail"
+          }
+        }
+      }
+    },
+    "Only one spot": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only one spot"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nur eine Stelle"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un seul emplacement"
+          }
+        }
+      }
+    },
+    "Open Sunspot and trace the skyline where you are.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Sunspot and trace the skyline where you are."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öffne Sunspot und zeichne den Horizont dort nach, wo du bist."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrez Sunspot et tracez l’horizon là où vous êtes."
+          }
+        }
+      }
+    },
+    "Open sky, so this is the most it could get. Trace the roofs and trees to get the real figure.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open sky, so this is the most it could get. Trace the roofs and trees to get the real figure."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freier Himmel — mehr als das kann es nicht werden. Zeichne Dächer und Bäume nach, um den echten Wert zu bekommen."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ciel dégagé : c’est donc le maximum possible. Tracez les toits et les arbres pour obtenir le vrai chiffre."
+          }
+        }
+      }
+    },
+    "Oregano": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oregano"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oregano"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Origan"
+          }
+        }
+      }
+    },
+    "Parsley": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parsley"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Petersilie"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Persil"
+          }
+        }
+      }
+    },
+    "Peas": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peas"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erbsen"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Petits pois"
+          }
+        }
+      }
+    },
+    "Peppers and chillies": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peppers and chillies"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paprika und Chili"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poivrons et piments"
+          }
+        }
+      }
+    },
+    "Potatoes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Potatoes"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kartoffeln"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pommes de terre"
+          }
+        }
+      }
+    },
+    "Press and hold to move the spot": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Press and hold to move the spot"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gedrückt halten, um die Stelle zu verschieben"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appuyez longuement pour déplacer l’emplacement"
+          }
+        }
+      }
+    },
+    "Quick enough to fit into a gap between other crops.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick enough to fit into a gap between other crops."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schnell genug für eine Lücke zwischen anderen Kulturen."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assez rapide pour combler un vide entre deux cultures."
+          }
+        }
+      }
+    },
+    "Radishes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Radishes"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Radieschen"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Radis"
+          }
+        }
+      }
+    },
+    "Raspberries": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Raspberries"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Himbeeren"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Framboises"
+          }
+        }
+      }
+    },
+    "Rename %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rename %@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ umbenennen"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Renommer %@"
+          }
+        }
+      }
+    },
+    "Right now": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Right now"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gerade jetzt"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En ce moment"
+          }
+        }
+      }
+    },
+    "Rocket": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rocket"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rucola"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roquette"
+          }
+        }
+      }
+    },
+    "Rosemary": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rosemary"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rosmarin"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Romarin"
+          }
+        }
+      }
+    },
+    "Roses": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roses"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rosen"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Roses"
+          }
+        }
+      }
+    },
+    "Runs to seed fast in strong sun.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runs to seed fast in strong sun."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schießt bei starker Sonne schnell in die Blüte."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monte vite en graine sous un soleil fort."
+          }
+        }
+      }
+    },
+    "Sage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sage"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salbei"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sauge"
+          }
+        }
+      }
+    },
+    "Save": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sichern"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enregistrer"
+          }
+        }
+      }
+    },
+    "Save skyline": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save skyline"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horizont sichern"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enregistrer l’horizon"
+          }
+        }
+      }
+    },
+    "Shrubs and climbers": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shrubs and climbers"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sträucher und Kletterpflanzen"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arbustes et grimpantes"
+          }
+        }
+      }
+    },
+    "Six hours or more. Tomatoes, peppers and most vegetables want this window.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Six hours or more. Tomatoes, peppers and most vegetables want this window."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sechs Stunden oder mehr. Tomaten, Paprika und die meisten Gemüsesorten brauchen dieses Fenster."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Six heures ou plus. Tomates, poivrons et la plupart des légumes veulent cette fenêtre."
+          }
+        }
+      }
+    },
+    "Sky": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sky"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Himmel"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ciel"
+          }
+        }
+      }
+    },
+    "Something you will recognise: the bed by the fence, the balcony, the shed roof.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Something you will recognise: the bed by the fence, the balcony, the shed roof."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Etwas, das du wiedererkennst: das Beet am Zaun, der Balkon, das Schuppendach."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quelque chose que vous reconnaîtrez : le massif près de la clôture, le balcon, le toit de l’abri."
+          }
+        }
+      }
+    },
+    "Spinach": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spinach"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spinat"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Épinards"
+          }
+        }
+      }
+    },
+    "Spots": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spots"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stellen"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Emplacements"
+          }
+        }
+      }
+    },
+    "Strawberries": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Strawberries"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erdbeeren"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fraises"
+          }
+        }
+      }
+    },
+    "Sun arrives from %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sun arrives from %@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgang: %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lever : %@"
+          }
+        }
+      }
+    },
+    "Sun height": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sun height"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnenhöhe"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hauteur du soleil"
+          }
+        }
+      }
+    },
+    "Sun is one thing of several. Soil, water and wind decide plenty too, and none of them are in this app.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sun is one thing of several. Soil, water and wind decide plenty too, and none of them are in this app."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonne ist nur einer von mehreren Faktoren. Boden, Wasser und Wind entscheiden ebenso viel — und davon weiß diese App nichts."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le soleil n’est qu’un facteur parmi d’autres. Le sol, l’eau et le vent comptent tout autant, et cette app n’en sait rien."
+          }
+        }
+      }
+    },
+    "Sun today": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sun today"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonne heute"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soleil aujourd’hui"
+          }
+        }
+      }
+    },
+    "Sunflowers": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunflowers"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnenblumen"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tournesols"
+          }
+        }
+      }
+    },
+    "Sunspot needs a position to work out where the sun travels overhead.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunspot needs a position to work out where the sun travels overhead."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunspot braucht eine Position, um den Sonnenlauf über dieser Stelle zu berechnen."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunspot a besoin d’une position pour calculer la course du soleil au-dessus de cet endroit."
+          }
+        }
+      }
+    },
+    "Sweep along the tops of the roofs and trees": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sweep along the tops of the roofs and trees"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fahre an den Dach- und Baumkanten entlang"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suivez le sommet des toits et des arbres"
+          }
+        }
+      }
+    },
+    "Sweetcorn": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sweetcorn"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zuckermais"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maïs doux"
+          }
+        }
+      }
+    },
+    "Tell me when the sun arrives": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tell me when the sun arrives"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sag mir, wenn die Sonne kommt"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prévenez-moi quand le soleil arrive"
+          }
+        }
+      }
+    },
+    "That purchase could not be verified. Nothing has been charged.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That purchase could not be verified. Nothing has been charged."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Kauf konnte nicht bestätigt werden. Es wurde nichts abgebucht."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cet achat n’a pas pu être vérifié. Rien n’a été débité."
+          }
+        }
+      }
+    },
+    "The bed by the fence and the one by the garage answer differently.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The bed by the fence and the one by the garage answer differently."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Beet am Zaun und das an der Garage antworten unterschiedlich."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le massif près de la clôture et celui près du garage ne donnent pas la même réponse."
+          }
+        }
+      }
+    },
+    "The camera could not be started.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The camera could not be started."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Kamera ließ sich nicht starten."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L’appareil photo n’a pas pu démarrer."
+          }
+        }
+      }
+    },
+    "The compass is roughly right. A figure of eight will sharpen it.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The compass is roughly right. A figure of eight will sharpen it."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Kompass stimmt ungefähr. Eine Acht schärft ihn nach."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La boussole est à peu près juste. Un huit l’affinera."
+          }
+        }
+      }
+    },
+    "The day": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The day"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Tag"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La journée"
+          }
+        }
+      }
+    },
+    "The purchase did not go through. Nothing has been charged.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The purchase did not go through. Nothing has been charged."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Kauf ist nicht durchgegangen. Es wurde nichts abgebucht."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L’achat n’a pas abouti. Rien n’a été débité."
+          }
+        }
+      }
+    },
     "The spot": {
       "extractionState": "manual",
       "localizations": {
@@ -3981,48 +3061,968 @@
         }
       }
     },
-    "%1$@ – %2$@": {
+    "The sun is down": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ – %2$@"
+            "value": "The sun is down"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ – %2$@"
+            "value": "Die Sonne ist unter"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ – %2$@"
+            "value": "Le soleil est couché"
           }
         }
       }
     },
-    "%@+": {
+    "The sun is reaching this spot now.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@+"
+            "value": "The sun is reaching this spot now."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@+"
+            "value": "Die Sonne erreicht diese Stelle jetzt."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@+"
+            "value": "Le soleil atteint cet endroit maintenant."
+          }
+        }
+      }
+    },
+    "The sun never clears the skyline here on those days.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The sun never clears the skyline here on those days."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An diesen Tagen kommt die Sonne hier nie über den Horizont."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ces jours-là, le soleil ne dépasse jamais l’horizon ici."
+          }
+        }
+      }
+    },
+    "The sun reaches this spot at %@.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The sun reaches this spot at %@."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Sonne erreicht diese Stelle um %@."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le soleil atteint cet endroit à %@."
+          }
+        }
+      }
+    },
+    "The sun reaches this spot in %lld minutes, at %@.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The sun reaches this spot in %lld minutes, at %@."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Sonne erreicht diese Stelle in %1$lld Minuten, um %2$@."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le soleil atteint cet endroit dans %1$lld minutes, à %2$@."
+          }
+        }
+      }
+    },
+    "The sun reaches this spot in a minute, at %@.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The sun reaches this spot in a minute, at %@."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Sonne erreicht diese Stelle in einer Minute, um %@."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le soleil atteint cet endroit dans une minute, à %@."
+          }
+        }
+      }
+    },
+    "The whole year at this spot": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The whole year at this spot"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das ganze Jahr an dieser Stelle"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toute l’année à cet endroit"
+          }
+        }
+      }
+    },
+    "The widget": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The widget"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Widget"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le widget"
+          }
+        }
+      }
+    },
+    "The widget comes with the full picture, in Sunspot.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The widget comes with the full picture, in Sunspot."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Widget gehört zum vollen Bild in Sunspot."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le widget fait partie de la version complète de Sunspot."
+          }
+        }
+      }
+    },
+    "This device cannot report which way it is pointing.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This device cannot report which way it is pointing."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieses Gerät kann nicht melden, wohin es zeigt."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cet appareil ne peut pas indiquer sa direction."
+          }
+        }
+      }
+    },
+    "This device does not allow location. Pick a spot on the map instead.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This device does not allow location. Pick a spot on the map instead."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieses Gerät erlaubt keine Ortung. Wähle stattdessen eine Stelle auf der Karte."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cet appareil n’autorise pas la localisation. Choisissez plutôt un emplacement sur la carte."
+          }
+        }
+      }
+    },
+    "This is open sky. Trace the roofs and trees on the Sky screen and the shape of this year will change — often dramatically in winter.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is open sky. Trace the roofs and trees on the Sky screen and the shape of this year will change — often dramatically in winter."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das ist freier Himmel. Zeichne Dächer und Bäume im Himmel-Tab nach, und die Kurve verändert sich — im Winter oft drastisch."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ceci est un ciel dégagé. Tracez les toits et les arbres dans l’onglet Ciel et la courbe changera — souvent radicalement en hiver."
+          }
+        }
+      }
+    },
+    "Thyme": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thyme"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thymian"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thym"
+          }
+        }
+      }
+    },
+    "Today": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aujourd’hui"
+          }
+        }
+      }
+    },
+    "Today's hours on the home screen, without opening anything.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today's hours on the home screen, without opening anything."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die heutigen Stunden auf dem Home-Bildschirm, ohne etwas zu öffnen."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les heures du jour sur l’écran d’accueil, sans rien ouvrir."
+          }
+        }
+      }
+    },
+    "Told when the sun arrives": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Told when the sun arrives"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bescheid, wenn die Sonne kommt"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prévenu quand le soleil arrive"
+          }
+        }
+      }
+    },
+    "Tomatoes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomatoes"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomaten"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tomates"
+          }
+        }
+      }
+    },
+    "Too much sun here": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Too much sun here"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hier zu viel Sonne"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trop de soleil ici"
+          }
+        }
+      }
+    },
+    "Trace the skyline": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trace the skyline"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horizont nachzeichnen"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tracer l’horizon"
+          }
+        }
+      }
+    },
+    "Try again": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try again"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erneut versuchen"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réessayer"
+          }
+        }
+      }
+    },
+    "Unlocked": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlocked"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freigeschaltet"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Débloqué"
+          }
+        }
+      }
+    },
+    "Vegetables": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vegetables"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gemüse"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Légumes"
+          }
+        }
+      }
+    },
+    "Waiting for approval. It will unlock as soon as that comes through.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waiting for approval. It will unlock as soon as that comes through."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Warte auf Freigabe. Sobald sie da ist, wird freigeschaltet."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En attente d’approbation. Le déblocage suivra dès qu’elle arrive."
+          }
+        }
+      }
+    },
+    "Wave the phone in a figure of eight to calibrate the compass. Keep away from speakers, magnets and car dashboards.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wave the phone in a figure of eight to calibrate the compass. Keep away from speakers, magnets and car dashboards."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beschreibe mit dem Telefon eine Acht, um den Kompass zu kalibrieren. Halte Abstand zu Lautsprechern, Magneten und Armaturenbrettern."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Décrivez un huit avec le téléphone pour calibrer la boussole. Éloignez-vous des haut-parleurs, aimants et tableaux de bord."
+          }
+        }
+      }
+    },
+    "What about in October?": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What about in October?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Und im Oktober?"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Et en octobre ?"
+          }
+        }
+      }
+    },
+    "What will grow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What will grow"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Was hier wächst"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce qui poussera"
+          }
+        }
+      }
+    },
+    "What will grow here": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What will grow here"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Was hier wächst"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce qui poussera ici"
+          }
+        }
+      }
+    },
+    "When full sun starts and ends, and the weeks it gets none at all.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When full sun starts and ends, and the weeks it gets none at all."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wann die volle Sonne beginnt und endet — und die Wochen ganz ohne."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand le plein soleil commence et finit, et les semaines sans rien du tout."
+          }
+        }
+      }
+    },
+    "Where is the spot?": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Where is the spot?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wo liegt die Stelle?"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Où se trouve l’emplacement ?"
+          }
+        }
+      }
+    },
+    "Which is better?": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Which is better?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welche ist besser?"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laquelle est meilleure ?"
+          }
+        }
+      }
+    },
+    "Will do well here": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Will do well here"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wächst hier gut"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poussera bien ici"
+          }
+        }
+      }
+    },
+    "Will manage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Will manage"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kommt zurecht"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "S’en sortira"
+          }
+        }
+      }
+    },
+    "Wilts in an exposed spot through the afternoon.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wilts in an exposed spot through the afternoon."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lässt an einem ungeschützten Platz über den Nachmittag die Blätter hängen."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se fane dans un endroit exposé au fil de l’après-midi."
+          }
+        }
+      }
+    },
+    "Working out the year": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Working out the year"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Jahr wird berechnet"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calcul de l’année"
+          }
+        }
+      }
+    },
+    "Year": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Year"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jahr"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Année"
+          }
+        }
+      }
+    },
+    "You know what this spot gets today. The year is where the surprises are.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You know what this spot gets today. The year is where the surprises are."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Du weißt, was diese Stelle heute bekommt. Die Überraschungen stecken im Jahr."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vous savez ce que cet endroit reçoit aujourd’hui. Les surprises sont dans l’année."
+          }
+        }
+      }
+    },
+    "full sun": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "full sun"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "volle Sonne"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "plein soleil"
+          }
+        }
+      }
+    },
+    "hours of sun": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "hours of sun"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnenstunden"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "heures de soleil"
+          }
+        }
+      }
+    },
+    "of direct sun — %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "of direct sun — %@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "direkte Sonne — %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "de soleil direct — %@"
+          }
+        }
+      }
+    },
+    "open sky": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "open sky"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "freier Himmel"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ciel dégagé"
+          }
+        }
+      }
+    },
+    "open sky — not traced yet": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "open sky — not traced yet"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "freier Himmel — noch nicht nachgezeichnet"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ciel dégagé — pas encore tracé"
+          }
+        }
+      }
+    },
+    "showing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "showing"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "angezeigt"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "affiché"
           }
         }
       }
