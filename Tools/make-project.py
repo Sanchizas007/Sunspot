@@ -564,11 +564,35 @@ pbxproj = f"""// !$*UTF8*$!
 }}
 """
 
+# The scheme, byte for byte as Xcode itself writes it.
+#
+# Not a formatting preference. Xcode rewrites this file into its own canonical shape the
+# first time anybody opens Edit Scheme, so a generator that emits a tidier version guarantees
+# a diff after every visit to the scheme editor, and guarantees that regenerating undoes
+# whatever Xcode just wrote. Matching it exactly makes regeneration a no-op.
+#
+# It is also the likeliest reason the StoreKit configuration had to be chosen by hand after
+# every regeneration. The path below has always been correct; what changed under Xcode was
+# the file around it. This does not promise the one-time click is gone — only a real Xcode
+# run can say — but there is now nothing for Xcode to notice.
+#
+# The explanation lives here rather than as an XML comment in the scheme because Xcode
+# deletes XML comments when it rewrites the file, which is exactly what happened to the last
+# one. Tools/check.sh asserts that the file this names is actually on disk.
 SCHEME = f"""<?xml version="1.0" encoding="UTF-8"?>
-<Scheme LastUpgradeVersion = "2660" version = "1.7">
-   <BuildAction parallelizeBuildables = "YES" buildImplicitDependencies = "YES">
+<Scheme
+   LastUpgradeVersion = "2660"
+   version = "1.3">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
       <BuildActionEntries>
-         <BuildActionEntry buildForTesting = "YES" buildForRunning = "YES" buildForProfiling = "YES" buildForArchiving = "YES" buildForAnalyzing = "YES">
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "{I['appTarget']}"
@@ -579,9 +603,14 @@ SCHEME = f"""<?xml version="1.0" encoding="UTF-8"?>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
-   <TestAction buildConfiguration = "Debug" selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB" selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB" shouldUseLaunchSchemeArgsEnv = "YES">
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference skipped = "NO">
+         <TestableReference
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "{I['testTarget']}"
@@ -592,8 +621,18 @@ SCHEME = f"""<?xml version="1.0" encoding="UTF-8"?>
          </TestableReference>
       </Testables>
    </TestAction>
-   <LaunchAction buildConfiguration = "Debug" selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB" selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB" launchStyle = "0" useCustomWorkingDirectory = "NO" ignoresPersistentStateOnLaunch = "NO" debugDocumentVersioning = "YES" debugServiceExtension = "internal" allowLocationSimulation = "YES">
-      <BuildableProductRunnable runnableDebuggingMode = "0">
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "{I['appTarget']}"
@@ -602,18 +641,18 @@ SCHEME = f"""<?xml version="1.0" encoding="UTF-8"?>
             ReferencedContainer = "container:{APP}.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <!-- The path here is right, and was right the first time. Xcode still will not use it
-           until somebody picks the configuration once by hand in Edit Scheme, after which it
-           remembers. So after regenerating this file: run the app, and if the paywall says it
-           cannot reach the store, open Product > Scheme > Edit Scheme > Run > Options and
-           choose Sunspot.storekit. It is a one-click, one-time thing per checkout, not a
-           broken path. Tools/check.sh asserts the file this names is actually on disk. -->
       <StoreKitConfigurationFileReference
          identifier = "../../Config/{APP}.storekit">
       </StoreKitConfigurationFileReference>
    </LaunchAction>
-   <ProfileAction buildConfiguration = "Release" shouldUseLaunchSchemeArgsEnv = "YES" savedToolIdentifier = "" useCustomWorkingDirectory = "NO" debugDocumentVersioning = "YES">
-      <BuildableProductRunnable runnableDebuggingMode = "0">
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "{I['appTarget']}"
@@ -623,8 +662,13 @@ SCHEME = f"""<?xml version="1.0" encoding="UTF-8"?>
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
-   <AnalyzeAction buildConfiguration = "Debug"></AnalyzeAction>
-   <ArchiveAction buildConfiguration = "Release" revealArchiveInOrganizer = "YES"></ArchiveAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
 </Scheme>
 """
 

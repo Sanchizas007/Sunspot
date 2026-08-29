@@ -124,6 +124,11 @@ Tools/build-site.py         the pages served from docs/
 
 `check.sh` is the one to run after a change; the rest it calls or you call by hand.
 
+`make-project.py` writes the scheme byte for byte as Xcode writes it, so opening Edit Scheme
+no longer produces a diff and regenerating no longer undoes what Xcode just saved. The
+StoreKit configuration path in it has always been correct; what used to change underneath it
+was the formatting of the file around it.
+
 There is no analytics, no account, no server and no third-party SDK. Nothing the app works
 out leaves the phone, which is why the privacy manifest declares one API and no collected
 data at all.
