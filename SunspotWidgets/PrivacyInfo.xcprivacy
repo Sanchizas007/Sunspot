@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!--
+	  Sunspot collects nothing. No account, no analytics, no advertising, no
+	  server of its own and no third-party SDK in the binary: the spot, the
+	  traced skyline and the position it was traced at never leave the device.
+	  The only thing declared below is an API Apple asks to be accounted for
+	  whatever it is used on.
+	-->
+
+	<key>NSPrivacyTracking</key>
+	<false/>
+
+	<key>NSPrivacyTrackingDomains</key>
+	<array/>
+
+	<key>NSPrivacyCollectedDataTypes</key>
+	<array/>
+
+	<key>NSPrivacyAccessedAPITypes</key>
+	<array>
+		<dict>
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<!--
+				  Which spot is being looked at, and whether the purchase has
+				  been made. Both are written by the app and read by the widget
+				  through the App Group they share, and neither is read from
+				  anywhere else. There is no CA92.1 here because the app never
+				  touches its own standard defaults.
+				-->
+				<string>1C8F.1</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

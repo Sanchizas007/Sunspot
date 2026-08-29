@@ -58,4 +58,22 @@ struct PurchasesTests {
         #expect(Purchases.State.unavailable != .unlocked)
         #expect(Purchases.State.locked(price: "$5.99") != .unlocked)
     }
+
+    // MARK: - What the widget is told
+
+    @Test("A store that could not be reached is not an answer, and does not clear the widget")
+    func unreachableStoreLeavesTheCachedAnswerAlone() {
+        // The widget cannot ask StoreKit from inside its own timeline, so it reads a flag the
+        // app writes down. Writing `false` whenever the store is unreachable takes the paid
+        // features off the home screen of somebody who paid, because their train went into a
+        // tunnel — and puts them back only when the app is next opened with a signal.
+        #expect(Purchases.cachedUnlock(for: .unavailable) == nil)
+        #expect(Purchases.cachedUnlock(for: .loading) == nil)
+    }
+
+    @Test("A definite answer is written down for the widget, either way")
+    func definiteAnswersAreCached() {
+        #expect(Purchases.cachedUnlock(for: .unlocked) == true)
+        #expect(Purchases.cachedUnlock(for: .locked(price: "$5.99")) == false)
+    }
 }

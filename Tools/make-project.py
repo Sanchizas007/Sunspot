@@ -14,7 +14,7 @@ APP = "Sunspot"
 BUNDLE_ID = "app.sunspot"
 DEPLOYMENT_TARGET = "17.0"
 SWIFT_VERSION = "6.0"
-MARKETING_VERSION = "0.1"
+MARKETING_VERSION = "1.0"
 # Apple developer team, needed to sign for a real device. Same account as Sunfold.
 DEVELOPMENT_TEAM = "3M856J997X"
 
@@ -72,7 +72,17 @@ APP_COMMON = {
     "PRODUCT_BUNDLE_IDENTIFIER": BUNDLE_ID,
     "PRODUCT_NAME": '"$(TARGET_NAME)"',
     "SWIFT_EMIT_LOC_STRINGS": "YES",
-    "TARGETED_DEVICE_FAMILY": '"1,2"',
+    # iPhone only. The build declared iPad as well, which was never true of anything here:
+    # the layouts are phone-shaped, nothing has been run on an iPad, and iPad defaults to all
+    # four orientations while the Sky screen's projection has only ever been exercised in
+    # portrait. Claiming it also makes an iPad screenshot set mandatory in App Store Connect
+    # and puts the app in front of a reviewer on hardware it was not built for. One character
+    # to put back, on the day it is actually wanted and tested.
+    "TARGETED_DEVICE_FAMILY": "1",
+    # Otherwise every upload stops to ask the export compliance question by hand. The answer
+    # is no: the app makes no network requests of its own and uses nothing beyond the
+    # encryption inside Apple's own frameworks.
+    "INFOPLIST_KEY_ITSAppUsesNonExemptEncryption": "NO",
     "CODE_SIGN_STYLE": "Automatic",
     "DEVELOPMENT_TEAM": DEVELOPMENT_TEAM,
     "CODE_SIGN_ENTITLEMENTS": f"Config/{APP}.entitlements",
@@ -90,7 +100,7 @@ WIDGET_COMMON = {
     "PRODUCT_NAME": '"$(TARGET_NAME)"',
     "SKIP_INSTALL": "YES",
     "SWIFT_EMIT_LOC_STRINGS": "YES",
-    "TARGETED_DEVICE_FAMILY": '"1,2"',
+    "TARGETED_DEVICE_FAMILY": "1",
     "CODE_SIGN_STYLE": "Automatic",
     "DEVELOPMENT_TEAM": DEVELOPMENT_TEAM,
     "CODE_SIGN_ENTITLEMENTS": f"Config/{APP}Widgets.entitlements",
@@ -102,7 +112,9 @@ TEST_COMMON = {
     "PRODUCT_BUNDLE_IDENTIFIER": f"{BUNDLE_ID}.tests",
     "PRODUCT_NAME": '"$(TARGET_NAME)"',
     "SWIFT_EMIT_LOC_STRINGS": "NO",
-    "TARGETED_DEVICE_FAMILY": '"1,2"',
+    # Matching the host: a test bundle that claims a device family its host does not is a
+    # mismatch waiting to be reported on some future Xcode.
+    "TARGETED_DEVICE_FAMILY": "1",
     "TEST_HOST": f'"$(BUILT_PRODUCTS_DIR)/{APP}.app/{APP}"',
     "CODE_SIGN_STYLE": "Automatic",
     "DEVELOPMENT_TEAM": DEVELOPMENT_TEAM,

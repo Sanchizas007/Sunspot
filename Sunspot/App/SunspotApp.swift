@@ -55,6 +55,8 @@ private struct RootView: View {
 
     @State private var tab = MainTab(demoScreen: Demo.screen)
 
+    @Environment(\.scenePhase) private var scenePhase
+
     private let tick = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
 
     var body: some View {
@@ -78,8 +80,17 @@ private struct RootView: View {
             location.start()
             purchases.startListening()
             await purchases.load()
+            await alerts.reschedule(for: store.spots)
         }
         .demoState()
+        // Warnings are handed to the system a week at a time and nothing refills them on its
+        // own. Without this they run out quietly on the eighth day — and a spot that has been
+        // moved or retraced since goes on announcing a sun that no longer arrives then. The
+        // task above covers a cold launch; this covers coming back to an app that never quit.
+        .onChange(of: scenePhase) { _, phase in
+            guard phase == .active else { return }
+            Task { await alerts.reschedule(for: store.spots) }
+        }
         .onReceive(tick) { store.clockTicked(to: $0) }
         .onChange(of: location.state) { _, state in
             if case let .located(latitude, longitude) = state {

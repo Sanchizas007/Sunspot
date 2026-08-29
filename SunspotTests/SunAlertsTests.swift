@@ -134,6 +134,58 @@ struct SunAlertsTests {
         #expect(!request.content.body.isEmpty)
     }
 
+    // MARK: - Planning across several spots
+
+    @Test("The week is planned across all the spots at once, not a week each")
+    func planCoversEverySpotWithAlertsOn() {
+        var withAlerts = Self.spot()
+        withAlerts.alertMinutesBefore = 20
+        var alsoOn = Self.spot()
+        alsoOn.alertMinutesBefore = 45
+        let off = Self.spot()
+
+        let plan = SunAlerts.plan(for: [withAlerts, alsoOn, off], from: Self.moment(6, 1))
+        #expect(plan.count == SunAlerts.daysAhead * 2, "got \(plan.count)")
+        #expect(Set(plan.map(\.identifier)).count == plan.count,
+                "two notifications shared an identifier and would overwrite each other")
+    }
+
+    @Test("A spot with alerts switched off contributes nothing")
+    func planIgnoresSilentSpots() {
+        #expect(SunAlerts.plan(for: [Self.spot(), Self.spot()], from: Self.moment(6, 1)).isEmpty)
+    }
+
+    @Test("Past what iOS will hold, the soonest warnings are the ones kept")
+    func planKeepsTheSoonestWhenThereAreTooMany() throws {
+        // Ten spots at a week each is seventy, and iOS holds sixty-four. Which ten go missing
+        // is not something to leave to the order they happened to be added in.
+        var spots: [Spot] = []
+        for _ in 0..<10 {
+            var spot = Self.spot()
+            spot.alertMinutesBefore = 20
+            spots.append(spot)
+        }
+        let now = Self.moment(6, 1)
+        let plan = SunAlerts.plan(for: spots, from: now)
+
+        #expect(plan.count == SunAlerts.pendingLimit, "got \(plan.count)")
+
+        // Everything kept must fire no later than anything dropped. With ten identical spots
+        // that means the last day of the week is what goes, not an arbitrary third of it.
+        let kept = plan.compactMap(Self.fireDate(of:))
+        let everything = SunAlerts.plan(
+            for: spots, from: now, limit: .max
+        ).compactMap(Self.fireDate(of:))
+        let dropped = everything.sorted().suffix(everything.count - kept.count)
+        #expect(kept.max() ?? .distantPast <= dropped.min() ?? .distantFuture,
+                "a later warning was kept over an earlier one")
+    }
+
+    @Test("The limit stays under what the system will actually hold")
+    func limitLeavesRoom() {
+        #expect(SunAlerts.pendingLimit <= 64, "iOS keeps at most sixty-four pending per app")
+    }
+
     // MARK: - Wording
 
     @Test("The wording reads like a sentence at every lead time")

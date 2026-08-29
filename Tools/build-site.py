@@ -20,6 +20,9 @@ from pathlib import Path
 APP = "Sunspot"
 SUPPORT_EMAIL = "zhvnir1345@yahoo.com"
 REPO = "https://github.com/Sanchizas007/Sunspot"
+# Кто лицензирует приложение. Apple's standard EULA calls this the Application Provider, and
+# the store listing, the licence in the repository and these pages must all name the same one.
+LICENSOR = "Olexandr Zhovnir"
 SITE = "https://sanchizas007.github.io/Sunspot"
 UPDATED = "25 August 2026"
 
@@ -87,6 +90,7 @@ def page(slug, title, description, body):
 {body}
 <footer>
   <p>{APP} · last updated {UPDATED} · <a href="mailto:{SUPPORT_EMAIL}">{SUPPORT_EMAIL}</a></p>
+  <p>© 2026 {LICENSOR}. All rights reserved.</p>
 </footer>
 </div>
 </body>
@@ -201,6 +205,12 @@ changes the answer. The position is used on the device and goes nowhere. See the
 <h1>Terms</h1>
 <p class="lede">Sunspot is licensed, not sold, under Apple's standard licence for applications.</p>
 
+<h2>Who licenses it</h2>
+<p>Sunspot is published and licensed by <strong>{LICENSOR}</strong>, who holds the copyright
+in the application, its name and its source code. Apple distributes it and is not a party to
+this licence. Any question about permissions, reuse or licensing goes to the address at the
+foot of this page.</p>
+
 <h2>The licence</h2>
 <p>Use of Sunspot is governed by Apple's Licensed Application End User License Agreement,
 which you can read at
@@ -221,7 +231,10 @@ anything that matters against a professional measurement.</p>
 
 <h2>Source</h2>
 <p>The source is published at <a href="{REPO}">{REPO}</a> to be read, not reused. It is not
-open source; the licence in that repository sets out what is and is not permitted.</p>
+open source. Copyright is held by {LICENSOR} and all rights are reserved: publication grants
+no licence to use, copy, modify, distribute or sell any part of it, and no right to publish a
+derived or substantially similar application to any store. The licence in that repository sets
+out the whole of what is and is not permitted.</p>
 
 <h2>Contact</h2>
 <p><a href="mailto:{SUPPORT_EMAIL}">{SUPPORT_EMAIL}</a></p>

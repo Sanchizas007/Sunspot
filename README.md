@@ -18,8 +18,9 @@ only the light that actually reaches the spot.
 
 ## Status
 
-Built, translated, and shot for the store. 181 tests pass; the purchase has been made on a
-real phone and the skyline has been traced on one.
+Built, translated, and shot for the store. 187 tests pass; the purchase has been made on a
+real phone and the skyline has been traced on one. iPhone only, iOS 17 and up, one payment
+that never expires.
 
 | Piece | State |
 | --- | --- |
@@ -36,6 +37,8 @@ real phone and the skyline has been traced on one.
 | Paywall — one purchase, StoreKit 2, no middleman | ✅ bought on a real phone |
 | English, German, French | ✅ 199 strings, checked against the keys the app really asks for |
 | App Store screenshots | ✅ generated; the Sky frame wants a real garden behind it |
+| Privacy manifest, app and widget | ✅ nothing collected, one API declared |
+| Export compliance, device family, version | ✅ no non-exempt encryption, iPhone, 1.0 |
 
 On a first real tracing session the app captured 860 directions covering 217° of horizon —
 94% of the 251° the sun crosses at that latitude — with no compass jitter: the line deviated
@@ -114,6 +117,10 @@ Tools/build-site.py         the pages served from docs/
 
 `check.sh` is the one to run after a change; the rest it calls or you call by hand.
 
+There is no analytics, no account, no server and no third-party SDK. Nothing the app works
+out leaves the phone, which is why the privacy manifest declares one API and no collected
+data at all.
+
 The screenshot set is seeded from a launch argument rather than by tapping through the app,
 so it can be thrown away and shot again from scratch whenever a screen moves. The same
 garden, the same traced skyline, the same half past one in the afternoon, every time.
@@ -121,9 +128,8 @@ English by default; `Tools/screenshots.sh de fr` shoots the other two, in garden
 own. One frame is worth retaking by hand: the Sky screen has a real camera behind it on a
 phone and a plain gradient in a simulator, and the gradient sells nothing.
 
-The frames themselves are not committed. `screenshots/README.md` is, and says which frame
-goes in which slot in App Store Connect, which one belongs to the in-app purchase rather than
-the listing, and what Apple checks.
+The frames themselves are not committed; `screenshots/README.md`, beside them, says which
+frame goes in which slot in App Store Connect and what Apple checks.
 
 ---
 

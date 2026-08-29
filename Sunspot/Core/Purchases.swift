@@ -32,8 +32,25 @@ final class Purchases {
         didSet {
             guard oldValue != state else { return }
             // The widget cannot ask the App Store from inside its own timeline, so it is told.
-            Unlock.record(isUnlocked: state == .unlocked)
+            if let known = Self.cachedUnlock(for: state) {
+                Unlock.record(isUnlocked: known)
+            }
             WidgetRefresh.reload()
+        }
+    }
+
+    /// What the widget's cached answer should become, or nil when this state is not an answer.
+    ///
+    /// `.unavailable` is the one that matters. It means the App Store could not be reached,
+    /// which is not the same thing as "not bought" — and writing `false` for it takes the
+    /// widget away from somebody who has paid, because their train went into a tunnel. The
+    /// flag is a cache of the last thing actually known, so a state that knows nothing leaves
+    /// it exactly as it was.
+    static func cachedUnlock(for state: State) -> Bool? {
+        switch state {
+        case .unlocked: true
+        case .locked: false
+        case .loading, .unavailable: nil
         }
     }
     private(set) var isWorking = false
