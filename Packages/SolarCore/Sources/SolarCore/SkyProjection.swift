@@ -216,28 +216,32 @@ extension SkyProjection {
     /// into the two angles the screen really covers takes two steps, and skipping either
     /// puts the sun's arc in the wrong place by several degrees.
     ///
-    /// First, the sensor is landscape while the phone is held portrait, so its wide angle
-    /// ends up running down the screen, not across it. Second, a preview that fills the view
-    /// crops whichever dimension does not fit.
+    /// First, the sensor is a landscape rectangle while the interface is upright, so its wide
+    /// angle ends up running down the screen, not across it. Second, a preview that fills the
+    /// view crops whichever dimension does not fit.
+    ///
+    /// There is no orientation parameter, and that is a decision rather than an omission. The
+    /// app is locked to portrait, so the preview keeps a fixed rotation against the device and
+    /// the projection is driven by the device's own attitude — the two stay in step no matter
+    /// which way the phone is physically turned. An interface that rotated would turn the
+    /// preview with it and this would need to know; an interface that does not, does not.
     ///
     /// - Parameters:
     ///   - cameraFieldOfView: the angle across the sensor's wide side, in degrees.
     ///   - sensorAspectRatio: the sensor's own width over height, usually 4∶3.
     ///   - viewAspectRatio: the preview's width over height on screen.
-    ///   - isPortrait: whether the phone is held upright, turning the sensor on its side.
     public static func displayedFieldOfView(
         cameraFieldOfView: Double,
         sensorAspectRatio: Double = 4.0 / 3.0,
-        viewAspectRatio: Double,
-        isPortrait: Bool
+        viewAspectRatio: Double
     ) -> (horizontal: Double, vertical: Double) {
 
         let halfWide = tan(radians(cameraFieldOfView / 2))
         let halfNarrow = halfWide / sensorAspectRatio
 
-        // Held portrait, the sensor's wide side runs top to bottom.
-        let imageHalfHorizontal = isPortrait ? halfNarrow : halfWide
-        let imageHalfVertical = isPortrait ? halfWide : halfNarrow
+        // Upright, the sensor's wide side runs top to bottom.
+        let imageHalfHorizontal = halfNarrow
+        let imageHalfVertical = halfWide
         let imageAspect = imageHalfHorizontal / imageHalfVertical
 
         let halfHorizontal: Double

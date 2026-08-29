@@ -116,8 +116,7 @@ struct SkyView: View {
 
         let shown = SkyProjection.displayedFieldOfView(
             cameraFieldOfView: fieldOfView,
-            viewAspectRatio: size.width / size.height,
-            isPortrait: size.height >= size.width
+            viewAspectRatio: size.width / size.height
         )
         return SkyProjection(
             rotation: rotation,

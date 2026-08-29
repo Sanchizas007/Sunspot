@@ -14,6 +14,13 @@ answer is what stands in the way: the fence, the garage, the tree next door. Sun
 you trace that skyline with the camera, then walks the day a minute at a time and counts
 only the light that actually reaches the spot.
 
+> **This is published to be read, not reused.** Copyright in Sunspot — its source, its name,
+> its icon and the wording of its screens — belongs solely to Olexandr Zhovnir, and all rights
+> are reserved. The repository is public because the App Store requires a privacy policy,
+> support page and terms, and those are served from it; being able to read something is not
+> permission to use it. Copying any part of this into another project, by hand or by machine,
+> or publishing anything derived from it, needs written permission first. See [`LICENSE`](LICENSE).
+
 ---
 
 ## Status
@@ -135,14 +142,25 @@ frame goes in which slot in App Store Connect and what Apple checks.
 
 ## Copyright and rights
 
-Copyright © 2026 Olexandr Zhovnir. All rights reserved.
+Copyright © 2026 Olexandr Zhovnir. All rights reserved. Sunspot, its source code, its name,
+its icon and the wording of its screens belong solely to him. None of it is in the public
+domain and no open-source licence applies to any of it.
 
-This repository is **public to read, not open source.** The source is published so the work
-can be inspected, linked to and discussed. No licence is granted to use, copy, modify,
-merge, publish, distribute, sublicense or sell any part of it, and no right is granted to
-publish a derived or substantially similar application to any app store.
+**Public to read, not open source.** The repository is public for two practical reasons: the
+privacy policy, support page and terms that the App Store requires are served from it through
+GitHub Pages, and the work is published so it can be inspected, linked to and discussed. That
+is the whole of it. A public repository is not an offer of a licence, and a fork the platform
+makes for you is not one either.
+
+No licence is granted — by publication, by implication or by silence — to copy any part of
+this into another project by any means, including rewriting it in another language or having
+a machine do it; to use it in any product or service, commercial or not; to modify, merge,
+publish, distribute, sublicense or sell it; to ship a derived or substantially similar
+application to any store; to use the name, icon or screenshots for another application; or to
+train machine-learning models on it.
 
 Reading the code, learning from it and quoting short excerpts with attribution is welcome.
 Shipping it, in whole or in part, is not.
 
-For any other use, ask first. See `LICENSE` for the full terms.
+For anything else, ask first, and wait for a written answer. See [`LICENSE`](LICENSE) for the
+full terms.

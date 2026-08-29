@@ -63,7 +63,12 @@ APP_COMMON = {
     "GENERATE_INFOPLIST_FILE": "YES",
     "INFOPLIST_KEY_UIApplicationSceneManifest_Generation": "YES",
     "INFOPLIST_KEY_UILaunchScreen_Generation": "YES",
-    "INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone": '"UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"',
+    # Portrait and nothing else. Landscape was declared and never once looked at: the Sky
+    # screen's controls sit against the bottom of a tall frame, and an orientation nobody has
+    # seen is an orientation a reviewer sees first. Locking it also keeps the camera preview
+    # at a fixed rotation against the device, which is what lets the overlay be worked out
+    # from the device's own attitude and stay lined up however the phone is held.
+    "INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone": '"UIInterfaceOrientationPortrait"',
     "INFOPLIST_KEY_NSLocationWhenInUseUsageDescription": '"Sunspot needs your location to work out where the sun travels over this spot."',
     "INFOPLIST_KEY_NSCameraUsageDescription": '"Sunspot uses the camera so you can trace the roofs and trees around a spot."',
     # Required because the Sky screen reads the device's attitude. Without the key iOS ends

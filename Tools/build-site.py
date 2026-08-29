@@ -230,11 +230,15 @@ instrument: do not use it where a wrong answer would be dangerous or expensive, 
 anything that matters against a professional measurement.</p>
 
 <h2>Source</h2>
-<p>The source is published at <a href="{REPO}">{REPO}</a> to be read, not reused. It is not
-open source. Copyright is held by {LICENSOR} and all rights are reserved: publication grants
-no licence to use, copy, modify, distribute or sell any part of it, and no right to publish a
-derived or substantially similar application to any store. The licence in that repository sets
-out the whole of what is and is not permitted.</p>
+<p>The source is published at <a href="{REPO}">{REPO}</a> to be read, not reused. The
+repository is public for two reasons: these pages are served from it, and the work can be
+inspected. It is not open source.</p>
+<p>Copyright in Sunspot — its source code, its name, its icon and the wording of its screens —
+is held solely by {LICENSOR}, and all rights are reserved. Publication grants no licence, by
+implication or otherwise, to copy any part of it into another project by any means, to use it
+in any product or service, to modify or distribute it, to publish a derived or substantially
+similar application to any store, or to train machine-learning models on it. The licence in
+that repository sets out the whole of what is and is not permitted.</p>
 
 <h2>Contact</h2>
 <p><a href="mailto:{SUPPORT_EMAIL}">{SUPPORT_EMAIL}</a></p>

@@ -71,7 +71,9 @@ struct SkyProjectionTests {
     func rollIsReported() {
         #expect(abs(Self.projection(Self.facingNorth).roll) < 0.001)
 
-        // Same direction, but turned into landscape so the right edge points at the ground.
+        // Same direction, but the phone turned on its side so the right edge points at the
+        // ground. The interface never follows it there — the app is portrait only — but the
+        // physical device still rolls, and the arc has to stay where the sky is.
         let onItsSide = Self.rotation(right: Self.down, top: Self.east, outOfScreen: Self.south)
         #expect(abs(abs(Self.projection(onItsSide).roll) - 90) < 0.001,
                 "roll was \(Self.projection(onItsSide).roll)")
@@ -213,33 +215,27 @@ struct SkyProjectionTests {
 /// Turning the one number a camera reports into the two the screen really covers.
 struct DisplayedFieldOfViewTests {
 
-    @Test("Held portrait, the sensor's wide angle runs down the screen, not across it")
-    func portraitSwapsTheAxes() {
+    @Test("The sensor's wide angle runs down the screen, not across it")
+    func theWideAngleRunsDownTheScreen() {
         // A tall view, so the image fills the width and is cropped top and bottom.
-        let portrait = SkyProjection.displayedFieldOfView(
-            cameraFieldOfView: 68, viewAspectRatio: 9.0 / 19.5, isPortrait: true
+        let shown = SkyProjection.displayedFieldOfView(
+            cameraFieldOfView: 68, viewAspectRatio: 9.0 / 19.5
         )
-        let landscape = SkyProjection.displayedFieldOfView(
-            cameraFieldOfView: 68, viewAspectRatio: 19.5 / 9.0, isPortrait: false
-        )
-
-        #expect(portrait.vertical > portrait.horizontal,
-                "portrait should see further up and down: \(portrait)")
-        #expect(landscape.horizontal > landscape.vertical,
-                "landscape should see further across: \(landscape)")
+        #expect(shown.vertical > shown.horizontal,
+                "an upright phone should see further up and down: \(shown)")
     }
 
     @Test("Filling the view never claims to show more sky than the sensor captured")
     func fillingNeverInvents() {
+        // Aspect ratios well past anything a portrait-locked phone produces, because the
+        // guarantee is about the arithmetic and not about which handset is in the shops.
         for viewAspect in [0.4, 0.46, 0.75, 1.0, 1.5, 2.2] {
-            for isPortrait in [true, false] {
-                let shown = SkyProjection.displayedFieldOfView(
-                    cameraFieldOfView: 68, viewAspectRatio: viewAspect, isPortrait: isPortrait
-                )
-                #expect(shown.horizontal <= 68.001 && shown.vertical <= 68.001,
-                        "aspect \(viewAspect) portrait \(isPortrait) claimed \(shown)")
-                #expect(shown.horizontal > 0 && shown.vertical > 0)
-            }
+            let shown = SkyProjection.displayedFieldOfView(
+                cameraFieldOfView: 68, viewAspectRatio: viewAspect
+            )
+            #expect(shown.horizontal <= 68.001 && shown.vertical <= 68.001,
+                    "aspect \(viewAspect) claimed \(shown)")
+            #expect(shown.horizontal > 0 && shown.vertical > 0)
         }
     }
 
@@ -248,7 +244,7 @@ struct DisplayedFieldOfViewTests {
         // A square view crops to the narrow dimension, which for a 4∶3 sensor with a 68°
         // wide angle works out near 54°.
         let shown = SkyProjection.displayedFieldOfView(
-            cameraFieldOfView: 68, viewAspectRatio: 1, isPortrait: false
+            cameraFieldOfView: 68, viewAspectRatio: 1
         )
         #expect(abs(shown.horizontal - shown.vertical) < 0.001, "a square view sees a square")
         #expect(abs(shown.vertical - 53.7) < 1.0, "got \(shown.vertical)")
@@ -257,10 +253,10 @@ struct DisplayedFieldOfViewTests {
     @Test("A wider lens shows more sky")
     func widerLensShowsMore() {
         let narrow = SkyProjection.displayedFieldOfView(
-            cameraFieldOfView: 50, viewAspectRatio: 9.0 / 19.5, isPortrait: true
+            cameraFieldOfView: 50, viewAspectRatio: 9.0 / 19.5
         )
         let wide = SkyProjection.displayedFieldOfView(
-            cameraFieldOfView: 100, viewAspectRatio: 9.0 / 19.5, isPortrait: true
+            cameraFieldOfView: 100, viewAspectRatio: 9.0 / 19.5
         )
         #expect(wide.vertical > narrow.vertical)
         #expect(wide.horizontal > narrow.horizontal)

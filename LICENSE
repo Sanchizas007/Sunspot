@@ -1,27 +1,48 @@
 Copyright © 2026 Olexandr Zhovnir. All rights reserved.
 
-This software and its source code (the "Software") are made publicly readable for the
-purposes of inspection, reference and discussion. Publication does not place the Software
-in the public domain and does not grant an open-source licence.
+Sunspot, its source code, its name, its icon and the wording of its screens (together, the
+"Work") belong solely to Olexandr Zhovnir. No part of the Work is in the public domain, and
+no open-source licence applies to any of it.
+
+WHY THIS REPOSITORY IS PUBLIC
+
+  It is public for two practical reasons and no others: the privacy policy, support page and
+  terms the App Store requires are served from it through GitHub Pages, and the work is
+  published so that it can be read, linked to and discussed. Being able to read something is
+  not permission to use it, and a public repository is not an offer of a licence.
 
 PERMITTED WITHOUT PERMISSION
 
-  1. Viewing and reading the Software.
-  2. Quoting short excerpts for commentary, teaching, review or discussion, with
-     attribution to the copyright holder and a link to this repository.
-  3. Forking on the hosting platform solely to propose changes back to this repository.
+  1. Reading the Work.
+  2. Quoting short excerpts for commentary, teaching, review or discussion, with attribution
+     to the copyright holder and a link to this repository.
+  3. Forking on the hosting platform in order to propose a change back to this repository.
+     A fork is a copy the platform makes; it is not a licence to use what is in it.
 
 NOT PERMITTED WITHOUT PRIOR WRITTEN PERMISSION
 
-  1. Using the Software, in whole or in part, in any product, service or application,
-     whether commercial or not.
-  2. Copying, modifying, merging, publishing, distributing, sublicensing or selling copies
-     of the Software.
-  3. Publishing or distributing any application derived from, or substantially similar to,
-     the Software on any application store or distribution channel.
-  4. Training machine-learning models on the Software.
+  1. Copying any part of the Work into another project, by any means: by hand, by file, by
+     rewriting it in another language, or by having a machine do any of those.
+  2. Using the Work, in whole or in part, in any product, service or application, whether
+     commercial or not, whether published or private.
+  3. Modifying, merging, publishing, distributing, sublicensing, selling or renting the Work
+     or any copy of it.
+  4. Publishing or distributing any application derived from, or substantially similar to,
+     the Work on any application store or distribution channel.
+  5. Using the name "Sunspot", the icon, the screenshots or the wording of the screens for
+     any application other than this one.
+  6. Training machine-learning models on the Work.
 
-To request permission, open an issue on this repository.
+  This list describes what is refused most often. It is not exhaustive: every right that is
+  not expressly granted above is reserved.
+
+NO LICENCE BY IMPLICATION
+
+  Nothing here grants a licence by implication, by estoppel, or by the act of publication.
+  Silence in reply to a request is a refusal, not a permission. Permission, if it is ever
+  given, will be in writing and will name what it covers.
+
+  To ask, open an issue on this repository.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
