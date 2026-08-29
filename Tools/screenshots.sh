@@ -80,9 +80,13 @@ xcrun simctl bootstatus "$UDID" -b >/dev/null
 xcrun simctl ui "$UDID" appearance light
 xcrun simctl install "$UDID" "$APP"
 
-# The location dialog would otherwise land across the first frame of every language. The
-# camera cannot be granted this way and is handled in the app instead; nothing else asks.
-xcrun simctl privacy "$UDID" grant location "$BUNDLE" 2>/dev/null || true
+# Refused rather than granted, and refused rather than left to prompt. A screenshot run has
+# its spots seeded already and never asks the device where it is — but the app builds a
+# `CLLocationManager` at startup regardless, and with permission in place that alone is enough
+# to put the "recently used location" arrow in the status bar of every frame. On a store
+# listing for a garden app that arrow reads as tracking. Refusing removes it and can put no
+# dialog across a frame either, which leaving it unanswered could.
+xcrun simctl privacy "$UDID" revoke location "$BUNDLE" 2>/dev/null || true
 
 # A full battery and a carrier that is not called "Simulator". Apple rejects sets that show
 # the simulator's own status bar.

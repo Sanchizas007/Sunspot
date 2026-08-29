@@ -77,7 +77,11 @@ private struct RootView: View {
                 .tag(MainTab.year)
         }
         .task {
-            location.start()
+            // A screenshot run has its spots already, and the app only ever asks the device
+            // where it is in order to place the first one. Starting location services anyway
+            // puts the "in use" arrow in the status bar of every frame in the store listing,
+            // which reads as tracking to somebody deciding whether to download a garden app.
+            if !Demo.isRunning { location.start() }
             purchases.startListening()
             await purchases.load()
             await alerts.reschedule(for: store.spots)
