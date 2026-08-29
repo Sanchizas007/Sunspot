@@ -48,6 +48,15 @@ final class MotionTracker {
     var isRunning: Bool { motion.isDeviceMotionActive }
 
     func start() {
+        // A screenshot needs the arc held still where it can be seen, and no calibration
+        // banner across it. The stand-in below sweeps the whole sky once a minute, which is
+        // the right thing for exercising the screen and useless for photographing it.
+        if Demo.isRunning {
+            rotation = Self.standInRotation(azimuth: Demo.skyBearing, elevation: Demo.skyPitch)
+            trust = .high
+            return
+        }
+
         guard motion.isDeviceMotionAvailable else {
             trust = .unavailable
             startStandIn()

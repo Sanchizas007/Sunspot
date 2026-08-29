@@ -29,6 +29,14 @@ final class CameraFeed: NSObject {
     var session: AVCaptureSession { handle.session }
 
     func start() {
+        // Asking for the camera during a screenshot run puts a permission dialog across the
+        // frame, and there is no lens behind it to grant access to. `simctl` can pre-grant
+        // location and a dozen other things but not this one, so it is settled here.
+        if Demo.isRunning {
+            state = .running(fieldOfView: 68)
+            return
+        }
+
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
             configureAndRun()

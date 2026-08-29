@@ -18,18 +18,24 @@ only the light that actually reaches the spot.
 
 ## Status
 
-The engine and three screens are built and have been through a real phone. 113 tests pass.
+Built, translated, and shot for the store. 181 tests pass; the purchase has been made on a
+real phone and the skyline has been traced on one.
 
 | Piece | State |
 | --- | --- |
-| `SolarCore` — sun position, skyline, sun-hours, sky projection | ✅ 72 tests |
+| `SolarCore` — sun position, skyline, sun-hours, sky projection | ✅ 84 tests |
 | Today — the answer in hours, graded the way plant labels are | ✅ |
 | Map — where the sun arrives from, leaves towards, and is now | ✅ |
 | Sky — the arc over the live camera, skyline traced by finger | ✅ tried on an iPhone 14 |
-| Saving a spot and its skyline | ✅ |
-| Year chart, month by month | ⬜ engine ready, no screen |
-| Widget | ⬜ |
-| Paywall | ⬜ |
+| Year — the season said in a sentence, then drawn | ✅ |
+| Several spots, and which of them is better | ✅ |
+| What will grow at this spot | ✅ |
+| Saving spots and their skylines | ✅ |
+| Home-screen widget | ✅ |
+| A word before the sun arrives | ✅ |
+| Paywall — one purchase, StoreKit 2, no middleman | ✅ bought on a real phone |
+| English, German, French | ✅ 199 strings, checked against the keys the app really asks for |
+| App Store screenshots | ✅ generated; the Sky frame wants a real garden behind it |
 
 On a first real tracing session the app captured 860 directions covering 217° of horizon —
 94% of the 251° the sun crosses at that latitude — with no compass jitter: the line deviated
@@ -95,6 +101,25 @@ Packages/SolarCore/        the maths, dependency-free and testable from a termin
     SunHours.swift             what that adds up to
   Tests/SolarCoreTests/
 ```
+
+## Tools
+
+```
+Tools/check.sh              engine, build, purchase configuration, translations, app tests
+Tools/screenshots.sh        the App Store set — six screens, no taps
+Tools/check-localisation.py the keys SwiftUI would look up, checked against the catalogue
+Tools/make-project.py       regenerates Sunspot.xcodeproj
+Tools/build-site.py         the pages served from docs/
+```
+
+`check.sh` is the one to run after a change; the rest it calls or you call by hand.
+
+The screenshot set is seeded from a launch argument rather than by tapping through the app,
+so it can be thrown away and shot again from scratch whenever a screen moves. The same
+garden, the same traced skyline, the same half past one in the afternoon, every time.
+English by default; `Tools/screenshots.sh de fr` shoots the other two, in gardens of their
+own. One frame is worth retaking by hand: the Sky screen has a real camera behind it on a
+phone and a plain gradient in a simulator, and the gradient sells nothing.
 
 ---
 

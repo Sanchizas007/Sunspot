@@ -10,14 +10,31 @@ struct TodayView: View {
     @State private var renaming: Spot?
     @State private var showingPaywall = false
     @State private var comparing = false
+    /// Where this screen has been pushed to. Kept as a value rather than left inside a
+    /// `NavigationLink` so that a screenshot run, which never touches the screen, can open
+    /// the planting list the same way a finger does.
+    @State private var path: [Route] = Demo.screen == .plants ? [.plants] : []
+
+    enum Route: Hashable { case plants }
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             Group {
                 if let spot = store.spot {
                     SunSummary(spot: spot, moment: store.viewedDate)
                 } else {
                     LocationPrompt(state: location.state) { location.start() }
+                }
+            }
+            .navigationDestination(for: Route.self) { route in
+                switch route {
+                case .plants:
+                    if let spot = store.spot {
+                        PlantingView(
+                            spot: spot,
+                            minutes: spot.sunDay(on: store.viewedDate).directMinutes
+                        )
+                    }
                 }
             }
             .navigationTitle("Today")
@@ -56,9 +73,7 @@ private struct SunSummary: View {
             }
 
             Section {
-                NavigationLink {
-                    PlantingView(spot: spot, minutes: day.directMinutes)
-                } label: {
+                NavigationLink(value: TodayView.Route.plants) {
                     Label("What will grow here", systemImage: "leaf")
                 }
             }

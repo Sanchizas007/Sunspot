@@ -8,3 +8,7 @@ build/
 *.xccheckout
 Packages/*/.build/
 .swiftpm/
+
+# Скриншоты для App Store. Пересобираются одной командой Tools/screenshots.sh,
+# и весят больше, чем всё остальное в репозитории вместе взятое.
+screenshots/

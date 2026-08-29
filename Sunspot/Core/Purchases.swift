@@ -56,7 +56,9 @@ final class Purchases {
     /// leaving that task running behind it — which is exactly how a two-second suite turned
     /// into one that never finished.
     func startListening() {
-        guard updates == nil else { return }
+        // A screenshot run has no store to listen to, and an endless task started for a
+        // single frame would outlive it.
+        guard Demo.pretendedPurchase == nil, updates == nil else { return }
         updates = Task { [weak self] in
             for await update in Transaction.updates {
                 guard case let .verified(transaction) = update else { continue }
@@ -75,6 +77,16 @@ final class Purchases {
 
     /// Asks the store what is on sale and whether it has already been bought.
     func load() async {
+        // The screenshot run never touches the screen, so it can neither buy this nor be
+        // shown a paywall that reached a real store. It is told the answer instead.
+        if let pretended = Demo.pretendedPurchase {
+            switch pretended {
+            case .unlocked: state = .unlocked
+            case .locked(let price): state = .locked(price: price)
+            }
+            return
+        }
+
         await refreshEntitlement()
         guard state != .unlocked else { return }
 
