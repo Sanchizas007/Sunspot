@@ -26,6 +26,20 @@ OUT="$ROOT/screenshots"
 # answer into a reason to keep the app.
 SCREENS=(today sky year plants map compare)
 
+# What each frame is, in the filename, so that six months from now the folder can be opened
+# and uploaded without opening a single image to work out which is which.
+label() {
+    case "$1" in
+        today)   echo "the-answer-in-hours" ;;
+        sky)     echo "trace-the-skyline" ;;
+        year)    echo "when-full-sun-starts-and-ends" ;;
+        plants)  echo "what-will-grow-here" ;;
+        map)     echo "where-the-sun-comes-from" ;;
+        compare) echo "which-spot-is-better" ;;
+        *)       echo "$1" ;;
+    esac
+}
+
 # English only by default. The app is translated into three languages and the store listing
 # could carry a set for each, but one set is what is being submitted, and three sets is three
 # times the work every time a screen moves. The other two are a command-line argument away —
@@ -144,7 +158,10 @@ capture() {
         sleep $((2 + attempt))
         xcrun simctl io "$UDID" screenshot --type png "$file" 2>/dev/null
         if verify "$screen" "$file"; then
-            echo "    $language/$(basename "$file")"
+            # The path as it sits in the folder, not the language plus a bare name: the
+            # paywall frame lives beside the language folders rather than inside one, and a
+            # log line saying otherwise is a wrong answer to "where did it go".
+            echo "    ${file#"$OUT"/}"
             return 0
         fi
     done
@@ -159,7 +176,8 @@ for language in "${LANGUAGES[@]}"; do
 
     index=1
     for screen in "${SCREENS[@]}"; do
-        file=$(printf "%s/%s/%02d-%s.png" "$OUT" "$language" "$index" "$screen")
+        file=$(printf "%s/%s/%02d-%s-%s.png" \
+            "$OUT" "$language" "$index" "$screen" "$(label "$screen")")
         capture "$screen" "$file" || bad=$((bad + 1))
         index=$((index + 1))
     done
@@ -186,10 +204,34 @@ done
 # shows one needs a fresh review every time the price moves.
 if [[ " ${LANGUAGES[*]} " == *" en "* ]]; then
     language=en
-    capture paywall "$OUT/paywall-for-review.png" || bad=$((bad + 1))
+    capture paywall "$OUT/in-app-purchase-review-screenshot.png" || bad=$((bad + 1))
 fi
 
 xcrun simctl terminate "$UDID" "$BUNDLE" 2>/dev/null || true
+
+# App Store Connect rejects a PNG with an alpha channel, and blames the dimensions when it
+# does. Every frame is flattened as it is taken, so this should never fire — which is exactly
+# why it is here: the flattening is one line inside a function that does four other things,
+# and a set that has quietly grown a transparency layer looks identical until it is refused.
+python3 - "$OUT" <<'FINAL' || bad=$((bad + 1))
+import sys
+from pathlib import Path
+from PIL import Image
+
+sizes, problems = set(), []
+files = sorted(Path(sys.argv[1]).rglob("*.png"))
+for file in files:
+    im = Image.open(file)
+    if im.mode != "RGB":
+        problems.append(f"    !! {file.name}: режим {im.mode}, а нужен RGB без альфа-канала")
+    sizes.add(im.size)
+if len(sizes) > 1:
+    problems.append(f"    !! кадры разного размера: {sorted(sizes)}")
+if problems:
+    print("\n".join(problems), file=sys.stderr); sys.exit(1)
+width, height = sizes.pop() if sizes else (0, 0)
+print(f"==> {len(files)} кадров, {width}x{height}, без альфа-канала")
+FINAL
 
 if [ "$bad" -gt 0 ]; then
     echo "==> Кадров с проблемами: $bad. Такой набор в стор не отправлять." >&2

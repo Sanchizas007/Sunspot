@@ -121,11 +121,15 @@ English by default; `Tools/screenshots.sh de fr` shoots the other two, in garden
 own. One frame is worth retaking by hand: the Sky screen has a real camera behind it on a
 phone and a plain gradient in a simulator, and the gradient sells nothing.
 
+The frames themselves are not committed. `screenshots/README.md` is, and says which frame
+goes in which slot in App Store Connect, which one belongs to the in-app purchase rather than
+the listing, and what Apple checks.
+
 ---
 
 ## Copyright and rights
 
-Copyright © 2026 Sanchizas007. All rights reserved.
+Copyright © 2026 Olexandr Zhovnir. All rights reserved.
 
 This repository is **public to read, not open source.** The source is published so the work
 can be inspected, linked to and discussed. No licence is granted to use, copy, modify,
