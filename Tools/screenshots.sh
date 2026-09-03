@@ -15,11 +15,25 @@
 # months later when a screen changes, because nobody remembers which spot it was.
 set -euo pipefail
 
-DEVICE="${SUNSPOT_DEVICE:-iPhone 17 Pro Max}"
+# Which size to shoot. Two sizes must never share an output folder: they did once, and the
+# second run silently replaced the first set with frames of a different shape — a folder that
+# looks full and is wrong. The folder is part of the profile for that reason.
+#
+# 6.9" is what App Store Connect's listing form asks for. 6.5" exists because the sister app
+# found the in-app-purchase review field refusing 1320x2868 and taking 1284x2778, on the same
+# account, in the same week. Which of those two the form wants on any given day is not worth
+# discovering at submission time, so both are shot.
+case "${SUNSPOT_SIZE:-6.9}" in
+    6.9) DEFAULT_DEVICE="iPhone 17 Pro Max"; SIZE_DIR="6.9-inch" ;;
+    6.5) DEFAULT_DEVICE="iPhone 14 Plus";    SIZE_DIR="6.5-inch" ;;
+    *)   echo "SUNSPOT_SIZE должен быть 6.9 или 6.5, а не «$SUNSPOT_SIZE»." >&2; exit 1 ;;
+esac
+
+DEVICE="${SUNSPOT_DEVICE:-$DEFAULT_DEVICE}"
 BUNDLE="app.sunspot"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-DERIVED="${SUNSPOT_DERIVED:-$ROOT/.build/screenshots}"
-OUT="$ROOT/screenshots"
+DERIVED="${SUNSPOT_DERIVED:-$ROOT/.build/screenshots-$SIZE_DIR}"
+OUT="$ROOT/screenshots/$SIZE_DIR"
 
 # In selling order rather than tab order. The number is the answer people came for; the sky
 # is the only thing here nobody else does; the year and the planting list are what turn one
@@ -63,10 +77,33 @@ locale_id() {
 # halves of the same photograph do not disagree.
 STATUS_TIME="13:30"
 
-UDID=$(xcrun simctl list devices available \
-    | grep -F "$DEVICE (" | head -1 | sed -E 's/.*\(([0-9A-F-]{36})\).*/\1/')
-[ -n "$UDID" ] || { echo "Нет доступного симулятора «$DEVICE»." >&2; exit 1; }
-echo "==> $DEVICE  $UDID"
+# `|| true` is load-bearing. Under `set -euo pipefail` a grep that matches nothing fails the
+# whole pipeline, the command substitution fails with it, and the script is killed on the spot
+# — before the "no such simulator, make one" branch below has a chance to run. The symptom is
+# no output at all and an exit status of zero, which reads as "it worked" and is impossible to
+# tell from success without going looking.
+find_device() {
+    xcrun simctl list devices available \
+        | grep -F "$DEVICE (" | head -1 | sed -E 's/.*\(([0-9A-F-]{36})\).*/\1/' || true
+}
+
+UDID=$(find_device)
+if [ -z "$UDID" ]; then
+    # Xcode installs a handful of simulators and the older sizes are not among them, so the
+    # 6.5" run would fail on a fresh checkout for want of one command. Make it rather than
+    # ask for it.
+    TYPE=$(xcrun simctl list devicetypes | grep -F "$DEVICE (" | head -1 \
+        | sed -E 's/.*\((com\.apple[^)]+)\).*/\1/' || true)
+    RUNTIME=$(xcrun simctl list runtimes \
+        | grep -oE 'com\.apple\.CoreSimulator\.SimRuntime\.iOS-[0-9-]+' | tail -1 || true)
+    if [ -n "$TYPE" ] && [ -n "$RUNTIME" ]; then
+        echo "==> Симулятора «$DEVICE» нет, создаю"
+        xcrun simctl create "$DEVICE" "$TYPE" "$RUNTIME" >/dev/null 2>&1 || true
+        UDID=$(find_device)
+    fi
+fi
+[ -n "$UDID" ] || { echo "Нет и не создаётся симулятор «$DEVICE»." >&2; exit 1; }
+echo "==> $SIZE_DIR · $DEVICE  $UDID"
 
 echo "==> Сборка"
 xcodebuild -project "$ROOT/Sunspot.xcodeproj" -scheme Sunspot -configuration Debug \
