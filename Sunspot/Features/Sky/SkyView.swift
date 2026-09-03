@@ -52,10 +52,16 @@ struct SkyView: View {
         switch camera.state {
         case .running:
             #if targetEnvironment(simulator)
-            // Something to draw the arc against when there is no lens.
+            // No lens here, so the sky is drawn rather than filmed. The gradient runs from a
+            // deep zenith to the pale band that sits over every real horizon, which is what
+            // makes the yellow arc legible against it.
             LinearGradient(
-                colors: [Color(red: 0.19, green: 0.32, blue: 0.52),
-                         Color(red: 0.55, green: 0.62, blue: 0.70)],
+                stops: [
+                    .init(color: Color(red: 0.16, green: 0.29, blue: 0.51), location: 0),
+                    .init(color: Color(red: 0.36, green: 0.51, blue: 0.68), location: 0.45),
+                    .init(color: Color(red: 0.68, green: 0.77, blue: 0.83), location: 0.86),
+                    .init(color: Color(red: 0.82, green: 0.85, blue: 0.86), location: 1)
+                ],
                 startPoint: .top, endPoint: .bottom
             )
             #else
@@ -64,7 +70,7 @@ struct SkyView: View {
         case .denied:
             Message(
                 title: "Camera is off",
-                detail: "Sunspot uses the camera so you can trace the roofs and trees around a spot. Turn it on in Settings."
+                detail: "Sunplot uses the camera so you can trace the roofs and trees around a spot. Turn it on in Settings."
             )
         case .unavailable(let reason):
             Message(title: "No live view", detail: reason)
@@ -155,6 +161,7 @@ private struct Overlay: View {
 
     var body: some View {
         Canvas { context, _ in
+            drawStandInSkyline(in: &context)
             drawArc(in: &context)
             drawSkyline(in: &context)
             drawSun(in: &context)
@@ -204,6 +211,48 @@ private struct Overlay: View {
         context.fill(Circle().path(in: disc), with: .color(.yellow))
         context.stroke(Circle().path(in: disc.insetBy(dx: -6, dy: -6)),
                        with: .color(.white.opacity(0.8)), lineWidth: 3)
+    }
+
+    /// Fills in what the camera would have been looking at, where there is no camera.
+    ///
+    /// Drawn from the traced profile itself, through the same projection as everything else,
+    /// so the silhouette and the cyan line agree the way a roofline and a tracing of it do on
+    /// a phone. Nothing here is invented: it is the same numbers the hours are counted from,
+    /// filled in rather than plotted. On a device this never runs — there is a lens.
+    private func drawStandInSkyline(in context: inout GraphicsContext) {
+        #if targetEnvironment(simulator)
+        let horizon = spot.effectiveHorizon
+        guard !horizon.samples.isEmpty else { return }
+
+        // Half a degree at a time: fine enough that the ridge reads as an edge rather than a
+        // chain of segments, coarse enough to cost nothing.
+        var runs: [[CGPoint]] = []
+        var run: [CGPoint] = []
+        for azimuth in stride(from: 0.0, to: 360.0, by: 0.5) {
+            guard let point = screen(azimuth, horizon.obstructionElevation(atAzimuth: azimuth)) else {
+                if run.count > 1 { runs.append(run) }
+                run = []
+                continue
+            }
+            run.append(point)
+        }
+        if run.count > 1 { runs.append(run) }
+
+        // Filled well past the bottom of the frame rather than to it. The canvas is laid out
+        // inside the safe area while the sky behind it is not, so a fill that stops at the
+        // frame's own edge leaves a pale band of sky under the ground, right where the tab bar
+        // sits — which reads as a drawing error rather than a horizon.
+        let below = size.height * 1.4
+        for run in runs {
+            guard let first = run.first, let last = run.last else { continue }
+            var path = Path()
+            path.move(to: CGPoint(x: first.x, y: below))
+            for point in run { path.addLine(to: point) }
+            path.addLine(to: CGPoint(x: last.x, y: below))
+            path.closeSubpath()
+            context.fill(path, with: .color(Color(red: 0.11, green: 0.15, blue: 0.14)))
+        }
+        #endif
     }
 
     /// What the person has traced so far, plus whatever was already saved.

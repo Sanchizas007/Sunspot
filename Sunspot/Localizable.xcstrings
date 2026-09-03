@@ -1474,25 +1474,25 @@
         }
       }
     },
-    "Location is off for Sunspot. Turn it on in Settings, or pick a spot on the map.": {
+    "Location is off for Sunplot. Turn it on in Settings, or pick a spot on the map.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Location is off for Sunspot. Turn it on in Settings, or pick a spot on the map."
+            "value": "Location is off for Sunplot. Turn it on in Settings, or pick a spot on the map."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ortung ist für Sunspot ausgeschaltet. Schalte sie in den Einstellungen ein oder wähle eine Stelle auf der Karte."
+            "value": "Ortung ist für Sunplot ausgeschaltet. Schalte sie in den Einstellungen ein oder wähle eine Stelle auf der Karte."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "La localisation est désactivée pour Sunspot. Activez-la dans Réglages, ou choisissez un emplacement sur la carte."
+            "value": "La localisation est désactivée pour Sunplot. Activez-la dans Réglages, ou choisissez un emplacement sur la carte."
           }
         }
       }
@@ -1865,25 +1865,25 @@
         }
       }
     },
-    "Notifications are switched off for Sunspot. Turn them on in Settings and this will start working.": {
+    "Notifications are switched off for Sunplot. Turn them on in Settings and this will start working.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Notifications are switched off for Sunspot. Turn them on in Settings and this will start working."
+            "value": "Notifications are switched off for Sunplot. Turn them on in Settings and this will start working."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mitteilungen sind für Sunspot ausgeschaltet. Schalte sie in den Einstellungen ein, dann funktioniert das hier."
+            "value": "Mitteilungen sind für Sunplot ausgeschaltet. Schalte sie in den Einstellungen ein, dann funktioniert das hier."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Les notifications sont désactivées pour Sunspot. Activez-les dans Réglages pour que cela fonctionne."
+            "value": "Les notifications sont désactivées pour Sunplot. Activez-les dans Réglages pour que cela fonctionne."
           }
         }
       }
@@ -1934,25 +1934,25 @@
         }
       }
     },
-    "Once Sunspot knows where you are, the sun's path appears here.": {
+    "Once Sunplot knows where you are, the sun's path appears here.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Once Sunspot knows where you are, the sun's path appears here."
+            "value": "Once Sunplot knows where you are, the sun's path appears here."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sobald Sunspot weiß, wo du bist, erscheint hier der Sonnenlauf."
+            "value": "Sobald Sunplot weiß, wo du bist, erscheint hier der Sonnenlauf."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dès que Sunspot sait où vous êtes, la course du soleil apparaît ici."
+            "value": "Dès que Sunplot sait où vous êtes, la course du soleil apparaît ici."
           }
         }
       }
@@ -2072,25 +2072,25 @@
         }
       }
     },
-    "Open Sunspot and trace the skyline where you are.": {
+    "Open Sunplot and trace the skyline where you are.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Open Sunspot and trace the skyline where you are."
+            "value": "Open Sunplot and trace the skyline where you are."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Öffne Sunspot und zeichne den Horizont dort nach, wo du bist."
+            "value": "Öffne Sunplot und zeichne den Horizont dort nach, wo du bist."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ouvrez Sunspot et tracez l’horizon là où vous êtes."
+            "value": "Ouvrez Sunplot et tracez l’horizon là où vous êtes."
           }
         }
       }
@@ -2808,25 +2808,25 @@
         }
       }
     },
-    "Sunspot needs a position to work out where the sun travels overhead.": {
+    "Sunplot needs a position to work out where the sun travels overhead.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sunspot needs a position to work out where the sun travels overhead."
+            "value": "Sunplot needs a position to work out where the sun travels overhead."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sunspot braucht eine Position, um den Sonnenlauf über dieser Stelle zu berechnen."
+            "value": "Sunplot braucht eine Position, um den Sonnenlauf über dieser Stelle zu berechnen."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sunspot a besoin d’une position pour calculer la course du soleil au-dessus de cet endroit."
+            "value": "Sunplot a besoin d’une position pour calculer la course du soleil au-dessus de cet endroit."
           }
         }
       }
@@ -3245,25 +3245,25 @@
         }
       }
     },
-    "The widget comes with the full picture, in Sunspot.": {
+    "The widget comes with the full picture, in Sunplot.": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The widget comes with the full picture, in Sunspot."
+            "value": "The widget comes with the full picture, in Sunplot."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Das Widget gehört zum vollen Bild in Sunspot."
+            "value": "Das Widget gehört zum vollen Bild in Sunplot."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le widget fait partie de la version complète de Sunspot."
+            "value": "Le widget fait partie de la version complète de Sunplot."
           }
         }
       }

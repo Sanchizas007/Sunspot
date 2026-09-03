@@ -69,13 +69,18 @@ APP_COMMON = {
     # at a fixed rotation against the device, which is what lets the overlay be worked out
     # from the device's own attitude and stay lined up however the phone is held.
     "INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone": '"UIInterfaceOrientationPortrait"',
-    "INFOPLIST_KEY_NSLocationWhenInUseUsageDescription": '"Sunspot needs your location to work out where the sun travels over this spot."',
-    "INFOPLIST_KEY_NSCameraUsageDescription": '"Sunspot uses the camera so you can trace the roofs and trees around a spot."',
+    "INFOPLIST_KEY_NSLocationWhenInUseUsageDescription": '"Sunplot needs your location to work out where the sun travels over this spot."',
+    "INFOPLIST_KEY_NSCameraUsageDescription": '"Sunplot uses the camera so you can trace the roofs and trees around a spot."',
     # Required because the Sky screen reads the device's attitude. Without the key iOS ends
     # the process the moment the screen asks, with no dialog and no warning.
-    "INFOPLIST_KEY_NSMotionUsageDescription": '"Sunspot reads which way the phone is pointing so the sun\'s path lines up with what the camera sees."',
+    "INFOPLIST_KEY_NSMotionUsageDescription": '"Sunplot reads which way the phone is pointing so the sun\'s path lines up with what the camera sees."',
     "PRODUCT_BUNDLE_IDENTIFIER": BUNDLE_ID,
     "PRODUCT_NAME": '"$(TARGET_NAME)"',
+    # What the home screen calls it. The target, the folders and the bundle identifier still
+    # read Sunspot and stay that way on purpose: none of them is ever shown to anybody, and a
+    # purchase identifier cannot be renamed once it exists in App Store Connect — only
+    # replaced by a different product. Everything a person actually reads says Sunplot.
+    "INFOPLIST_KEY_CFBundleDisplayName": '"Sunplot"',
     "SWIFT_EMIT_LOC_STRINGS": "YES",
     # iPhone only. The build declared iPad as well, which was never true of anything here:
     # the layouts are phone-shaped, nothing has been run on an iPad, and iPad defaults to all

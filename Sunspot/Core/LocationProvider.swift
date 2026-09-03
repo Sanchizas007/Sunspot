@@ -43,7 +43,7 @@ final class LocationProvider: NSObject {
             state = .requesting
             manager.requestLocation()
         case .denied:
-            state = .unavailable(reason: String(localized: "Location is off for Sunspot. Turn it on in Settings, or pick a spot on the map."))
+            state = .unavailable(reason: String(localized: "Location is off for Sunplot. Turn it on in Settings, or pick a spot on the map."))
         case .restricted:
             state = .unavailable(reason: String(localized: "This device does not allow location. Pick a spot on the map instead."))
         @unknown default:
@@ -76,7 +76,7 @@ extension LocationProvider: CLLocationManagerDelegate {
 
     nonisolated func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         let description = (error as? CLError)?.code == .denied
-            ? String(localized: "Location is off for Sunspot. Turn it on in Settings, or pick a spot on the map.")
+            ? String(localized: "Location is off for Sunplot. Turn it on in Settings, or pick a spot on the map.")
             : String(localized: "Could not get a position just now. Pick a spot on the map instead.")
         Task { @MainActor [weak self] in
             self?.fail(description)
@@ -92,7 +92,7 @@ extension LocationProvider: CLLocationManagerDelegate {
                 self.state = .requesting
                 self.manager.requestLocation()
             case .denied:
-                self.fail(String(localized: "Location is off for Sunspot. Turn it on in Settings, or pick a spot on the map."))
+                self.fail(String(localized: "Location is off for Sunplot. Turn it on in Settings, or pick a spot on the map."))
             case .restricted:
                 self.fail(String(localized: "This device does not allow location. Pick a spot on the map instead."))
             case .notDetermined:

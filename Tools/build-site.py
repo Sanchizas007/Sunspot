@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Builds the pages that must exist before Sunspot can be submitted.
+"""Builds the pages that must exist before Sunplot can be submitted.
 
     python3 Tools/build-site.py
 
@@ -17,14 +17,14 @@ appearance, and so the support address lives in exactly one place.
 
 from pathlib import Path
 
-APP = "Sunspot"
+APP = "Sunplot"
 SUPPORT_EMAIL = "zhvnir1345@yahoo.com"
-REPO = "https://github.com/Sanchizas007/Sunspot"
+REPO = "https://github.com/Sanchizas007/Sunplot"
 # Кто лицензирует приложение. Apple's standard EULA calls this the Application Provider, and
 # the store listing, the licence in the repository and these pages must all name the same one.
 LICENSOR = "Olexandr Zhovnir"
-SITE = "https://sanchizas007.github.io/Sunspot"
-UPDATED = "25 August 2026"
+SITE = "https://sanchizas007.github.io/Sunplot"
+UPDATED = "29 August 2026"
 
 # Sampled from the app's own icon.
 STYLE = """
@@ -64,7 +64,7 @@ code { background: var(--rule); padding: .1rem .35rem; border-radius: 4px; font-
 def page(slug, title, description, body):
     here = "index.html" if slug == "" else f"{slug}/index.html"
     def link(target, label):
-        href = "/Sunspot/" + (f"{target}/" if target else "")
+        href = "/Sunplot/" + (f"{target}/" if target else "")
         current = ' aria-current="page"' if target == slug else ""
         return f'<a href="{href}"{current}>{label}</a>'
 
@@ -103,18 +103,18 @@ def page(slug, title, description, body):
 
 
 PAGES = [
-    ("", "How much sun does this spot get?", "Sunspot works out the hours of direct sun a spot gets on any day of the year, counting the roofs and trees in the way.", """
+    ("", "How much sun does this spot get?", "Sunplot works out the hours of direct sun a spot gets on any day of the year, counting the roofs and trees in the way.", """
 <h1>How much sun does this spot get?</h1>
 <p class="lede">Every seed packet and plant label is written in hours of direct sun. Almost
 nobody knows what their own garden, balcony or roof actually gets.</p>
 
-<p>Sunspot answers it with a number. Not where the sun is — that is the easy half — but how
+<p>Sunplot answers it with a number. Not where the sun is — that is the easy half — but how
 much of it reaches <em>this spot</em>, once the fence, the garage and next door's lime tree
 have taken their share.</p>
 
 <div class="card">
 <p>Point the camera at the skyline and sweep a finger along the tops of the roofs and trees.
-Sunspot walks the day a minute at a time and counts only the light that gets through.</p>
+Sunplot walks the day a minute at a time and counts only the light that gets through.</p>
 </div>
 
 <h2>What it tells you</h2>
@@ -132,9 +132,9 @@ Sunspot walks the day a minute at a time and counts only the light that gets thr
 </ul>
 """),
 
-    ("privacy", "Privacy", "Sunspot collects nothing, sends nothing, and has no servers.", """
+    ("privacy", "Privacy", "Sunplot collects nothing, sends nothing, and has no servers.", """
 <h1>Privacy</h1>
-<p class="lede">Sunspot has no servers, no accounts and no analytics. Nothing you do in the
+<p class="lede">Sunplot has no servers, no accounts and no analytics. Nothing you do in the
 app is collected, and nothing leaves your device.</p>
 
 <h2>What stays on the device</h2>
@@ -154,11 +154,11 @@ the app's own storage on the device.</li>
 software development kits of any kind. There is no server to send anything to.</p>
 
 <h2>Purchases</h2>
-<p>The one-time purchase is handled entirely by Apple. Sunspot never sees your payment
+<p>The one-time purchase is handled entirely by Apple. Sunplot never sees your payment
 details, and Apple's own privacy policy covers that transaction.</p>
 
 <h2>Children</h2>
-<p>Sunspot collects nothing from anybody, of any age.</p>
+<p>Sunplot collects nothing from anybody, of any age.</p>
 
 <h2>Deleting your data</h2>
 <p>Deleting the app removes everything it has stored. There is nothing held elsewhere to
@@ -168,7 +168,7 @@ request or erase.</p>
 <p>If this policy ever changes, the date at the foot of this page changes with it.</p>
 """),
 
-    ("support", "Support", "How to get help with Sunspot.", f"""
+    ("support", "Support", "How to get help with Sunplot.", f"""
 <h1>Support</h1>
 <p class="lede">Write to <a href="mailto:{SUPPORT_EMAIL}">{SUPPORT_EMAIL}</a>. One person reads
 it, usually within a day or two.</p>
@@ -182,7 +182,7 @@ it went wrong. A screenshot is worth a paragraph.</p>
 
 <h3>The sun's arc does not line up with the sky</h3>
 <p>That is the compass, not the maths. Wave the phone in a figure of eight, and keep away from
-speakers, magnets and car dashboards — all of them pull a magnetometer off true. Sunspot tells
+speakers, magnets and car dashboards — all of them pull a magnetometer off true. Sunplot tells
 you when it does not trust its own reading rather than drawing a confident line anyway.</p>
 
 <h3>It says my skyline is not enough</h3>
@@ -198,32 +198,32 @@ Apple Account that made them, so make sure you are signed in with the same one.<
 <h3>Why does it want my location?</h3>
 <p>The sun's path depends on latitude far more than people expect — an hour's drive north
 changes the answer. The position is used on the device and goes nowhere. See the
-<a href="/Sunspot/privacy/">privacy policy</a>.</p>
+<a href="/Sunplot/privacy/">privacy policy</a>.</p>
 """),
 
-    ("terms", "Terms", "Terms of use for Sunspot.", f"""
+    ("terms", "Terms", "Terms of use for Sunplot.", f"""
 <h1>Terms</h1>
-<p class="lede">Sunspot is licensed, not sold, under Apple's standard licence for applications.</p>
+<p class="lede">Sunplot is licensed, not sold, under Apple's standard licence for applications.</p>
 
 <h2>Who licenses it</h2>
-<p>Sunspot is published and licensed by <strong>{LICENSOR}</strong>, who holds the copyright
+<p>Sunplot is published and licensed by <strong>{LICENSOR}</strong>, who holds the copyright
 in the application, its name and its source code. Apple distributes it and is not a party to
 this licence. Any question about permissions, reuse or licensing goes to the address at the
 foot of this page.</p>
 
 <h2>The licence</h2>
-<p>Use of Sunspot is governed by Apple's Licensed Application End User License Agreement,
+<p>Use of Sunplot is governed by Apple's Licensed Application End User License Agreement,
 which you can read at
 <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">apple.com/legal/internet-services/itunes/dev/stdeula</a>.</p>
 
 <h2>The purchase</h2>
-<p>Sunspot is free to download. One optional purchase unlocks the year view, saving more than
+<p>Sunplot is free to download. One optional purchase unlocks the year view, saving more than
 one spot, and the widget. It is a single payment: there is no subscription, nothing renews and
 there is nothing to cancel. Refunds are handled by Apple, through the same account the
 purchase was made from.</p>
 
 <h2>What the numbers are</h2>
-<p>Sunspot computes the sun's position from published astronomical algorithms and subtracts
+<p>Sunplot computes the sun's position from published astronomical algorithms and subtracts
 the skyline you trace. It is accurate to the care taken tracing and to the phone's own compass,
 both of which the app reports on. It is a gardening and planning tool, not a survey
 instrument: do not use it where a wrong answer would be dangerous or expensive, and check
@@ -233,7 +233,7 @@ anything that matters against a professional measurement.</p>
 <p>The source is published at <a href="{REPO}">{REPO}</a> to be read, not reused. The
 repository is public for two reasons: these pages are served from it, and the work can be
 inspected. It is not open source.</p>
-<p>Copyright in Sunspot — its source code, its name, its icon and the wording of its screens —
+<p>Copyright in Sunplot — its source code, its name, its icon and the wording of its screens —
 is held solely by {LICENSOR}, and all rights are reserved. Publication grants no licence, by
 implication or otherwise, to copy any part of it into another project by any means, to use it
 in any product or service, to modify or distribute it, to publish a derived or substantially

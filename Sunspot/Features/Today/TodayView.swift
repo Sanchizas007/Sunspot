@@ -137,7 +137,7 @@ private struct AlertRow: View {
             }
         } footer: {
             if purchases.isUnlocked, alerts.permission == .denied {
-                Text("Notifications are switched off for Sunspot. Turn them on in Settings and this will start working.")
+                Text("Notifications are switched off for Sunplot. Turn them on in Settings and this will start working.")
                     .foregroundStyle(.orange)
             }
         }
@@ -200,7 +200,7 @@ private struct LocationPrompt: View {
         } description: {
             switch state {
             case .idle, .requesting:
-                Text("Sunspot needs a position to work out where the sun travels overhead.")
+                Text("Sunplot needs a position to work out where the sun travels overhead.")
             case .unavailable(let reason):
                 Text(reason)
             case .located:

@@ -142,38 +142,104 @@ enum Demo {
         }
     }
 
-    private static func skyline(_ elevations: [Int]) -> [HorizonProfile.Sample] {
-        zip(stride(from: 0.0, through: 350.0, by: 10), elevations)
-            .map { HorizonProfile.Sample(azimuth: $0, elevation: Double($1)) }
+    /// Builds a skyline the way a traced one actually looks.
+    ///
+    /// Two parts. The envelope is the coarse shape — hedge, tree, terrace, house — given every
+    /// ten degrees. The detail on top is what a real trace picks up and a dozen numbers cannot:
+    /// the gable of each house in the row opposite, a chimney, the lumps of a tree crown. It is
+    /// sampled every degree and a half, which is the resolution a finger sweep produces.
+    ///
+    /// This is not decoration. A profile of thirty-six points draws as a smooth ridge, and the
+    /// Sky screen fills that ridge in where there is no camera — so a coarse profile makes the
+    /// one screen that sells the whole idea look like a black slab instead of roofs and trees.
+    /// The hours barely move: seven fifty-two against seven fifty-one.
+    private static func skyline(
+        envelope: [Int], detail: (Double) -> Double
+    ) -> [HorizonProfile.Sample] {
+        stride(from: 0.0, to: 360.0, by: 1.5).map { azimuth in
+            HorizonProfile.Sample(
+                azimuth: azimuth,
+                elevation: max(0, interpolate(envelope, at: azimuth) + detail(azimuth))
+            )
+        }
     }
 
-    /// A back garden: next door's tree to the east, the house to the west, and a two-storey
-    /// terrace across the south that the midsummer sun clears easily and the December sun
-    /// never does. Roughly what somebody actually traces, and the reason the answer is eight
-    /// hours rather than the fourteen the sun is up for.
-    private static let gardenSkyline = skyline([
-        4, 4, 5, 6, 7, 10, 15, 20, 22, 24, 21, 17,      //   0°–110°  hedge, then the tree
-        16, 15, 15, 16, 16, 16, 16, 16, 16, 17, 20, 23, // 120°–230°  the terrace opposite
-        26, 28, 28, 26, 22, 17, 12, 9, 7, 5, 4, 4       // 240°–350°  the house
-    ])
+    /// The coarse shape between its ten-degree points.
+    private static func interpolate(_ values: [Int], at azimuth: Double) -> Double {
+        let step = 360.0 / Double(values.count)
+        let index = Int(azimuth / step) % values.count
+        let next = (index + 1) % values.count
+        let t = (azimuth - Double(index) * step) / step
+        return Double(values[index]) * (1 - t) + Double(values[next]) * t
+    }
+
+    /// A row of pitched roofs: ridge, eaves, ridge, across a stretch of horizon.
+    private static func roofline(
+        _ azimuth: Double, from: Double, to: Double, width: Double, height: Double
+    ) -> Double {
+        guard azimuth >= from, azimuth <= to else { return 0 }
+        let phase = (azimuth - from).truncatingRemainder(dividingBy: width) / width
+        return height * (1 - abs(phase - 0.5) * 2)
+    }
+
+    /// One chimney, four degrees wide, because every terrace has them and they are the detail
+    /// that makes a silhouette read as a street rather than a hill.
+    private static func chimney(_ azimuth: Double, at bearing: Double, height: Double) -> Double {
+        abs(azimuth - bearing) <= 2 ? height : 0
+    }
+
+    /// A hedge is never a straight line. Kept strictly positive: a wobble that dips would open
+    /// a sliver of midwinter sun through the one direction that is supposed to be shut.
+    private static func hedge(_ azimuth: Double) -> Double {
+        0.4 * (1 + sin(azimuth / 6))
+    }
+
+    /// A back garden: next door's tree to the east, a terrace of houses across the south that
+    /// the midsummer sun clears and the December sun never does, our own house to the west.
+    private static let gardenSkyline = skyline(
+        envelope: [4, 4, 5, 6, 8, 12, 18, 24, 26, 28, 25, 20,
+                   16, 15, 15, 16, 16, 16, 16, 16, 16, 18, 22, 26,
+                   30, 32, 32, 30, 26, 20, 14, 10, 7, 5, 4, 4]
+    ) { azimuth in
+        var detail = roofline(azimuth, from: 128, to: 232, width: 14, height: 2.6)
+        detail += chimney(azimuth, at: 172, height: 3.4)
+        detail += roofline(azimuth, from: 236, to: 296, width: 20, height: 2.0)
+        detail += chimney(azimuth, at: 260, height: 4.0)
+        if (62...134).contains(azimuth) {
+            detail += 3.0 * sin((azimuth - 62) / 72 * .pi * 3)
+        }
+        return detail + hedge(azimuth)
+    }
 
     /// The border on the other side of the same garden, tight against the wall. Everything
-    /// stands a little higher from here, which is the whole point of the app: a few metres
-    /// is the difference between eight hours and five and a half.
-    private static let borderSkyline = skyline([
-        8, 8, 11, 16, 22, 28, 34, 38, 40, 40, 38, 34,
-        32, 31, 30, 30, 31, 31, 32, 33, 35, 37, 39, 41,
-        42, 42, 42, 40, 35, 29, 22, 17, 13, 10, 8, 8
-    ])
+    /// stands a little higher from here, which is the whole point of the app: a few metres is
+    /// the difference between seven hours fifty and five and a half.
+    private static let borderSkyline = skyline(
+        envelope: [8, 8, 11, 16, 22, 28, 34, 38, 40, 40, 38, 34,
+                   32, 31, 30, 30, 31, 31, 32, 33, 35, 37, 39, 41,
+                   42, 42, 42, 40, 35, 29, 22, 17, 13, 10, 8, 8]
+    ) { azimuth in
+        var detail = roofline(azimuth, from: 120, to: 240, width: 16, height: 3.0)
+        detail += chimney(azimuth, at: 188, height: 3.6)
+        detail += roofline(azimuth, from: 240, to: 300, width: 20, height: 2.2)
+        if (50...130).contains(azimuth) {
+            detail += 3.5 * sin((azimuth - 50) / 80 * .pi * 2)
+        }
+        return detail + hedge(azimuth)
+    }
 
-    /// A recessed balcony: walls either side and a slot of sky facing south. A few hours in
-    /// the middle of the day and nothing at either end of it — and, because it is up above
-    /// the rooftops, the only one of the three that still sees the sun in December.
-    private static let balconySkyline = skyline([
-        50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, //   0°–110°  the building behind
-        50, 48, 40, 24, 12, 10, 12, 22, 38, 50, 50, 50, // 120°–230°  the slot
-        50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50  // 240°–350°  the building again
-    ])
+    /// A recessed balcony: walls either side and a slot of sky facing south. A few hours in the
+    /// middle of the day and nothing at either end — and, being up above the rooftops, the only
+    /// one of the three that still sees the sun in December. The walls are smooth; the roofs
+    /// visible through the slot are not.
+    private static let balconySkyline = skyline(
+        envelope: [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50,
+                   50, 48, 40, 24, 12, 10, 12, 22, 38, 50, 50, 50,
+                   50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50]
+    ) { azimuth in
+        roofline(azimuth, from: 146, to: 208, width: 15, height: 2.4)
+            + chimney(azimuth, at: 176, height: 3.0)
+    }
 
     /// Where the demo garden is. Residential rather than a city centre, so the map frame
     /// shows gardens and rooftops instead of a railway station, and northern enough that the

@@ -28,13 +28,13 @@ struct TodaySunView: View {
             Message(
                 icon: "mappin.slash",
                 title: "No spot yet",
-                detail: "Open Sunspot and trace the skyline where you are."
+                detail: "Open Sunplot and trace the skyline where you are."
             )
         case .locked:
             Message(
                 icon: "lock",
                 title: "Not unlocked",
-                detail: "The widget comes with the full picture, in Sunspot."
+                detail: "The widget comes with the full picture, in Sunplot."
             )
         }
     }

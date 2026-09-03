@@ -1,4 +1,4 @@
-# Sunspot
+# Sunplot
 
 **How much sun does this spot actually get?**
 
@@ -7,14 +7,14 @@ Almost nobody knows what their own garden, balcony or roof actually gets — so 
 go in the shady corner and never ripen, and the panels go on the side of the roof the
 neighbour's lime tree shades from October.
 
-Sunspot answers the question with a number.
+Sunplot answers the question with a number.
 
 Other sun apps show you where the sun is. That is the easy half. The half that decides the
-answer is what stands in the way: the fence, the garage, the tree next door. Sunspot lets
+answer is what stands in the way: the fence, the garage, the tree next door. Sunplot lets
 you trace that skyline with the camera, then walks the day a minute at a time and counts
 only the light that actually reaches the spot.
 
-> **This is published to be read, not reused.** Copyright in Sunspot — its source, its name,
+> **This is published to be read, not reused.** Copyright in Sunplot — its source, its name,
 > its icon and the wording of its screens — belongs solely to Olexandr Zhovnir, and all rights
 > are reserved. The repository is public because the App Store requires a privacy policy,
 > support page and terms, and those are served from it; being able to read something is not
@@ -118,11 +118,17 @@ Packages/SolarCore/        the maths, dependency-free and testable from a termin
 Tools/check.sh              engine, build, purchase configuration, translations, app tests
 Tools/screenshots.sh        the App Store set — six screens, no taps
 Tools/check-localisation.py the keys SwiftUI would look up, checked against the catalogue
-Tools/make-project.py       regenerates Sunspot.xcodeproj
+Tools/make-project.py       regenerates Sunspot.xcodeproj  ← внутреннее имя, см. ниже
 Tools/build-site.py         the pages served from docs/
 ```
 
 `check.sh` is the one to run after a change; the rest it calls or you call by hand.
+
+The app is **Sunplot**. Inside the repository the target, the folders, the bundle identifier
+`app.sunspot`, the App Group and the purchase `app.sunspot.full` still read Sunspot, and stay
+that way on purpose: none of them is ever shown to anybody, and a purchase identifier cannot be
+renamed after it exists in App Store Connect — only replaced by a different product. Everything
+a person actually sees says Sunplot.
 
 `make-project.py` writes the scheme byte for byte as Xcode writes it, so opening Edit Scheme
 no longer produces a diff and regenerating no longer undoes what Xcode just saved. The
@@ -147,7 +153,7 @@ frame goes in which slot in App Store Connect and what Apple checks.
 
 ## Copyright and rights
 
-Copyright © 2026 Olexandr Zhovnir. All rights reserved. Sunspot, its source code, its name,
+Copyright © 2026 Olexandr Zhovnir. All rights reserved. Sunplot, its source code, its name,
 its icon and the wording of its screens belong solely to him. None of it is in the public
 domain and no open-source licence applies to any of it.
 

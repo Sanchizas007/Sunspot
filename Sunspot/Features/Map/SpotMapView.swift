@@ -19,7 +19,7 @@ struct SpotMapView: View {
                     ContentUnavailableView(
                         "No spot yet",
                         systemImage: "mappin.slash",
-                        description: Text("Once Sunspot knows where you are, the sun's path appears here.")
+                        description: Text("Once Sunplot knows where you are, the sun's path appears here.")
                     )
                 }
             }
