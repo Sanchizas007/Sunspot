@@ -124,11 +124,16 @@ Tools/build-site.py         the pages served from docs/
 
 `check.sh` is the one to run after a change; the rest it calls or you call by hand.
 
-The app is **Sunplot**. Inside the repository the target, the folders, the bundle identifier
-`app.sunspot`, the App Group and the purchase `app.sunspot.full` still read Sunspot, and stay
-that way on purpose: none of them is ever shown to anybody, and a purchase identifier cannot be
-renamed after it exists in App Store Connect — only replaced by a different product. Everything
-a person actually sees says Sunplot.
+The app is **Sunplot**, and so is everything it registers with Apple: `app.sunplot`,
+`group.app.sunplot`, `app.sunplot.full`. The plan had been to leave those alone on the grounds
+that nobody sees them — until the first archive build failed with *the app identifier
+"app.sunspot" cannot be registered to your development team because it is not available*.
+Another developer holds it. It had never been ours: the build that ran on a phone in August was
+signed with a wildcard profile, which needs no identifier of its own and cannot carry an App
+Group either, so nothing had ever asked Apple for the real one.
+
+The target, the folders and the Xcode project are still named Sunspot. Those are ours to
+rename whenever it is convenient and nobody outside ever reads them.
 
 `make-project.py` writes the scheme byte for byte as Xcode writes it, so opening Edit Scheme
 no longer produces a diff and regenerating no longer undoes what Xcode just saved. The

@@ -47,7 +47,7 @@ struct PurchasesTests {
     func productIdentifierIsStable() {
         // Guards a rename in one place and not the other; check.sh compares this against the
         // configuration file itself.
-        #expect(Purchases.productID == "app.sunspot.full")
+        #expect(Purchases.productID == "app.sunplot.full")
     }
 
     @Test("Only an actual purchase counts as unlocked")

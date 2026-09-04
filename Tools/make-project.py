@@ -11,7 +11,7 @@ Run from the repository root:  python3 Tools/make-project.py
 from pathlib import Path
 
 APP = "Sunspot"
-BUNDLE_ID = "app.sunspot"
+BUNDLE_ID = "app.sunplot"
 DEPLOYMENT_TARGET = "17.0"
 SWIFT_VERSION = "6.0"
 MARKETING_VERSION = "1.0"

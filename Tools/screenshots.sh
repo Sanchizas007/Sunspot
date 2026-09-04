@@ -30,7 +30,7 @@ case "${SUNSPOT_SIZE:-6.9}" in
 esac
 
 DEVICE="${SUNSPOT_DEVICE:-$DEFAULT_DEVICE}"
-BUNDLE="app.sunspot"
+BUNDLE="app.sunplot"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DERIVED="${SUNSPOT_DERIVED:-$ROOT/.build/screenshots-$SIZE_DIR}"
 OUT="$ROOT/screenshots/$SIZE_DIR"

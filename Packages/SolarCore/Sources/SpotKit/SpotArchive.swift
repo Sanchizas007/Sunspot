@@ -10,7 +10,7 @@ import SolarCore
 public struct SpotArchive {
 
     /// The container the app and the widget both see.
-    public static let appGroup = "group.app.sunspot"
+    public static let appGroup = "group.app.sunplot"
 
     /// Where the file lives now: inside the shared container, because the widget has to read
     /// it too and an app's own Application Support folder is invisible from outside.

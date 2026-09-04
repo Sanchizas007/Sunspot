@@ -14,7 +14,7 @@ final class Purchases {
 
     /// Outside the actor: it is a constant, and both the paywall and the tests that guard the
     /// configuration file need to name it from wherever they happen to be.
-    nonisolated static let productID = "app.sunspot.full"
+    nonisolated static let productID = "app.sunplot.full"
 
     enum State: Equatable {
         /// Still asking the store.

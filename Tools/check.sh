@@ -51,8 +51,8 @@ if len(products) != 1:
     problems.append(f"товаров в конфиге {len(products)}, ожидается один")
 else:
     p = products[0]
-    if p.get("productID") != "app.sunspot.full":
-        problems.append(f"productID в конфиге {p.get('productID')}, код ждёт app.sunspot.full")
+    if p.get("productID") != "app.sunplot.full":
+        problems.append(f"productID в конфиге {p.get('productID')}, код ждёт app.sunplot.full")
     if p.get("type") != "NonConsumable":
         problems.append(f"тип {p.get('type')}, ожидается NonConsumable")
     if p.get("displayPrice") != "5.99":

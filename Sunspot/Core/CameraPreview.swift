@@ -23,7 +23,7 @@ final class CameraFeed: NSObject {
     private nonisolated let handle = SessionHandle(session: AVCaptureSession())
 
     /// Every call that starts, stops or reconfigures the session goes through here.
-    private nonisolated let sessionQueue = DispatchQueue(label: "app.sunspot.camera.session")
+    private nonisolated let sessionQueue = DispatchQueue(label: "app.sunplot.camera.session")
 
     /// For handing to the preview layer, which is a main-thread affair.
     var session: AVCaptureSession { handle.session }

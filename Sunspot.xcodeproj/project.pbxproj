@@ -370,7 +370,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Sunplot needs your location to work out where the sun travels over this spot.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Sunplot uses the camera so you can trace the roofs and trees around a spot.";
 				INFOPLIST_KEY_NSMotionUsageDescription = "Sunplot reads which way the phone is pointing so the sun's path lines up with what the camera sees.";
-				PRODUCT_BUNDLE_IDENTIFIER = app.sunspot;
+				PRODUCT_BUNDLE_IDENTIFIER = app.sunplot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				INFOPLIST_KEY_CFBundleDisplayName = "Sunplot";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -396,7 +396,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Sunplot needs your location to work out where the sun travels over this spot.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Sunplot uses the camera so you can trace the roofs and trees around a spot.";
 				INFOPLIST_KEY_NSMotionUsageDescription = "Sunplot reads which way the phone is pointing so the sun's path lines up with what the camera sees.";
-				PRODUCT_BUNDLE_IDENTIFIER = app.sunspot;
+				PRODUCT_BUNDLE_IDENTIFIER = app.sunplot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				INFOPLIST_KEY_CFBundleDisplayName = "Sunplot";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -416,7 +416,7 @@
 				MARKETING_VERSION = 1.0;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Config/SunspotWidgets-Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = app.sunspot.widgets;
+				PRODUCT_BUNDLE_IDENTIFIER = app.sunplot.widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -435,7 +435,7 @@
 				MARKETING_VERSION = 1.0;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Config/SunspotWidgets-Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = app.sunspot.widgets;
+				PRODUCT_BUNDLE_IDENTIFIER = app.sunplot.widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -451,7 +451,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GENERATE_INFOPLIST_FILE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = app.sunspot.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = app.sunplot.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -467,7 +467,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GENERATE_INFOPLIST_FILE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = app.sunspot.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = app.sunplot.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				TARGETED_DEVICE_FAMILY = 1;

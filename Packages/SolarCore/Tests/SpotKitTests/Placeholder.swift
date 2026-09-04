@@ -7,6 +7,6 @@ import Testing
 struct SpotKitBuilds {
     @Test("The shared module stands up without an app around it")
     func moduleLoads() {
-        #expect(SpotArchive.appGroup == "group.app.sunspot")
+        #expect(SpotArchive.appGroup == "group.app.sunplot")
     }
 }
