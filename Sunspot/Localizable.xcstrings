@@ -1267,6 +1267,40 @@
         }
       }
     },
+    "In December this spot gets %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Im Dezember bekommt diese Stelle %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En décembre, cet endroit reçoit %@"
+          }
+        }
+      }
+    },
+    "In December this spot gets no direct sun at all": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Im Dezember bekommt diese Stelle gar keine direkte Sonne"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En décembre, cet endroit ne reçoit aucun soleil direct"
+          }
+        }
+      }
+    },
     "Ivy": {
       "extractionState": "manual",
       "localizations": {
@@ -3264,6 +3298,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Le widget fait partie de la version complète de Sunplot."
+          }
+        }
+      }
+    },
+    "The year is where the surprises are — see when full sun starts and ends.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Im Jahr stecken die Überraschungen — sieh, wann die volle Sonne beginnt und endet."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les surprises sont dans l’année — voyez quand le plein soleil commence et finit."
           }
         }
       }

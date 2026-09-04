@@ -55,8 +55,15 @@ struct TodayView: View {
 }
 
 private struct SunSummary: View {
+    @Environment(Purchases.self) private var purchases
+
     let spot: Spot
     let moment: Date
+
+    /// The darkest day at this spot, for the row that asks about the year. Held here rather
+    /// than inside that row because the row is not always on screen, and a view that is not
+    /// rendered cannot start the work that decides whether to render it.
+    @State private var december: Int?
 
     private var day: SunDay { spot.sunDay(on: moment) }
     private var sun: SolarPosition { spot.sunPosition(at: moment) }
@@ -92,12 +99,74 @@ private struct SunSummary: View {
                 }
             }
 
+            if !purchases.isUnlocked, let december {
+                YearTeaser(december: december)
+            }
+
             Section("Right now") {
                 LabeledContent("Sun height", value: Format.angle(sun.elevation))
                 LabeledContent("Direction", value: Format.compass(sun.azimuth))
             }
 
             AlertRow(spot: spot)
+        }
+        .task(id: spot) { await measureDecember() }
+    }
+
+    /// The darkest day of the year here. The solstice rather than a search for the true
+    /// minimum: with a fixed skyline the sun is never lower, and searching would cost three
+    /// hundred and sixty-five days of arithmetic to arrive at the same date.
+    private func measureDecember() async {
+        guard !purchases.isUnlocked, december == nil else { return }
+        let spot = spot
+        december = await Task.detached(priority: .userInitiated) { () -> Int in
+            var calendar = Calendar(identifier: .gregorian)
+            calendar.timeZone = spot.timeZone
+            let year = calendar.component(.year, from: .now)
+            guard let solstice = calendar.date(
+                from: DateComponents(year: year, month: 12, day: 21, hour: 12)
+            ) else { return 0 }
+            return spot.sunDay(on: solstice).directMinutes
+        }.value
+    }
+}
+
+/// Asks the question the year answers, on the screen that cannot answer it.
+///
+/// Somebody with one bed is served completely for nothing: today's hours, the grading, and
+/// what will grow there. That is the point of the free tier and also its problem — they have
+/// no reason to wonder what happens in October, so the one screen that would tell them never
+/// gets opened, and the app is finished with them by teatime.
+///
+/// So it asks on their behalf, using this spot's own December rather than a slogan. Shown
+/// only while locked: once it is paid for, the Year tab does this properly, and repeating it
+/// here would be the app talking to a customer who has already said yes.
+private struct YearTeaser: View {
+    let december: Int
+
+    var body: some View {
+        Section {
+            NavigationLink {
+                Paywall()
+            } label: {
+                Label {
+                    VStack(alignment: .leading, spacing: 3) {
+                        if december == 0 {
+                            Text("In December this spot gets no direct sun at all")
+                                .font(.subheadline.weight(.medium))
+                        } else {
+                            Text("In December this spot gets \(Format.duration(minutes: december))")
+                                .font(.subheadline.weight(.medium))
+                        }
+                        Text("The year is where the surprises are — see when full sun starts and ends.")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
+                } icon: {
+                    Image(systemName: "calendar")
+                        .foregroundStyle(.orange)
+                }
+            }
         }
     }
 }

@@ -22,6 +22,9 @@ enum Demo {
     enum Screen: String {
         /// The four tabs.
         case today, map, sky, year
+        /// Today as somebody who has not paid sees it — the one state the rest of the run
+        /// cannot show, because everything else is shot with the purchase made.
+        case todayLocked = "today-locked"
         /// Things reached from Today, which the run cannot tap its way to.
         case plants, compare, paywall
     }
@@ -57,7 +60,9 @@ enum Demo {
     static var pretendedPurchase: PretendedPurchase? {
         #if DEBUG
         guard let screen else { return nil }
-        return screen == .paywall ? .locked(price: "$5.99") : .unlocked
+        return screen == .paywall || screen == .todayLocked
+            ? .locked(price: "$5.99")
+            : .unlocked
         #else
         return nil
         #endif
