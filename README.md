@@ -116,6 +116,7 @@ Packages/SolarCore/        the maths, dependency-free and testable from a termin
 
 ```
 Tools/check.sh              engine, build, purchase configuration, translations, app tests
+Tools/release.sh            check, archive, export a signed .ipa, validate, upload
 Tools/screenshots.sh        the App Store set — six screens, no taps
 Tools/check-localisation.py the keys SwiftUI would look up, checked against the catalogue
 Tools/make-project.py       regenerates Sunspot.xcodeproj  ← внутреннее имя, см. ниже
